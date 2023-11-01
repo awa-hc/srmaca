@@ -12,9 +12,14 @@ const info = data.find((b) => b.title === title);
 if (!info) {
   return Astro.redirect("/404");
 }
----
 
-{console.log(info.title)}
+export function getStaticPaths() {
+  const paths  = data.flatMap((product) => {
+    return [{ params: { products: "products/", title: product.title } }];
+  });
+  return paths;
+}
+---
 
 <Layout title={`${title} 💪🏻`}>
   <DetailsLayout
