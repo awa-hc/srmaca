@@ -18,8 +18,8 @@ export const data = [
 
     pilsData: {
       principal: "images/tarro.png",
-      pils1: "images/pildora1.png",
-      pils2: "images/pildora2.png",
+      pils1: "/images/pildora1.png",
+      pils2: "/images/pildora2.png",
       transitionname: "testo",
       transitionpils1: "testopils1",
       transitionpils2: "testopils2",
@@ -56,8 +56,8 @@ export const data = [
     },
     pilsData: {
       principal: "images/tarro.png",
-      pils1: "images/pildora1.png",
-      pils2: "../src/static/images/pildora2.png",
+      pils1: "/images/pildora1.png",
+      pils2: "/images/pildora2.png",
       transitionname: "cartilago",
       transitionpils1: "cartilagopils1",
       transitionpils2: "cartilagopils2",
@@ -94,8 +94,8 @@ export const data = [
     },
     pilsData: {
       principal: "images/tarro.png",
-      pils1: "images/pildora1.png",
-      pils2: "../src/static/images/pildora2.png",
+      pils1: "/images/pildora1.png",
+      pils2: "/images/pildora2.png",
       transitionname: "macanegra",
       transitionpils1: "macapils1",
       transitionpils2: "macapils2",
