@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  bgstart: string;
+  textcolor: string;
+  transitiontext: string;
+}
+
+const { title, bgstart, textcolor, transitiontext } = Astro.props;
+---
+
+<main
+  class={`flex bg-gradient-to-b ${bgstart} to-black h-screen min-h-screen justify-center items-center z-0  snap-center`}
+>
+  <main class="absolute z-10 -translate-x-[600px]">
+    <h1
+      transition:animate="fade"
+      transition:name={transitiontext}
+      class={`select-none text-[50px] md:text-[110px] xl:text-[200px]  font-bold  bg-clip-text text-transparent bg-gradient-to-b ${textcolor} to-[#111111ff]  uppercase opacity-75`}
+    >
+      {title}
+    </h1>
+  </main>
+  <section class="grid grid-cols-2 justify-items-end items-center w-screen">
+    <slot />
+  </section>
+</main>

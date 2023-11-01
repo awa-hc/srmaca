@@ -1,0 +1,44 @@
+---
+import { data } from "../../data/data";
+import Layout from "../../layouts/Layout.astro";
+import DetailsLayout from "../../layouts/DetailsLayout.astro";
+import DetailsPils from "../../components/DetailsPils.astro";
+import Detailstext from "../../components/Detailstext.astro";
+
+const { title } = Astro.params;
+
+const info = data.find((b) => b.title === title);
+
+if (!info) {
+  return Astro.redirect("/404");
+}
+---
+
+{console.log(info.title)}
+
+<Layout title={`${title} 💪🏻`}>
+  <DetailsLayout
+    transitiontext={info.transitionname}
+    title={info.title}
+    bgstart={info.bgstart}
+    textcolor={info.textcolor}
+  >
+    <DetailsPils
+      transitionname={info.pilsData.transitionname}
+      principal={info.pilsData.principal}
+      pils1={info.pilsData.pils1}
+      pils2={info.pilsData.pils2}
+      transitionpils1={info.pilsData.transitionpils1}
+      transitionpils2={info.pilsData.transitionpils2}
+    />
+    <Detailstext
+      href={info.title}
+      title={info.detailstitle}
+      description={info.description}
+      benefit1={info.benefits.benefit1}
+      benefit2={info.benefits.benefit2}
+      benefit3={info.benefits.benefit3}
+      benefit4={info.benefits.benefit4}
+    />
+  </DetailsLayout>
+</Layout>

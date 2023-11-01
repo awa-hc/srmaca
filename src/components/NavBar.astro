@@ -1,0 +1,97 @@
+<section
+  class="flex md:m-0 md:gap-0 md:items-center md:justify-center top-0 fixed w-screen max-w-screen z-40 text-white px-10 py-5 md:px-24 md:py-10 uppercase font-bold font-sans rounded-2xl"
+>
+  <div class="flex-grow md:flex-grow basis-0 flex items-center">
+    <img
+      src="../../src/static/images/logosrmaca.png"
+      class="h-6 w-auto md:h-10 invert"
+      alt="logo srmaca"
+    />
+    <span class="capitalize overflow-visible">Sr. Maca</span>
+  </div>
+
+  <nav class="hidden xl:block">
+    <ul class="flex justify-between gap-10">
+      <li class="">
+        <a
+          class="hover:bg-green-900/70 px-4 py-2 rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
+          href="/">Inicio</a
+        >
+      </li>
+      <li class="">
+        <a
+          class="hover:bg-green-900/70 px-4 py-2 rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
+          href="/products">Productos</a
+        >
+      </li>
+      <li class="">
+        <a
+          class="hover:bg-green-900/70 px-4 py-2 rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
+          href="/services">Servicios</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <nav class="flex-grow basis-0 hidden xl:block">
+    <ul class="flex justify-end gap-10">
+      <li class=""><a href="">ShopingCart</a></li>
+      <li class="">
+        <a class="px-4 py-2 bg-green-800 rounded-3xl" href="">Contacto</a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="flex justify-end xl:hidden">
+    <button
+      id="menu"
+      class="text-xl md:text-2xl bg-black/40 rounded-full text-white py-2 px-4"
+    >
+      =
+    </button>
+
+    <nav
+      id="content"
+      class="bg-black/90 backdrop-blur-lg h-screen w-screen fixed top-0 right-0 items-center  transform -translate-y-full transition-transform ease-in-out duration-300"
+    >
+      <header class="flex items-center justify-between p-14">
+        <img
+          src="../../src/static/images/logosrmaca.png"
+          alt="logo srmaca"
+          class="invert h-auto w-20"
+        />
+        <button id="close" class="text-white bg-red-600 rounded-full text-2xl py-2 px-4">
+          x
+        </button>
+      </header>
+      <section class="flex justify-center items-center">
+        <ul
+          class="flex flex-col justify-center items-center h-full text-center"
+        >
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/products">Productos</a></li>
+          <li><a href="/services">Servicios</a></li>
+          <li><a href="">ShopingCart</a></li>
+          <li>
+            <a class="bg-green-800 text-white px-2 py-1 rounded-3xl" href=""
+              >Contacto</a
+            >
+          </li>
+        </ul>
+      </section>
+    </nav>
+  </section>
+</section>
+
+<script>
+  let menu = document.getElementById("menu");
+  let content = document.getElementById("content");
+  let close = document.getElementById("close");
+
+  close.addEventListener("click", () => {
+    content.classList.add("transform", "-translate-y-full");
+  });
+
+  menu.addEventListener("click", () => {
+    content.classList.remove("transform", "-translate-y-full");
+  });
+</script>

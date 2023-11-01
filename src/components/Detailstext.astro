@@ -1,0 +1,38 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  benefit1: string;
+  benefit2: string;
+  benefit3: string;
+  benefit4: string;
+}
+
+const { href, title, description, benefit1, benefit2, benefit3, benefit4 } =
+  Astro.props;
+---
+
+<section
+  class="h-2/3 text-white z-30 w-full bg-white/10 backdrop-blur-md rounded-l-3xl p-10 border-t-[0.5px] border-l-[0.5px] border-white drop-shadow-lg"
+>
+  <a href={`/#${href}`}> c-</a>
+  <main class="flex flex-col text-right">
+    <h2 class="text-4xl">{title}</h2>
+    <h3 class="text-relaxed italic font-serif">{description}</h3>
+    <div class="grid grid-cols-2">
+      <ul class="text-start [&>li]:p-2">
+        <li>{benefit1}</li>
+        <li>{benefit2}</li>
+        <li>{benefit3}</li>
+        <li>{benefit4}</li>
+      </ul>
+      <ul class="text-start [&>li]:p-2">
+        <li>💪🏻</li>
+        <li>💪🏻</li>
+        <li>💪🏻</li>
+        <li>💪🏻</li>
+      </ul>
+    </div>
+  </main>
+</section>
