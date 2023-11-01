@@ -10,13 +10,14 @@ const { title } = Astro.params;
 
 const info = data.find((b) => b.title === title);
 
-
-if (!info)  {
+if (!info) {
   return Astro.redirect("/404");
 }
 
+export const prerender = true;
+
 export function getStaticPaths() {
-  const paths  = data.flatMap((product) => {
+  const paths = data.flatMap((product) => {
     return [{ params: { products: "products/", title: product.title } }];
   });
   return paths;
