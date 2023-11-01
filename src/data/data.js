@@ -17,7 +17,7 @@ export const data = [
     },
 
     pilsData: {
-      principal: "images/tarro.png",
+      principal: "/images/tarro.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "testo",
@@ -55,7 +55,7 @@ export const data = [
       benefit4: "mayor recuperacion muscular",
     },
     pilsData: {
-      principal: "images/tarro.png",
+      principal: "/images/tarro.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "cartilago",
@@ -93,7 +93,7 @@ export const data = [
       benefit4: "mayor recuperacion muscular",
     },
     pilsData: {
-      principal: "images/tarro.png",
+      principal: "/images/tarro.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "macanegra",
