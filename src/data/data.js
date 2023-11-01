@@ -1,7 +1,7 @@
 export const data = [
   {
     id: 1,
-    imagebg: "../../src/static/images/imagebgtest.png",
+    imagebg: "images/imagebgtest.png",
     title: "testo-plus",
     transitionname: "ttesto",
     bgstart: "from-[#526C63]",
@@ -17,9 +17,9 @@ export const data = [
     },
 
     pilsData: {
-      principal: "../../src/static/images/tarro.png",
-      pils1: "../../src/static/images/pildora1.png",
-      pils2: "../src/static/images/pildora2.png",
+      principal: "images/tarro.png",
+      pils1: "images/pildora1.png",
+      pils2: "images/pildora2.png",
       transitionname: "testo",
       transitionpils1: "testopils1",
       transitionpils2: "testopils2",
@@ -40,7 +40,7 @@ export const data = [
   },
   {
     id: 2,
-    imagebg: "../../src/static/images/Group 3.png",
+    imagebg: "images/Group 3.png",
     title: "cartilago",
     transitionname: "tcartilago",
     bgstart: "from-[#185B69]",
@@ -55,8 +55,8 @@ export const data = [
       benefit4: "mayor recuperacion muscular",
     },
     pilsData: {
-      principal: "../../src/static/images/tarro.png",
-      pils1: "../../src/static/images/pildora1.png",
+      principal: "images/tarro.png",
+      pils1: "images/pildora1.png",
       pils2: "../src/static/images/pildora2.png",
       transitionname: "cartilago",
       transitionpils1: "cartilagopils1",
@@ -78,7 +78,7 @@ export const data = [
   },
   {
     id: 3,
-    imagebg: "../../src/static/images/Group 3.png",
+    imagebg: "images/Group 3.png",
     title: "maca-negra",
     transitionname: "tmacanegra",
     bgstart: "from-[#7A6121]",
@@ -93,8 +93,8 @@ export const data = [
       benefit4: "mayor recuperacion muscular",
     },
     pilsData: {
-      principal: "../../src/static/images/tarro.png",
-      pils1: "../../src/static/images/pildora1.png",
+      principal: "images/tarro.png",
+      pils1: "images/pildora1.png",
       pils2: "../src/static/images/pildora2.png",
       transitionname: "macanegra",
       transitionpils1: "macapils1",
