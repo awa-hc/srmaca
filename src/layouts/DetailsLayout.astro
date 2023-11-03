@@ -10,7 +10,7 @@ const { title, bgstart, textcolor, transitiontext } = Astro.props;
 ---
 
 <main
-  class={`flex bg-gradient-to-b ${bgstart} to-black h-screen min-h-screen justify-center items-center z-0  snap-center`}
+  class={`flex bg-gradient-to-b ${bgstart} to-black h-screen min-h-screen overflow-hidden max-h-screen justify-center items-center z-0  snap-center`}
 >
   <main class="absolute z-10 -translate-x-[600px]">
     <h1
@@ -21,7 +21,9 @@ const { title, bgstart, textcolor, transitiontext } = Astro.props;
       {title}
     </h1>
   </main>
-  <section class="grid grid-cols-2 justify-items-end items-center w-screen">
+  <section
+    class="grid grid-cols-1 md:grid-cols-2 justify-items-end overflow-hidden max-h-screen items-center w-screen"
+  >
     <slot />
   </section>
 </main>

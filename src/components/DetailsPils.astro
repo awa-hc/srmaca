@@ -17,10 +17,10 @@ const {
 } = Astro.props;
 ---
 
-<section class="">
+<section class="max-h-screen max-w-screen overflow-hidden">
   <img
     src={principal}
-    class="relative z-20 scale-90"
+    class="relative z-20 pl-9 md:w-[400px] md:h-auto xl:w-full"
     alt="tarro"
     transition:animate="fade"
     transition:name={transitionname}
@@ -29,28 +29,33 @@ const {
     src={pils1}
     transition:animate="fade"
     transition:name={transitionpils1}
-    class="absolute z-10 translate-x-[24px] -translate-y-[500px] md:translate-x-[200px] rotate-12 md:-translate-y-[250px] blur-md"
+    class="absolute z-10 translate-x-[2px] translate-y-[10px] md:translate-x-[500px] md:-translate-y-[500px] xl:-translate-y-[700px] xl:translate-x-[1000px] blur-sm"
+  />
+  <img
+    src={pils2}
+    class="absolute z-10 -translate-y-[500px] md:-translate-x-3 md:-translate-y-[550px] blur-sm"
+  />
+  <img
+    src={pils2}
+    transition:animate="fade"
+    transition:name={transitionpils2}
+    class="absolute z-10 -translate-y-[400px] -translate-x-11 rotate-90 md:-translate-y-[550px]"
   />
   <img
     src={pils1}
-    transition:animate="fade"
-    transition:name={transitionpils2}
-    class="absolute z-10 -translate-x-[40px] -translate-y-[500px] md:translate-x-[790px] rotate-90 md:-translate-y-[750px] blur-md"
+    class="absolute z-10 translate-x -translate-y-[500px] md:translate-x-50 rotate-90 md:-translate-y-[250px] blur-md"
   />
   <img
     src={pils2}
-    class="absolute z-10 md:translate-x-[259px] xl:translate-x-[320px] -translate-y-[200px] rotate-90 md:-translate-y-full"
+    class="absolute z-10 hidden md:block md:translate-x-56 rotate-45 md:-translate-y-[180px]"
   />
   <img
-    src={pils2}
-    class="absolute z-10 md:translate-x-[259px] xl:translate-x-[700px] translate-y-[500px] rotate-90 md:-translate-y-[250px] w-24 h-auto"
+    src={pils1}
+    class="absolute z-10 hidden md:block md:-translate-x-56 rotate-45 md:-translate-y-full blur-md"
   />
+
   <img
     src={pils2}
-    class="absolute z-10 md:translate-x-[259px] xl:translate-x-[770px] -translate-y-[200px] rotate-45 md:-translate-y-full"
-  />
-  <img
-    src={pils2}
-    class="absolute z-10 -translate-x-[140px] -translate-y-[150px] md:-translate-x-[200px] xl:-translate-y-[500px] blur-sm"
+    class="absolute z-10 md:translate-x-44 rotate-45 md:-translate-y-[380px] blur-sm"
   />
 </section>
