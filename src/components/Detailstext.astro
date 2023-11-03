@@ -16,12 +16,30 @@ const { href, title, description, benefit1, benefit2, benefit3, benefit4 } =
 <section
   class="md:h-content absolute md:relative p-10 text-white z-30 w-full bg-white/10 backdrop-blur-md md:rounded-l-3xl border-t-[0.5px] border-l-[0.5px] border-white drop-shadow-lg"
 >
-  <a href={`/#${href}`}> c-</a>
+  <a href={`/#${href}`} class="hidden xl:flex"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-tabler icon-tabler-arrow-left"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M5 12l14 0"></path>
+      <path d="M5 12l6 6"></path>
+      <path d="M5 12l6 -6"></path>
+    </svg>Atras</a
+  >
   <main class="flex flex-col text-right">
     <h2 class="text-4xl">{title}</h2>
     <h3 class="text-relaxed italic font-serif">{description}</h3>
-    <div class="grid grid-cols-2">
-      <ul class="text-start [&>li]:p-2">
+    <div class="flex">
+      <ul class="text-start [&>li]:p-2 list-disc">
         <li>{benefit1}</li>
         <li>{benefit2}</li>
         <li>{benefit3}</li>
@@ -35,4 +53,23 @@ const { href, title, description, benefit1, benefit2, benefit3, benefit4 } =
       </ul>
     </div>
   </main>
+  <a href={`/#${href}`} class="flex xl:hidden py-2 -ml-4 mt-4">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-tabler icon-tabler-arrow-left"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M5 12l14 0"></path>
+      <path d="M5 12l6 6"></path>
+      <path d="M5 12l6 -6"></path>
+    </svg> Atras!</a
+  >
 </section>
