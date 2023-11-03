@@ -1,7 +1,7 @@
 export const data = [
   {
     id: 1,
-    imagebg: "images/imagebgtest.png",
+    imagebg: "/images/imagebgtest.png",
     title: "testo-plus",
     transitionname: "ttesto",
     bgstart: "from-[#526C63]",
@@ -15,7 +15,6 @@ export const data = [
       benefit3: "mayor rendimiendo muscular",
       benefit4: "mayor recuperacion muscular",
     },
-
     pilsData: {
       principal: "/images/tarro.png",
       pils1: "/images/pildora1.png",
@@ -40,7 +39,7 @@ export const data = [
   },
   {
     id: 2,
-    imagebg: "images/Group 3.png",
+    imagebg: "/images/Group 3.png",
     title: "cartilago",
     transitionname: "tcartilago",
     bgstart: "from-[#185B69]",
@@ -78,7 +77,7 @@ export const data = [
   },
   {
     id: 3,
-    imagebg: "images/Group 3.png",
+    imagebg: "/images/Group 3.png",
     title: "maca-negra",
     transitionname: "tmacanegra",
     bgstart: "from-[#7A6121]",
