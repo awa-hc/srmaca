@@ -1,3 +1,7 @@
+---
+
+---
+
 <section
   class="flex md:m-0 md:gap-0 md:items-center md:justify-center top-0 fixed w-screen max-w-screen z-40 text-white px-10 py-5 md:px-24 md:py-10 uppercase font-bold font-sans rounded-2xl"
 >
@@ -58,72 +62,65 @@
     </ul>
   </nav>
 
-  <section class="flex justify-end xl:hidden">
-    <button
-      id="menu"
-      class="text-xl md:text-2xl bg-black/40 rounded-full text-white py-2 px-4"
+  <li class="group/products relative xl:hidden">
+    <span class="">Productos</span>
+    <ul
+      class="hidden absolute left-0 pt-2 bg-black/20 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-black group-hover/products:block hover:block transition-all duration-75 ease-in-out delay-75"
     >
-      =
-    </button>
+      <li
+        class="hover:bg-green-900/70 rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
+      >
+        <a href="/products/testo-plus" class="">Testo Plus</a>
+      </li>
+      <li
+        class="hover:bg-[#185B69] rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
+      >
+        <a href="/products/cartilago" class="">Cartilago</a>
+      </li>
 
-    <nav
-      id="content"
-      class="bg-black/90 backdrop-blur-lg h-screen w-screen fixed top-0 right-0 items-center transform -translate-y-full transition-transform ease-in-out duration-300"
-    >
-      <header class="flex items-center justify-between p-5">
-        <img
-          src="/images/logosrmaca.png"
-          alt="logo srmaca"
-          class="invert h-auto w-20"
-        />
-        <button
-          id="close"
-          class="text-white bg-red-600 rounded-full text-2xl py-2 px-4"
-        >
-          x
-        </button>
-      </header>
-      <a class="flex flex-col justify-center items-center text-center">
-        <h3 class="p-2">Servicios</h3>
-        <h3 class="pb-2">Productos</h3>
-        <section class="flex justify-center gap-3 items-center">
-          <a
-            href="/products/testo-plus"
-            class="hover:scale-125 transition-all duration-100 ease-in delay-75 group/testo"
-          >
-            <img src="/images/tarro.png" class="w-32 h-auto" />
-            <span class="group-hover/testo:text-green-900/70">Testo Plus</span>
-          </a>
-          <a
-            href="/products/cartilago"
-            class="hover:scale-125 transition-all duration-100 ease-in delay-75 group/cartilago"
-          >
-            <img src="/images/tarro.png" class="w-32 h-auto" />
-            <span class="group-hover/cartilago:text-[#185b69]">Cartilago</span>
-          </a>
-          <a
-            href="/products/maca-negra"
-            class="hover:scale-125 transition-all duration-100 ease-in delay-75 group/maca"
-          >
-            <img src="/images/tarro.png" class="w-32 h-auto" />
-            <span class="group-hover/maca:text-[#7A6121]">Maca Negra</span>
-          </a>
-        </section>
+      <li
+        class="hover:bg-[#7A6121] rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
+      >
+        <a href="/products/maca-negra" class="">Maca Negra</a>
+      </li>
+    </ul>
+  </li>
+  <main
+    id="content"
+    class="flex-col justify-center items-center text-center h-screen w-screen hidden fixed xl:hidden"
+  >
+    <h3 class="p-2">Servicios</h3>
+    <h3 class="pb-2">Productos</h3>
+    <section class="flex justify-center gap-3 items-center">
+      <a
+        href="/products/testo-plus"
+        class="hover:scale-125 transition-all duration-100 ease-in delay-75 group/testo"
+      >
+        <img src="/images/tarro.png" class="w-32 h-auto" />
+        <span class="group-hover/testo:text-green-900/70">Testo Plus</span>
       </a>
-    </nav>
-  </section>
+      <a
+        href="/products/cartilago"
+        class="hover:scale-125 transition-all duration-100 ease-in delay-75 group/cartilago"
+      >
+        <img src="/images/tarro.png" class="w-32 h-auto" />
+        <span class="group-hover/cartilago:text-[#185b69]">Cartilago</span>
+      </a>
+      <a
+        href="/products/maca-negra"
+        class="hover:scale-125 transition-all duration-100 ease-in delay-75 group/maca"
+      >
+        <img src="/images/tarro.png" class="w-32 h-auto" />
+        <span class="group-hover/maca:text-[#7A6121]">Maca Negra</span>
+      </a>
+    </section>
+  </main>
 </section>
 
 <script>
   let menu = document.getElementById("menu");
   let content = document.getElementById("content");
-  let close = document.getElementById("close");
-
-  close.addEventListener("click", () => {
-    content.classList.add("transform", "-translate-y-full");
-  });
-
   menu.addEventListener("click", () => {
-    content.classList.remove("transform", "-translate-y-full");
+    content.classList.toggle("hidden");
   });
 </script>
