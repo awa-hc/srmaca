@@ -10,10 +10,10 @@ export const data = [
     description: "elevador de testosterona narutal testo plus",
     price: "200",
     benefits: {
-      benefit1: "aumento de fuerza",
-      benefit2: "mejor rendimiendo sexual",
-      benefit3: "mayor rendimiendo muscular",
-      benefit4: "mayor recuperacion muscular",
+      title: "aumento de fuerza",
+      title2: "mejor rendimiendo sexual",
+      title3: "mayor rendimiendo muscular",
+      title4: "mayor recuperacion muscular",
     },
     pilsData: {
       principal: "/images/tarro.png",
@@ -36,6 +36,26 @@ export const data = [
       buttontitle1: "conoce más",
       buttontitle2: "Compra ya",
     },
+    whatis:
+      "suplemento natural y diseñado para estimular al propio cuerpo que genere más testosterona",
+    howworks:
+      "su principal uso es aumentar los niveles de testosterona de forma natural en el cuerpo",
+    ingredients: {
+      ingredient1: "Huanarpo Machi",
+      ingredient2: "Barojo",
+      ingredient3: "Maca Nagra",
+      ingredient4: "Marapuama",
+    },
+    comparation: {
+      natural1: "sin contradicciones",
+      natural2: "saludable y beneficioso para la salud",
+      natural3: "Practico y seguro",
+      artificial1: "Efecto secundarios negativos",
+      artificial2: "Peligroso para la salud",
+      arificial3: "Poco seguro y procedencia dudosa",
+    },
+    howuse:
+      "Levantarse con el mejor de los animos, Estando en ayunas, tomar 2 capsulas de Testo Plus al dia",
   },
   {
     id: 2,
@@ -47,7 +67,7 @@ export const data = [
     detailstitle: "Cartilago de tiburon",
     description: "elevador de testosterona narutal cartilago de tiburon",
     price: "200",
-    benefits: {
+    benefitsf: {
       benefit1: "aumento de fuerza",
       benefit2: "mejor rendimiendo sexual",
       benefit3: "mayor rendimiendo muscular",
@@ -64,7 +84,7 @@ export const data = [
     addTextData: {
       fontsize: "text-sm",
       title:
-        "Suplemento Natural y diseñado para estimular al propio cuerpo que genere más testosterona",
+        "Tejido que proporciona soporte a articulaciones y ligamentos en el cuerpo",
       buttonbg1: "#fff",
       buttonbg2: "#00E0FF",
       buttontc1: "black",
@@ -74,6 +94,23 @@ export const data = [
       buttontitle1: "conoce más",
       buttontitle2: "compra ya",
     },
+    whatis:
+      "Tejido que proporciona soporte a articulaciones y ligamentos en el cuerpo",
+    howworks:
+      "Fortalece las articulaciones, previene lesiones, incrementa la regeneracion de cartilagos en el cuerpo",
+    ingredients: {
+      ingredient1: "Cartilago de Tiburon",
+    },
+    comparation: {
+      natural1: "sin contradicciones",
+      natural2: "saludable y beneficioso para la salud",
+      natural3: "Practico y seguro",
+      artificial1: "Efecto secundarios negativos",
+      artificial2: "Peligroso para la salud",
+      arificial3: "Poco seguro y procedencia dudosa",
+    },
+    howuse:
+      "Levantarse con el mejor de los animos, Estando en ayunas, tomar 2 capsulas de Cartilago al dia",
   },
   {
     id: 3,
@@ -85,11 +122,23 @@ export const data = [
     detailstitle: "Maca Negra",
     description: "elevador de testosterona narutal maca negra",
     price: "200",
-    benefits: {
-      benefit1: "aumento de fuerza",
-      benefit2: "mejor rendimiendo sexual",
-      benefit3: "mayor rendimiendo muscular",
-      benefit4: "mayor recuperacion muscular",
+    benefitsm: {
+      benefit1: "Aumenta niveles de testosterona",
+      benefit2: "Aumenta hormona de crecimiento",
+      benefit3: "Disminuye cortisol (estres)",
+      benefit4: "Mejora rendimiento sexual",
+      benefit5: "Aumenta niveles de energia",
+      benefit6: "Previee prostata inflamada",
+      benefit7: "fortalece a la salud de la piel",
+    },
+    benefitsf: {
+      benefit1: "Ayuda a regular cilos menstruales",
+      benefit2: "Disminuye dolores de menstruacion",
+      benefit3: "Aumenta apetito sexual",
+      benefit4: "Favorece a la salud de la piel",
+      benefit5: "Incrementa niveles de energia",
+      benefit6: "Ayuda a combatir el acne",
+      benefit7: "Mejora la fertilidad",
     },
     pilsData: {
       principal: "/images/tarro.png",
@@ -112,5 +161,22 @@ export const data = [
       buttontitle1: "conoce más",
       buttontitle2: "compra ya",
     },
+    whatis:
+      "Es un Tuberculo el cual es un regulador hormonal y energizante natural",
+    howworks:
+      "Su principal funcion es mantener un balance en tu sistema hormonal y aportar energia extra para tus actividades diarias",
+    ingredients: {
+      ingredient1: "Cartilago de Tiburon",
+    },
+    comparation: {
+      natural1: "sin contradicciones",
+      natural2: "saludable y beneficioso para la salud",
+      natural3: "Practico y seguro",
+      artificial1: "Efecto secundarios negativos",
+      artificial2: "Peligroso para la salud",
+      arificial3: "Poco seguro y procedencia dudosa",
+    },
+    howuse:
+      "Levantarse con el mejor de los animos, Estando en ayunas, tomar 2 capsulas de Testo Plus al dia",
   },
 ];

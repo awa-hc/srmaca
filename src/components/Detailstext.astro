@@ -3,18 +3,15 @@ interface Props {
   href: string;
   title: string;
   description: string;
-  benefit1: string;
-  benefit2: string;
-  benefit3: string;
-  benefit4: string;
+  howworks: string;
+  howuse: string;
 }
 
-const { href, title, description, benefit1, benefit2, benefit3, benefit4 } =
-  Astro.props;
+const { href, title, description, howworks, howuse } = Astro.props;
 ---
 
 <section
-  class="md:h-content absolute md:relative p-10 text-white z-30 w-full bg-white/10 backdrop-blur-md md:rounded-l-3xl border-t-[0.5px] border-l-[0.5px] border-white drop-shadow-lg"
+  class="absolute md:relative p-10 text-white z-30 w-full bg-white/10 backdrop-blur-md md:rounded-l-3xl border-t-[0.5px] border-l-[0.5px] border-white drop-shadow-lg"
 >
   <a href={`/#${href}`} class="hidden xl:flex"
     ><svg
@@ -38,19 +35,17 @@ const { href, title, description, benefit1, benefit2, benefit3, benefit4 } =
   <main class="flex flex-col text-right">
     <h2 class="text-4xl">{title}</h2>
     <h3 class="text-relaxed italic font-serif">{description}</h3>
-    <div class="flex">
-      <ul class="text-start [&>li]:p-2 list-disc">
-        <li>{benefit1}</li>
-        <li>{benefit2}</li>
-        <li>{benefit3}</li>
-        <li>{benefit4}</li>
-      </ul>
-      <ul class="text-start [&>li]:p-2">
-        <li>💪🏻</li>
-        <li>💪🏻</li>
-        <li>💪🏻</li>
-        <li>💪🏻</li>
-      </ul>
+    <div
+      class="flex text-left flex-col [&>h3]:py-2 [&>h3]:font-black [&>h3]:italic [&>h3]:text-white [&>p]:leading-loose"
+    >
+      <h3>Que es?</h3>
+      <p>
+        {howworks}
+      </p>
+      <h3>Como se usa?</h3>
+      <p>
+        {howuse}
+      </p>
     </div>
   </main>
   <a href={`/#${href}`} class="flex xl:hidden py-2 -ml-4 mt-4">
