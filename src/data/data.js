@@ -8,13 +8,6 @@ export const data = [
     textcolor: "from-[#294437]",
     detailstitle: "Testo Plus",
     description: "elevador de testosterona narutal testo plus",
-    price: "200",
-    benefits: {
-      title: "aumento de fuerza",
-      title2: "mejor rendimiendo sexual",
-      title3: "mayor rendimiendo muscular",
-      title4: "mayor recuperacion muscular",
-    },
     pilsData: {
       principal: "/images/tarro.png",
       pils1: "/images/pildora1.png",
@@ -66,13 +59,6 @@ export const data = [
     textcolor: "from-[#151A2B]",
     detailstitle: "Cartilago de tiburon",
     description: "elevador de testosterona narutal cartilago de tiburon",
-    price: "200",
-    benefitsf: {
-      benefit1: "aumento de fuerza",
-      benefit2: "mejor rendimiendo sexual",
-      benefit3: "mayor rendimiendo muscular",
-      benefit4: "mayor recuperacion muscular",
-    },
     pilsData: {
       principal: "/images/tarro.png",
       pils1: "/images/pildora1.png",
@@ -121,25 +107,6 @@ export const data = [
     textcolor: "from-[#2B1915]",
     detailstitle: "Maca Negra",
     description: "elevador de testosterona narutal maca negra",
-    price: "200",
-    benefitsm: {
-      benefit1: "Aumenta niveles de testosterona",
-      benefit2: "Aumenta hormona de crecimiento",
-      benefit3: "Disminuye cortisol (estres)",
-      benefit4: "Mejora rendimiento sexual",
-      benefit5: "Aumenta niveles de energia",
-      benefit6: "Previee prostata inflamada",
-      benefit7: "fortalece a la salud de la piel",
-    },
-    benefitsf: {
-      benefit1: "Ayuda a regular cilos menstruales",
-      benefit2: "Disminuye dolores de menstruacion",
-      benefit3: "Aumenta apetito sexual",
-      benefit4: "Favorece a la salud de la piel",
-      benefit5: "Incrementa niveles de energia",
-      benefit6: "Ayuda a combatir el acne",
-      benefit7: "Mejora la fertilidad",
-    },
     pilsData: {
       principal: "/images/tarro.png",
       pils1: "/images/pildora1.png",
