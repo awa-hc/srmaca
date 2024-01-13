@@ -1,0 +1,84 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="testo-plus">
+  <section
+    class="text-white bg-gradient-to-b from-[#294437] to-black body-font min-h-screen overflow-hidden"
+  >
+    <div class="container px-5 py-24 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div
+          class="lg:w-1/2 w-full lg:pr-10 lg:py-6 flex flex-col justify-center mb-6 lg:mb-0"
+        >
+          <h2 class="text-sm title-font text-white tracking-widest">
+            Testo Plus
+          </h2>
+          <h1 class="text-gray-200 text-3xl title-font font-medium mb-4">
+            Elevador de testosterona natural.
+          </h1>
+          <div class="flex mb-4">
+            <a
+              class="flex-grow text-white/90 border-b-2 border-white py-2 text-lg px-1"
+              >Description</a
+            >
+          </div>
+          <p class="leading-relaxed mb-4">
+            suplemento natural y diseñado para estimular al propio cuerpo que
+            genere más testosterona. Su principal uso es aumentar los niveles de
+            testosterona de forma natural en el cuerpo
+          </p>
+          <div class="flex border-t border-gray-200 py-2">
+            <span>Cantidad</span>
+            <span class="ml-auto">90 capsulas.</span>
+          </div>
+          <div class="flex border-b mb-3 border-gray-200 pb-2">
+            <span>Dosis</span>
+            <span class="ml-auto">2 capsulas diarias.</span>
+          </div>
+          <div class="flex">
+            <span class="title-font font-medium text-2xl">
+              Precio: 210 Bs.</span
+            >
+            <button
+              type="button"
+              id="buytesto"
+              onclick="Buytesto()"
+              class="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded"
+              >Comprar</button
+            >
+          </div>
+        </div>
+        <img
+          alt="ecommerce"
+          class="lg:w-1/2 w-full lg:h-auto h-64 object-cover lg:object-fill object-center rounded"
+          src="/images/testoplus/testo3.jpeg"
+        />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function checkCookie(name) {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + "=")) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function Buytesto() {
+    if (checkCookie("Auth")) {
+      window.location.href = "/checkout";
+    } else {
+      window.location.href = "/auth/login";
+    }
+  }
+
+  const button = document.querySelector("#buytesto");
+  button.addEventListener("click", Buytesto);
+</script>

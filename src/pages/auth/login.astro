@@ -1,0 +1,63 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+function login() {
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+
+  fetch("http://localhost:8080/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+
+      if (data.status === 200) {
+        window.location.href = "/";
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+---
+
+<Layout title="Inicio de sesion">
+  <div
+    class="w-screen h-screen flex flex-col items-center justify-center p-10 bg-black"
+  >
+    <form class="flex flex-col items-center justify-center">
+      <div class="flex flex-col mb-4">
+        <label for="email" class="text-white mb-1">Correo Electrónico</label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          class="p-2 border border-white rounded-md focus:outline-none focus:border-blue-300"
+        />
+      </div>
+      <div class="flex flex-col mb-4">
+        <label for="password" class="text-white mb-1">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="p-2 border border-white rounded-md focus:outline-none focus:border-blue-300"
+        />
+      </div>
+      <button
+        type="button"
+        onclick="login()"
+        class="bg-[#526C63] hover:bg-white hover:text-black text-white transition-colors duration-300 ease-in-out delay-75 font-bold py-2 px-4 rounded"
+        >Iniciar sesión</button
+      >
+    </form>
+    <a class="text-white" href="/auth/register">
+      No tienes una cuenta? Registrate.</a
+    >
+  </div>
+</Layout>

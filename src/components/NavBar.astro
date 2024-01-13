@@ -43,6 +43,11 @@ import Cart from "./Cart.astro";
           >
             <a href="/products/maca-negra" class="">Maca Negra</a>
           </li>
+          <li
+            class="hover:bg-green-800 rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
+          >
+            <a href="/products/psyllium" class="">Psyllium</a>
+          </li>
         </ul>
       </li>
       <li class="">
@@ -55,17 +60,17 @@ import Cart from "./Cart.astro";
   </nav>
   <nav class="flex-grow basis-0 hidden xl:block">
     <ul class="flex justify-end gap-10">
-      <li class=""><a href=""><Cart /></a></li>
-      <li class="">
-        <a class="px-4 py-2 bg-green-800 rounded-3xl" href="">Contacto</a>
-      </li>
+      <a class="px-4 py-2" href="/auth/login">Login</a>
+      <a class="px-4 py-2 bg-green-800 rounded-3xl" href="/auth/register"
+        >Register</a
+      >
     </ul>
   </nav>
 
   <li class="group/products relative xl:hidden">
     <span class="">Productos</span>
     <ul
-      class="hidden absolute left-0 pt-2 bg-black/20 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-black group-hover/products:block hover:block transition-all duration-75 ease-in-out delay-75"
+      class="hidden absolute left-0 pt-2 bg-black/20 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-white group-hover/products:block hover:block transition-all duration-75 ease-in-out delay-75"
     >
       <li
         class="hover:bg-green-900/70 rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
@@ -82,6 +87,11 @@ import Cart from "./Cart.astro";
         class="hover:bg-[#7A6121] rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
       >
         <a href="/products/maca-negra" class="">Maca Negra</a>
+      </li>
+      <li
+        class="hover:bg-green-800/20 rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
+      >
+        <a href="/products/psyllium" class="">Psyllium</a>
       </li>
     </ul>
   </li>
