@@ -1,29 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-
-function login() {
-  const email = document.getElementById("email");
-  const password = document.getElementById("password");
-
-  fetch("http://localhost:8080/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email, password }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-
-      if (data.status === 200) {
-        window.location.href = "/";
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
 ---
 
 <Layout title="Inicio de sesion">
@@ -51,7 +27,7 @@ function login() {
       </div>
       <button
         type="button"
-        onclick="login()"
+        id="loginButton"
         class="bg-[#526C63] hover:bg-white hover:text-black text-white transition-colors duration-300 ease-in-out delay-75 font-bold py-2 px-4 rounded"
         >Iniciar sesión</button
       >
@@ -60,4 +36,30 @@ function login() {
       No tienes una cuenta? Registrate.</a
     >
   </div>
+  <script>
+    document.getElementById('loginButton').addEventListener('click', function() {
+      const email = (document.getElementById("email") as HTMLInputElement).value;
+      const password = (document.getElementById("password") as HTMLInputElement).value;
+
+      fetch("http://localhost:8080/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Origin": "localhost:4321"
+        },
+        body: JSON.stringify({ email, password }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+
+          if (data.status === 200) {
+            window.location.href = "/";
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
+  </script>
 </Layout>
