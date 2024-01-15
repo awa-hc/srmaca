@@ -128,7 +128,7 @@ import Layout from "../../layouts/Layout.astro";
           })
           .then((data) => {
             console.log("Success:", data);
-            document.cookie = `token=${data.token}; path=/;`;
+            document.cookie = `Auth=${data.token}; path=/;`;
             console.log(document.cookie);
             window.location.href = "/";
           })
