@@ -24,7 +24,7 @@ import Layout from "../../layouts/Layout.astro";
             >
           </div>
           <p class="leading-relaxed mb-4">
-            suplemento natural y diseñado para estimular al propio cuerpo que
+            Suplemento natural y diseñado para estimular al propio cuerpo que
             genere más testosterona. Su principal uso es aumentar los niveles de
             testosterona de forma natural en el cuerpo
           </p>
@@ -73,7 +73,7 @@ import Layout from "../../layouts/Layout.astro";
 
   function Buytesto() {
     if (checkCookie("Auth")) {
-      window.location.href = "/checkout";
+      window.location.href = "/buy/confirm";
     } else {
       window.location.href = "/auth/login";
     }
