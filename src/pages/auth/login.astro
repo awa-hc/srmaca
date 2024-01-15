@@ -37,29 +37,67 @@ import Layout from "../../layouts/Layout.astro";
     >
   </div>
   <script>
-    document.getElementById('loginButton').addEventListener('click', function() {
-      const email = (document.getElementById("email") as HTMLInputElement).value;
-      const password = (document.getElementById("password") as HTMLInputElement).value;
+    document
+      .getElementById("loginButton")
+      .addEventListener("click", function () {
+        const email = (document.getElementById("email") as HTMLInputElement)
+          .value;
+        const password = (
+          document.getElementById("password") as HTMLInputElement
+        ).value;
 
-      fetch("http://localhost:8080/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Origin": "localhost:4321"
-        },
-        body: JSON.stringify({ email, password }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Success:", data);
-
-          if (data.status === 200) {
-            window.location.href = "/";
-          }
+        fetch("http://localhost:8080/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Origin: "localhost:4321",
+          },
+          body: JSON.stringify({ email, password }),
         })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    });
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+
+            if (data.status === 200) {
+              setCookie("Auth", data.token, 30);
+              window.location.href = "/";
+              Astro.redirect("/");
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+
+    function setCookie(name, value, days) {
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + days);
+
+      const cookieValue =
+        encodeURIComponent(value) +
+        (days ? `; expires=${expirationDate.toUTCString()}` : "");
+      document.cookie = `${name}=${cookieValue}; path=/`;
+    }
+    //
+
+    function getCookie(name) {
+      const cookieString = document.cookie;
+      const cookies = cookieString.split("; ");
+
+      for (const cookie of cookies) {
+        const [cookieName, cookieValue] = cookie.split("=");
+        if (cookieName === name) {
+          return decodeURIComponent(cookieValue);
+        }
+      }
+      return null;
+    }
+
+    const authToken = getCookie("Auth");
+    if (authToken) {
+      console.log("La cookie 'Auth' está presente. Valor:", authToken);
+    } else {
+      console.log("La cookie 'Auth' no está presente.");
+    }
   </script>
 </Layout>

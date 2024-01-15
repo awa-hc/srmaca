@@ -1,0 +1,74 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Confirma tu compra">
+  <section
+    class="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen flex flex-col items-center justify-center"
+  >
+    <main>
+      <h1 class="font-bold text-2xl my-6">Pasos para comprar en srmaca!</h1>
+      <h1>
+        Realiza tu deposito a la cuenta: <strong>1001358547</strong>
+      </h1>
+      <h2>
+        Banco: <strong>Ganadero</strong>
+      </h2>
+      <h2>
+        Cuenta: <strong>Caja de Ahorros</strong>
+      </h2>
+      <h2>
+        Nombre: <strong>Nicolás Hernández</strong>
+      </h2>
+      <h2>
+        C.I: <strong>E-10271474</strong>
+      </h2>
+      <h2>
+        Monto: <strong>XXXBS</strong>
+      </h2>
+      <h1 class="font-bold text-2xl my-6">Despues Rellena este formulario!</h1>
+      <form class="rounded-md border-white border p-4">
+        <label for="Glosa" class="leading-7 font-bold text-white">Glosa:</label>
+        <input
+          type="text"
+          id="Glosa"
+          name="Glosa"
+          class="w-full bg-[#526C63] rounded border bg-opacity-40 border-gray-700 focus:ring-2 focus:ring-white focus:bg-transparent focus:border-white text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+        />
+        <h4 class="text-sm mb-5">Especifica Tu Compra!</h4>
+
+        <label class="text-sm mb-5" for="delivery">
+          <input
+            type="checkbox"
+            class="form-checkbox mr-4"
+            id="delivery"
+            name="delivery"
+          />
+          <strong class="font-bold text-base">Delivery?</strong> A la direccion Con
+          la que creaste tu cuenta
+        </label>
+
+        <h2 class="mt-5 font-bold">Sube tu comprobante.</h2>
+        <input type="file" id="image" accept="image/*" />
+
+        <button
+          type="submit"
+          class="flex mx-auto mt-5 text-white bg-[#526C63] border-0 py-2 px-8 focus:outline-none hover:bg-[#526C63] rounded text-lg"
+          >Enviar!
+        </button>
+      </form>
+    </main>
+  </section>
+</Layout>
+
+<script>
+  const image = document.getElementById("image");
+  image.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    const storageRef = firebase.storage().ref();
+    const fileRef = storageRef.child(file.name);
+    fileRef.put(file).then(() => {
+      console.log("Uploaded a file");
+    });
+  });
+</script>
