@@ -7,7 +7,14 @@ import Layout from "../../layouts/Layout.astro";
     class="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen flex flex-col items-center justify-center"
   >
     <main>
-      <h1 class="font-bold text-2xl my-6">Pasos para comprar en srmaca!</h1>
+      <div>
+        <input type="radio" id="cash" name="payment-method" value="cash" checked>
+        <label for="cash">Efectivo</label><br>
+        <input type="radio" id="transfer" name="payment-method" value="transfer">
+        <label for="transfer">Transferencia Bancaria</label>
+      </div>
+      <h1 class="font-bold text-2xl my-6">Pasos para comprar en Sr Maca!</h1>
+      <div id="bank-details" style="max-height: 0; overflow: hidden; transition: max-height 0.8s;">
       <h1>
         Realiza tu deposito a la cuenta: <strong>1001358547</strong>
       </h1>
@@ -23,11 +30,18 @@ import Layout from "../../layouts/Layout.astro";
       <h2>
         C.I: <strong>E-10271474</strong>
       </h2>
+      </div>
       <h2>
-        Monto: <strong>XXXBS</strong>
+        Monto: <strong id="price">0    BS</strong>
       </h2>
       <h1 class="font-bold text-2xl my-6">Despues Rellena este formulario!</h1>
       <form class="rounded-md border-white border p-4">
+
+        <div id="upload-receipt" style="max-height: 0; overflow: hidden; transition: max-height 0.8s;">
+          <h2 class="mt-5 font-bold">Sube tu comprobante.</h2>
+          <input type="file" id="image" accept="image/*" />
+        </div>
+
         <label for="Glosa" class="leading-7 font-bold text-white">Glosa:</label>
         <input
           type="text"
@@ -44,12 +58,9 @@ import Layout from "../../layouts/Layout.astro";
             id="delivery"
             name="delivery"
           />
-          <strong class="font-bold text-base">Delivery?</strong> A la direccion Con
+          <strong class="font-bold text-base">Delivery?</strong> A la direccion con
           la que creaste tu cuenta
         </label>
-
-        <h2 class="mt-5 font-bold">Sube tu comprobante.</h2>
-        <input type="file" id="image" accept="image/*" />
 
         <button
           type="submit"
@@ -61,4 +72,35 @@ import Layout from "../../layouts/Layout.astro";
   </section>
 </Layout>
 
-<script></script>
+<script>
+  window.onload = function () {
+    const totalPrice = localStorage.getItem("totalPrice");
+    document.getElementById("price").textContent = `${totalPrice}   Bs.`;
+    updatePaymentMethod();
+  }
+
+  function updatePaymentMethod() {
+  const paymentMethod = (document.querySelector('input[name="payment-method"]:checked') as HTMLInputElement).value;
+  const bankDetails = document.querySelector("#bank-details");
+  const uploadReceipt = document.querySelector("#upload-receipt");
+
+  if (paymentMethod === "transfer") {
+      (bankDetails as HTMLElement).style.maxHeight = "500px"; // Cambia esto al valor que necesites
+      (uploadReceipt as HTMLElement).style.maxHeight = "500px"; // Cambia esto al valor que necesites
+    } else {
+      (bankDetails as HTMLElement).style.maxHeight = "0";
+      (uploadReceipt as HTMLElement).style.maxHeight = "0";
+  }
+}
+
+// Asegúrate de llamar a updatePaymentMethod cuando cambie el método de pago
+document.querySelectorAll('input[name="payment-method"]').forEach((elem) => {
+  elem.addEventListener("change", updatePaymentMethod);
+});
+</script>
+
+<style>
+  #bank-details, #upload-receipt {
+  transition: all 0.5s ease-in-out;
+}
+</style>

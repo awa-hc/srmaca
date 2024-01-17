@@ -29,15 +29,21 @@ import Layout from "../../layouts/Layout.astro";
             testosterona de forma natural en el cuerpo
           </p>
           <div class="flex border-t border-gray-200 py-2">
-            <span>Cantidad</span>
+            <span>Capsulas :</span>
             <span class="ml-auto">90 capsulas.</span>
           </div>
           <div class="flex border-b mb-3 border-gray-200 pb-2">
-            <span>Dosis</span>
+            <span>Dosis :</span>
             <span class="ml-auto">2 capsulas diarias.</span>
           </div>
-          <div class="flex">
+          <div class="flex flex-row align-center" id="div-quantity">
             <span class="title-font font-medium text-2xl">
+              Cantidad :</span
+            >
+            <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
+          </div>
+          <div class="flex">
+            <span class="title-font font-medium text-2xl" id="price">
               Precio: 210 Bs.</span
             >
             <button
@@ -71,7 +77,26 @@ import Layout from "../../layouts/Layout.astro";
     return false;
   }
 
+  const pricePerItem = 210; // Precio por artículo
+  function updatePrice() {
+    const quantityInput = document.getElementById('quantity');
+    const quantity = (document.querySelector("#quantity") as HTMLInputElement)
+      .valueAsNumber;
+    const totalPrice = quantity * pricePerItem;
+    document.querySelector("#price").textContent = `Precio: ${totalPrice} Bs.`;
+    quantityInput.onchange = updatePrice;
+  }
+
+  updatePrice(); // Actualiza el precio al cargar la página
+
   function Buytesto() {
+    const quantity = (document.querySelector("#quantity") as HTMLInputElement)
+      .valueAsNumber;
+    const pricePerItem = 210;
+    const totalPrice = quantity * pricePerItem;
+
+    localStorage.setItem('totalPrice', totalPrice.toString());
+
     if (checkCookie("Auth")) {
       window.location.href = "/buy/confirm";
     } else {
@@ -82,3 +107,17 @@ import Layout from "../../layouts/Layout.astro";
   const button = document.querySelector("#buytesto");
   button.addEventListener("click", Buytesto);
 </script>
+
+<style>
+  input[type="number"] {
+    width: 45px; /* Ajusta el ancho del input */
+    height: 25px; /* Ajusta la altura del input */
+    margin-top: 5px; /* Añade margen en la parte superior si es necesario */
+    margin-bottom: 10px; /* Añade margen en la parte inferior si es necesario */
+    margin-left: auto; /* Añade margen izquierdo automáticamente */;
+  }
+
+  #div-quantity {
+    align-items: center;
+  }
+</style>
