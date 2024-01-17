@@ -24,23 +24,31 @@ import Layout from "../../layouts/Layout.astro";
             >
           </div>
           <p class="leading-relaxed mb-4">
-            suplemento natural y diseñado para estimular al propio cuerpo que
+            Suplemento natural y diseñado para estimular al propio cuerpo que
             genere más testosterona. Su principal uso es aumentar los niveles de
             testosterona de forma natural en el cuerpo
           </p>
           <div class="flex border-t border-gray-200 py-2">
-            <span>Cantidad</span>
+            <span>Capsulas :</span>
             <span class="ml-auto">90 capsulas.</span>
           </div>
           <div class="flex border-b mb-3 border-gray-200 pb-2">
-            <span>Dosis</span>
+            <span>Dosis :</span>
             <span class="ml-auto">2 capsulas diarias.</span>
           </div>
-          <div class="flex">
+          <div class="flex flex-row align-center" id="div-quantity">
             <span class="title-font font-medium text-2xl">
-              Precio: 210 Bs.</span
+              Cantidad :</span>
+            <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
+          </div>
+          <div class="flex">
+            <span class="title-font font-medium text-2xl" id="price">
+              Precio: 100 Bs.</span
             >
             <button
+              type="button"
+              id="buymacanegra"
+              onclick="BuyMacaNegra()"
               class="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded"
               >Comprar</button
             >
@@ -55,3 +63,59 @@ import Layout from "../../layouts/Layout.astro";
     </div>
   </section>
 </Layout>
+
+<script>
+  function checkCookie(name) {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + "=")) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  const pricePerItem = 100; // Precio por artículo
+  function updatePrice() {
+    const quantity = (document.querySelector("#quantity") as HTMLInputElement)
+      .valueAsNumber;
+    const totalPrice = quantity * pricePerItem;
+    document.querySelector("#price").textContent = `Precio: ${totalPrice} Bs.`;
+  }
+
+  document.getElementById('quantity').onchange = updatePrice; // Actualiza el precio cuando se cambia la cantidad
+  updatePrice(); // Actualiza el precio al cargar la página
+
+  function BuyMacaNegra() {
+    const quantity = (document.querySelector("#quantity") as HTMLInputElement)
+      .valueAsNumber;
+    const pricePerItem = 100;
+    const totalPrice = quantity * pricePerItem;
+
+    localStorage.setItem('totalPrice', totalPrice.toString());
+
+    if (checkCookie("Auth")) {
+      window.location.href = "/buy/confirm";
+    } else {
+      window.location.href = "/auth/login";
+    }
+  }
+
+  const button = document.querySelector("#buymacanegra");
+  button.addEventListener("click", BuyMacaNegra);
+</script>
+
+<style>
+  input[type="number"] {
+    width: 45px; /* Ajusta el ancho del input */
+    height: 25px; /* Ajusta la altura del input */
+    margin-top: 5px; /* Añade margen en la parte superior si es necesario */
+    margin-bottom: 10px; /* Añade margen en la parte inferior si es necesario */
+    margin-left: auto; /* Añade margen izquierdo automáticamente */
+  }
+
+  #div-quantity {
+    align-items: center;
+  }
+</style>

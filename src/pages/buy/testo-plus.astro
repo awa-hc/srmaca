@@ -49,10 +49,9 @@ import Layout from "../../layouts/Layout.astro";
             <button
               type="button"
               id="buytesto"
-              onclick="Buytesto()"
+              onclick="BuyTesto()"
               class="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded"
-              >Comprar</button
-            >
+              >Comprar</button>
           </div>
         </div>
         <img
@@ -79,17 +78,16 @@ import Layout from "../../layouts/Layout.astro";
 
   const pricePerItem = 210; // Precio por artículo
   function updatePrice() {
-    const quantityInput = document.getElementById('quantity');
     const quantity = (document.querySelector("#quantity") as HTMLInputElement)
       .valueAsNumber;
     const totalPrice = quantity * pricePerItem;
     document.querySelector("#price").textContent = `Precio: ${totalPrice} Bs.`;
-    quantityInput.onchange = updatePrice;
   }
 
+  document.getElementById('quantity').onchange = updatePrice; // Actualiza el precio cuando se cambia la cantidad
   updatePrice(); // Actualiza el precio al cargar la página
 
-  function Buytesto() {
+  function BuyTesto() {
     const quantity = (document.querySelector("#quantity") as HTMLInputElement)
       .valueAsNumber;
     const pricePerItem = 210;
@@ -105,7 +103,7 @@ import Layout from "../../layouts/Layout.astro";
   }
 
   const button = document.querySelector("#buytesto");
-  button.addEventListener("click", Buytesto);
+  button.addEventListener("click", BuyTesto);
 </script>
 
 <style>
@@ -114,7 +112,7 @@ import Layout from "../../layouts/Layout.astro";
     height: 25px; /* Ajusta la altura del input */
     margin-top: 5px; /* Añade margen en la parte superior si es necesario */
     margin-bottom: 10px; /* Añade margen en la parte inferior si es necesario */
-    margin-left: auto; /* Añade margen izquierdo automáticamente */;
+    margin-left: auto; /* Añade margen izquierdo automáticamente */
   }
 
   #div-quantity {

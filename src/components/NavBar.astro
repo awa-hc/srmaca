@@ -24,9 +24,8 @@ import Cart from "./Cart.astro";
       </li>
       <li class="group/products relative">
         <span>Productos</span>
-        <ul
-          class="hidden absolute left-0 pt-2 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-white group-hover/products:block hover:block transition-all duration-75 ease-in-out delay-75"
-        >
+        <ul class="dropdown opacity-0 absolute left-0 pt-2 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-white group-hover/products:opacity-100 transition-opacity duration-650 ease-in-out">
+
           <li
             class="hover:bg-green-900/70 rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
           >
@@ -50,12 +49,12 @@ import Cart from "./Cart.astro";
           </li>
         </ul>
       </li>
-      <li class="">
+      <!-- <li class="">
         <a
           class="hover:bg-green-900/70 px-4 py-2 rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
           href="/">Servicios</a
         >
-      </li>
+      </li> -->
     </ul>
   </nav>
   <nav class="flex-grow basis-0 hidden xl:block">
@@ -66,12 +65,12 @@ import Cart from "./Cart.astro";
       >
     </ul>
   </nav>
-
   <li class="group/products relative xl:hidden">
     <span class="">Productos</span>
-    <ul
-      class="hidden absolute left-0 pt-2 bg-black/20 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-white group-hover/products:block hover:block transition-all duration-75 ease-in-out delay-75"
-    >
+
+        <ul class="dropdown h-0 overflow-hidden absolute left-0 pt-2 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-white group-hover/products:h-auto hover:h-auto transition-all duration-600 ease-in-out">
+
+
       <li
         class="hover:bg-green-900/70 rounded-2xl active:bg-black transition-colors duration-75 ease-linear delay-75"
       >
@@ -126,3 +125,13 @@ import Cart from "./Cart.astro";
     </section>
   </main>
 </section>
+        <!-- <ul
+          class="dropdown hidden absolute left-0 pt-2 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-white group-hover/products:block hover:block transition-all duration-75 ease-in-out delay-75"
+        > -->
+            <!-- <ul class="dropdown opacity-0 invisible absolute left-0 pt-2 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-white group-hover/products:opacity-100 group-hover/products:visible hover:opacity-100 hover:visible transition-opacity duration-700 ease-in-out"> -->
+      <!-- <ul class="dropdown opacity-0 translate-y-[-100%] absolute left-0 pt-2 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-white group-hover/products:opacity-100 group-hover/products:translate-y-0 hover:opacity-100 hover:translate-y-0 transition-all duration-700 ease-in-out"> -->
+<style>
+  .dropdown{
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+</style>
