@@ -92,8 +92,11 @@ import Layout from "../../layouts/Layout.astro";
       .valueAsNumber;
     const pricePerItem = 210;
     const totalPrice = quantity * pricePerItem;
+    const productId = 1;
 
     localStorage.setItem('totalPrice', totalPrice.toString());
+    localStorage.setItem('quantity', quantity.toString());
+    localStorage.setItem('productId', productId.toString());
 
     if (checkCookie("Auth")) {
       window.location.href = "/buy/confirm";
