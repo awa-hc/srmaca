@@ -1,0 +1,54 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="check admin">
+  <h1>404</h1>
+  <p>Page not found</p>
+</Layout>
+<script>
+  function verificarAdmin() {
+    // Realiza una solicitud fetch al backend
+    fetch("http://localhost:8080/validateadmin", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Agrega la cookie "Auth" si está disponible
+        Cookie: `Auth=${getCookie("Auth") || ""}`,
+      },
+      // Puedes agregar más opciones según tus necesidades
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error en la solicitud al backend");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Verifica la respuesta del backend
+        if (data && data.message === "authorized") {
+          // El usuario está autorizado, puedes renderizar tu página
+          console.log("Usuario autorizado. Renderiza tu página.");
+        } else {
+          // El usuario no está autorizado
+          console.error("Usuario no autorizado. Respuesta inesperada:", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  function getCookie(name) {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + "=")) {
+        return cookie.substring(name.length + 1);
+      }
+    }
+    return null;
+  }
+
+  verificarAdmin();
+</script>

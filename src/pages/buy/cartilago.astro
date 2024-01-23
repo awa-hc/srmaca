@@ -37,9 +37,15 @@ import Layout from "../../layouts/Layout.astro";
             <span class="ml-auto">2 capsulas diarias.</span>
           </div>
           <div class="flex flex-row align-center" id="div-quantity">
-            <span class="title-font font-medium text-2xl">
-              Cantidad :</span>
-            <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
+            <span class="title-font font-medium text-2xl"> Cantidad :</span>
+            <input
+              type="number"
+              id="quantity"
+              value="1"
+              min="1"
+              class="bg-transparent font-2xl text-white border border-white rounded-md w-10 h-10 text-center"
+              onchange="updatePrice()"
+            />
           </div>
           <div class="flex">
             <span class="title-font font-medium text-2xl" id="price">
@@ -84,7 +90,7 @@ import Layout from "../../layouts/Layout.astro";
     document.querySelector("#price").textContent = `Precio: ${totalPrice} Bs.`;
   }
 
-  document.getElementById('quantity').onchange = updatePrice; // Actualiza el precio cuando se cambia la cantidad
+  document.getElementById("quantity").onchange = updatePrice; // Actualiza el precio cuando se cambia la cantidad
   updatePrice(); // Actualiza el precio al cargar la página
 
   function BuyCartilago() {
@@ -93,8 +99,8 @@ import Layout from "../../layouts/Layout.astro";
     const pricePerItem = 150;
     const totalPrice = quantity * pricePerItem;
 
-    localStorage.setItem('totalPrice', totalPrice.toString());
-    localStorage.setItem('quantity', quantity.toString());
+    localStorage.setItem("totalPrice", totalPrice.toString());
+    localStorage.setItem("quantity", quantity.toString());
 
     if (checkCookie("Auth")) {
       window.location.href = "/buy/confirm";

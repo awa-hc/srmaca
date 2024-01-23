@@ -1,0 +1,25 @@
+---
+import SideAdmin from "../../../layouts/SideAdmin.astro";
+---
+
+<SideAdmin>
+  <h1>Admin</h1>
+  <p>Admin page</p>
+</SideAdmin>
+
+<script>
+  async function GetRejectedVouchers() {
+    const res = await fetch("http://localhost:8080/voucher/rejected", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const data = await res.json();
+    console.log(data);
+    return data;
+  }
+  const data = await GetRejectedVouchers();
+  console.log(data);
+</script>
