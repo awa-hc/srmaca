@@ -54,11 +54,11 @@ import Layout from "../../layouts/Layout.astro";
               document.getElementById("password") as HTMLInputElement
             ).value;
 
-            fetch("http://localhost:8080/auth/login", {
+            fetch("https://srmaca.fly.dev:8080/auth/login", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
-                Origin: "localhost:4321",
+                // Origin: "localhost:4321",
               },
               body: JSON.stringify({ email, password }),
             })
@@ -104,11 +104,11 @@ import Layout from "../../layouts/Layout.astro";
         } else {
           console.log("La cookie 'Auth' no está presente.");
         }
-        fetch("http://localhost:8080/auth/login", {
+        fetch("https://srmaca.fly.dev:8080/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Origin: "localhost:4321",
+            // Origin: "localhost:4321",
           },
           body: JSON.stringify({ email, password }),
         })
