@@ -17,7 +17,7 @@ export function userIsAdmin(): boolean {
 }
 
 export function CheckAdmin(): boolean {
-  const url = "http://localhost:8080/checkadmin";
+  const url = "https://srmacaback.fly.dev/checkadmin";
   const cookiest = document.cookie.split(";");
   const authCookie = cookiest.find((cookie) => cookie.startsWith("Auth="));
   if (!authCookie) {

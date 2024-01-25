@@ -169,7 +169,7 @@ import Layout from "../../layouts/Layout.astro";
     console.log("Token: ", token);
     console.log("Request: ", JSON.stringify(request));
 
-    fetch("http://localhost:8080/voucher/create", {
+    fetch("https://srmacaback.fly.dev/voucher/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
