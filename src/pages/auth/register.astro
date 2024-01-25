@@ -88,6 +88,11 @@ import Layout from "../../layouts/Layout.astro";
             Registrarse
           </button>
         </div>
+        <div
+          id="response"
+          class="text-red-500 italic font-lg border border-white text-center mt-4 rounded-lg"
+        >
+        </div>
       </form>
     </div>
   </section>
@@ -95,12 +100,17 @@ import Layout from "../../layouts/Layout.astro";
 
 <script>
   async function RegisterUser() {
-  const email = (document.getElementById("email") as HTMLInputElement).value;
-  const password = (document.getElementById("password") as HTMLInputElement).value;
-  const confirmPassword = (document.getElementById("confirmPassword") as HTMLInputElement).value;
-  const fullname = (document.getElementById("fullname") as HTMLInputElement).value;
-  const phone = (document.getElementById("phone") as HTMLInputElement).value;
-  const address = (document.getElementById("adress") as HTMLInputElement).value;
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const password = (document.getElementById("password") as HTMLInputElement)
+      .value;
+    const confirmPassword = (
+      document.getElementById("confirmPassword") as HTMLInputElement
+    ).value;
+    const fullname = (document.getElementById("fullname") as HTMLInputElement)
+      .value;
+    const phone = (document.getElementById("phone") as HTMLInputElement).value;
+    const address = (document.getElementById("adress") as HTMLInputElement)
+      .value;
 
     const requestBody = {
       fullname: fullname,
@@ -110,26 +120,42 @@ import Layout from "../../layouts/Layout.astro";
       phone: phone,
       address: address,
     };
+    if (
+      email === "" ||
+      password === "" ||
+      confirmPassword === "" ||
+      fullname === "" ||
+      phone === "" ||
+      address === ""
+    ) {
+      const responseElement = document.getElementById("response");
+      responseElement.innerHTML = "Por favor llene todos los campos";
+      return;
+    }
 
-    console.log("Request JSON:", requestBody);
+    if (password !== confirmPassword) {
+      const responseElement = document.getElementById("response");
+      responseElement.innerHTML = "Las contraseñas no coinciden";
+      return;
+    }
 
-const response = await fetch("http://localhost:8080/auth/signup", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(requestBody),
-});
-const responseBody = await response.text();
+    const response = await fetch("http://localhost:8080/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    });
+    const responseBody = await response.json();
 
-console.log(responseBody); // Muestra el cuerpo de la respuesta
-if (response.ok) {
-  Astro.redirect("/");
-} else {
-  console.log("Registration failed. Status:", response.status);
-  console.error("Error details:", responseBody);
+    console.log(responseBody);
+    if (response.ok) {
+      Astro.redirect("/");
+    } else {
+      const responseElement = document.getElementById("response");
+      responseElement.innerHTML = responseBody.error;
     }
   }
   const registerButton = document.getElementById("registerButton");
-  registerButton.addEventListener("click", RegisterUser)
+  registerButton.addEventListener("click", RegisterUser);
 </script>
