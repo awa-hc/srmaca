@@ -136,19 +136,24 @@ import Layout from "../../layouts/Layout.astro";
         'input[name="payment-method"]:checked'
       ) as HTMLInputElement
     ).value;
-    const product_id = localStorage.getItem("productId");
-    const quantity = localStorage.getItem("quantity");
-    const totalPrice = localStorage.getItem("totalPrice");
+    const product_id = parseInt(localStorage.getItem("productId"));
+    const quantity = parseInt(localStorage.getItem("quantity"));
+    const amount = parseFloat(localStorage.getItem("totalPrice"));
     const glosa = (document.getElementById("Glosa") as HTMLInputElement).value;
     const imageFile = (document.getElementById("image") as HTMLInputElement)
       .files[0];
-    const imageBase64 = await getBase64(imageFile);
+
+    let imageBase64 = "";
+    
+    if (imageFile) {
+      imageBase64 = await getBase64(imageFile) as string;
+    }
 
     const request = {
       payment_method,
       product_id,
       quantity,
-      totalPrice,
+      amount,
       glosa,
       img: imageBase64,
     };
@@ -162,13 +167,14 @@ import Layout from "../../layouts/Layout.astro";
     }
 
     console.log("Token: ", token);
+    console.log("Request: ", JSON.stringify(request));
 
-    fetch("http://localhost:8080/voucher/create", {
+    fetch("https://srmacaback.fly.dev/voucher/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
       },
+      credentials: "include",
       body: JSON.stringify(request),
     })
       .then((response) => response.json())
@@ -185,9 +191,7 @@ import Layout from "../../layouts/Layout.astro";
     elem.addEventListener("change", updatePaymentMethod);
   });
 
-  document
-    .querySelector('button[type="submit"]')
-    .addEventListener("click", function (event) {
+  document.querySelector('button[type="submit"]').addEventListener("click", function (event) {
       event.preventDefault(); // Evita que el formulario se envíe de la manera predeterminada
       sendRequest();
     });
