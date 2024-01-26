@@ -89,10 +89,19 @@ import Layout from "../../layouts/Layout.astro";
           </button>
         </div>
         <div
+        id="confirmationMessage"
+        class="text-green-500 italic font-lg border border-white text-center mt-4 rounded-lg"
+        style="display: none;"
+      >
+        <!-- Mensaje de confirmación -->
+        Verifica tu correo electrónico para completar el registro. Revisa tu bandeja de entrada.
+      </div>
+        <div
           id="response"
           class="text-red-500 italic font-lg border border-white text-center mt-4 rounded-lg"
         >
         </div>
+
       </form>
     </div>
   </section>
@@ -139,7 +148,7 @@ import Layout from "../../layouts/Layout.astro";
       return;
     }
 
-    const response = await fetch("https://srmacaback.fly.dev/auth/signup", {
+    const response = await fetch("http://localhost:8080/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -158,12 +167,24 @@ import Layout from "../../layouts/Layout.astro";
 
     console.log(responseBody);
     if (response.ok) {
-      Astro.redirect("/");
+      // Oculta el formulario
+      const formElement = document.querySelector("form");
+      formElement.style.display = "none";
+
+      // Muestra el mensaje de confirmación
+      const confirmationMessageElement = document.getElementById("confirmationMessage");
+      confirmationMessageElement.style.display = "block";
+
+      // Redirige al usuario después de 5 segundos
+      setTimeout(() => {
+        Astro.redirect("/");
+      }, 5000);
     } else {
       const responseElement = document.getElementById("response");
       responseElement.innerHTML = responseBody.error;
     }
   }
+  
   const registerButton = document.getElementById("registerButton");
   registerButton.addEventListener("click", RegisterUser);
 </script>
