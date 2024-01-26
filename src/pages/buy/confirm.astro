@@ -173,6 +173,7 @@ import Layout from "../../layouts/Layout.astro";
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Cookie": `Auth=${token}`,
       },
       credentials: "include",
       body: JSON.stringify(request),
