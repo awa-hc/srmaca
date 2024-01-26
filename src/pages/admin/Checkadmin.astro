@@ -9,7 +9,7 @@ import Layout from "../../layouts/Layout.astro";
 <script>
   function verificarAdmin() {
     // Realiza una solicitud fetch al backend
-    fetch("http://localhost:8080/validateadmin", {
+    fetch("https://srmacaback.fly.dev/validateadmin", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
