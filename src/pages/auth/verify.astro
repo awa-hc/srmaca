@@ -12,35 +12,39 @@ import Layout from '../../layouts/Layout.astro'
 </Layout>
         
 
-    <script>
-        let token = '';
-        let verificationStatus = 'Verificando...';
-        let redirectTimeout;
+<script>
+window.onload = async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    console.log("Token ="+token);
 
-        window.onload = async () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        token = urlParams.get('token');
+    // Verifica si el token es nulo o está vacío
+    if (!token) {
+        document.getElementById('status').innerText = 'Token inválido';
+        return;
+    }
 
-        try {
-            const response = await fetch(`/auth/verify/${token}`);
-            if (!response.ok) {
-                const data = await response.json();
-                throw new Error(data.error); // Aquí se accede al mensaje de error
-            }
-        const data = await response.json();
-        verificationStatus = data.message; // Aquí se accede al mensaje de éxito
+    try {
+        // Asegúrate de reemplazar 'http://localhost:8080' con la URL de tu backend
+        const response = await fetch(`http://localhost:8080/auth/verify/${token}`);
 
-        // Redirige al usuario a la página de inicio después de 5 segundos
-        redirectTimeout = setTimeout(() => {
-            window.location.href = '/';
-        }, 5000);
-        } catch (error) {
-        console.error(error);
-        verificationStatus = error.message; // Aquí se muestra el mensaje de error
+        if (!response.ok) {
+            const data = await response.json();
+            throw new Error(data.error); // Aquí se accede al mensaje de error
         }
 
+        const data = await response.json();
+        const verificationStatus = data.message; // Aquí se accede al mensaje de éxito
+
+        // Redirige al usuario a la página de inicio después de 5 segundos
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 5000);
+
         document.getElementById('status').innerText = verificationStatus;
-        };
-        </script>
-    </body>
-</html>
+    } catch (error) {
+        console.error(error);
+        document.getElementById('status').innerText = error.message; // Aquí se muestra el mensaje de error
+    }
+};
+</script>
