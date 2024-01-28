@@ -9,6 +9,7 @@ import SideAdmin from "../../layouts/SideAdmin.astro";
   <div id="datos-container" class="flex flex-col"></div>
 </SideAdmin>
 <script>
+  import FormatDate from "../../utils/FormatDate";
   const datosContainer = document.getElementById("datos-container");
 
   function getCookie(name) {
@@ -23,12 +24,9 @@ import SideAdmin from "../../layouts/SideAdmin.astro";
   }
   const AuthCookie = getCookie("Auth");
 
-
   if (AuthCookie == null) {
     window.location.href = "/auth/login";
   }
-
-  
 
   async function getVouchers() {
     const response = await fetch("https://srmacaback.fly.dev/voucher/", {

@@ -144,9 +144,9 @@ import Layout from "../../layouts/Layout.astro";
       .files[0];
 
     let imageBase64 = "";
-    
+
     if (imageFile) {
-      imageBase64 = await getBase64(imageFile) as string;
+      imageBase64 = (await getBase64(imageFile)) as string;
     }
 
     const request = {
@@ -166,10 +166,7 @@ import Layout from "../../layouts/Layout.astro";
       if (parts.length === 2) return parts.pop().split(";").shift();
     }
 
-    console.log("Token: ", token);
-    console.log("Request: ", JSON.stringify(request));
-
-    fetch("https://srmacaback.fly.dev/voucher/create", {
+    fetch("http://localhost:8080/voucher/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -192,7 +189,9 @@ import Layout from "../../layouts/Layout.astro";
     elem.addEventListener("change", updatePaymentMethod);
   });
 
-  document.querySelector('button[type="submit"]').addEventListener("click", function (event) {
+  document
+    .querySelector('button[type="submit"]')
+    .addEventListener("click", function (event) {
       event.preventDefault(); // Evita que el formulario se envíe de la manera predeterminada
       sendRequest();
     });
