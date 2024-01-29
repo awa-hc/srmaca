@@ -39,7 +39,13 @@ import Layout from "../../layouts/Layout.astro";
           <div class="flex flex-row align-center" id="div-quantity">
             <span class="title-font font-medium text-2xl">
               Cantidad :</span>
-            <input type="number" id="quantity" value="1" min="1" onchange="updatePrice()">
+            <input 
+              class="bg-transparent font-2xl text-white border border-white rounded-md w-10 h-10 text-center"
+              type="number" 
+              id="quantity" 
+              value="1" 
+              min="1" 
+              onchange="updatePrice()">
           </div>
           <div class="flex">
             <span class="title-font font-medium text-2xl" id="price">
