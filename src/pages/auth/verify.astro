@@ -14,7 +14,7 @@ import Layout from '../../layouts/Layout.astro'
                     <div class="slice"></div>
                     <div class="slice"></div>
                 </div>
-                <label class="container-confirmed" style="display: none;">
+                <label class="container-confirmed transition" style="display: none;">
                     <input checked="checked" type="checkbox">
                     <div class="checkmark"></div>
                 </label>
@@ -48,13 +48,16 @@ window.onload = async () => {
         }
 
         const data = await response.json();
-        // Ocultar loader
+
+         // Ocultar loader
         const loader = document.querySelector('.container-loader') as HTMLElement;
-        loader.style.display = 'none';
+        loader.classList.add('transition'); // Agregar la clase de transición
+        loader.style.opacity = '0';
 
         // Mostrar confirmed
         const confirmed = document.querySelector('.container-confirmed') as HTMLElement;
-        confirmed.style.display = 'block';
+        confirmed.classList.add('transition'); // Agregar la clase de transición
+        confirmed.style.opacity = '1';
 
         const verificationStatus = data.message; // Aquí se accede al mensaje de éxito
 
@@ -308,7 +311,6 @@ window.onload = async () => {
     }
 
     .container-confirmed {
-        transition: opacity 0.5s ease;
         display: block;
         position: relative;
         cursor: pointer;
@@ -356,5 +358,16 @@ window.onload = async () => {
         border: solid #f0f0f0;
         border-width: 0 0.15em 0.15em 0;
         transform: rotate(45deg);
+    }
+</style>
+
+<style>
+    .container-confirmed,
+    .container-loader {
+        opacity: 0;
+    }
+
+    .transition {
+        transition: opacity 0.5s ease;
     }
 </style>
