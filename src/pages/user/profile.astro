@@ -16,7 +16,12 @@ import Layout from "../../layouts/Layout.astro";
 
 <script>
   import formatDate from "../../utils/FormatDate.js";
+
+  import getCookie from "../../utils/GetCookie";
+
   const infoContainer = document.getElementById("info-container");
+  const token = getCookie("Auth");
+
   const voucherContainer = document.getElementById("voucher-container");
   async function GetUser() {
     const response = await fetch("https://srmacaback.fly.dev/user/", {
@@ -36,6 +41,7 @@ import Layout from "../../layouts/Layout.astro";
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       credentials: "include",
     });

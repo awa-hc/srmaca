@@ -2,17 +2,19 @@
 interface Props {
   title: string;
   bgstart: string;
+  bgend: string;
   textcolor: string;
   imagebg: string;
   transitiontext: string;
 }
 
-const { title, bgstart, textcolor, imagebg, transitiontext } = Astro.props;
+const { title, bgstart, bgend, textcolor, imagebg, transitiontext } =
+  Astro.props;
 ---
 
 <main
   id={title}
-  class={`flex flex-col  bg-gradient-to-b ${bgstart} to-black h-screen min-h-screen items-center  justify-center  z-0  snap-center`}
+  class={`flex flex-col  bg-gradient-to-b ${bgstart} ${bgend} h-screen min-h-screen items-center  justify-center  z-0  snap-center`}
 >
   <img
     src={imagebg}
