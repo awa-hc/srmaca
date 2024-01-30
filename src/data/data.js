@@ -309,7 +309,7 @@ export const data = [
     imagebg: "/images/imagebgtest.png",
     title: "TODO EN UNO",
     price: 250,
-    transitionname: "ccombotym1",
+    transitionname: "ccomboteu1",
     bgstart: "from-[#526C63]",
     bgend: "to-[#7A6121]",
     textcolor: "from-[#fff]",
@@ -317,12 +317,12 @@ export const data = [
     description:
       "Compuesto por una combinacion de Testo Plus y Cartilago de Tiburon",
     pilsData: {
-      principal: "/images/combo2/tym.png",
+      principal: "/images/combo3/combo3.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
-      transitionname: "comboten",
-      transitionpils1: "comboted1",
-      transitionpils2: "comboted2",
+      transitionname: "comboteu",
+      transitionpils1: "comboteu1",
+      transitionpils2: "comboteu2",
     },
     addTextData: {
       fontsize: "text-sm",
