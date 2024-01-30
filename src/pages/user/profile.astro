@@ -21,6 +21,7 @@ import Layout from "../../layouts/Layout.astro";
 
   const infoContainer = document.getElementById("info-container");
   const token = getCookie("Auth");
+  console.log(token);
 
   const voucherContainer = document.getElementById("voucher-container");
   async function GetUser() {
