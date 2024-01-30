@@ -2,8 +2,8 @@
 import Layout from '../../layouts/Layout.astro'
 ---
 
-<Layout title="not found">
-    <main class="flex flex-col justify-center items-center h-screen bg-gray-950 text-white">
+<Layout title="Verificacion de correo">
+    <main class="flex flex-col justify-center items-center h-screen text-white" style="background-color: rgb(3, 56, 62);">
         <div class="box max-w-md">
             <div class="box__inner p-6">
                 <div class="container-loader">
@@ -14,10 +14,6 @@ import Layout from '../../layouts/Layout.astro'
                     <div class="slice"></div>
                     <div class="slice"></div>
                 </div>
-                <label class="container-confirmed transition" style="display: none;">
-                    <input checked="checked" type="checkbox">
-                    <div class="checkmark"></div>
-                </label>
                 <div id="status" class="text-xl mt-4">
                     Verificando...
                 </div>
@@ -27,109 +23,39 @@ import Layout from '../../layouts/Layout.astro'
 </Layout>
 
 <script>
-window.onload = async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token');
-    console.log("Token ="+token);
-
-    // Verifica si el token es nulo o está vacío
-    if (!token) {
-        document.getElementById('status').innerText = 'Token inválido';
+    window.onload = async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        console.log("Token ="+token);
+    
+        // Verifica si el token es nulo o está vacío
+        if (!token) {
+        document.getElementById('status').innerText = 'No se encuentra token❕❔';
         return;
-    }
-
-    try {
-        // Asegúrate de reemplazar 'http://localhost:8080' con la URL de tu backend
-        const response = await fetch(`https://srmacaback.fly.dev/auth/verify/${token}`);
-
-        if (!response.ok) {
-            const data = await response.json();
-            throw new Error(data.error); // Aquí se accede al mensaje de error
         }
-
+    
+        try {
+            // const response = await fetch(`https://srmacaback.fly.dev/auth/verify/${token}`);
+            const response = await fetch(`http://localhost:8080/auth/verify/${token}`);
+    
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.error); // Aquí se accede al mensaje de error
+            }
         const data = await response.json();
-
-         // Ocultar loader
-        const loader = document.querySelector('.container-loader') as HTMLElement;
-        loader.classList.add('transition'); // Agregar la clase de transición
-        loader.style.opacity = '0';
-
-        // Mostrar confirmed
-        const confirmed = document.querySelector('.container-confirmed') as HTMLElement;
-        confirmed.classList.add('transition'); // Agregar la clase de transición
-        confirmed.style.opacity = '1';
-
         const verificationStatus = data.message; // Aquí se accede al mensaje de éxito
-
-        // Redirige al usuario a la página de inicio después de 5 segundos
+        await new Promise(resolve => setTimeout(resolve, 500));
+        document.getElementById('status').innerText = verificationStatus;
+        // Retrasa la redirección al usuario a la página de inicio por otros 5 segundos
         setTimeout(() => {
             window.location.href = '/';
         }, 5000);
-        document.getElementById('status').innerText = verificationStatus;
-    } catch (error) {
+        } catch (error) {
         console.error(error);
         document.getElementById('status').innerText = error.message; // Aquí se muestra el mensaje de error
-    }
-};
+        }
+    };
 </script>
-
-<!-- Box-and-Borders -->
-<style>
-    :root {
-    --frame-border-size: 0.15rem;
-    --frame-height: 2rem;
-    --frame-width: 2rem;
-    }
-    .box {
-        border: var(--frame-border-size) solid rgb(255, 255, 255);
-        padding: var(--frame-height) var(--frame-width);
-        height: 18rem;
-        width: 50rem;
-        max-width: 90%;
-        position: relative;
-        margin-top: 4rem;
-    }
-    .box__inner {
-        height: 100%;
-        width: 100%;
-        background: rgba(184, 186, 187, 0.253);
-    }
-    .box::before {
-        content: '';
-        position: absolute;
-        left: var(--frame-width);
-        right: var(--frame-width);
-        top: calc(-1 * var(--frame-border-size));
-        bottom: calc(-1 * var(--frame-border-size));
-        border-top: var(--frame-height) solid #030712;
-        border-bottom: var(--frame-height) solid #030712;
-    }
-    .box::after {
-        content: '';
-        position: absolute;
-        top: var(--frame-height);
-        bottom: var(--frame-height);
-        left: calc(-1 * var(--frame-border-size));
-        right: calc(-1 * var(--frame-border-size));
-        border-left: var(--frame-width) solid #030712;
-        border-right: var(--frame-width) solid #030712;
-    }
-    @media (max-width: 600px) {
-    .box {
-    max-width: 100%;
-    padding: 1rem;
-    }
-
-    .box__inner {
-    padding: 1rem;
-    }
-
-    .box::before, 
-    .box::after {
-    border: none; 
-    }
-}
-</style>
 
 <!-- Container-Loader -->
 <style>
@@ -143,6 +69,20 @@ window.onload = async () => {
         justify-content: center;
         height: var(--uib-size);
         width: var(--uib-size);
+        animation: fadeOut 5s ease-in-out forwards;
+    }
+
+    .fadeOut {
+        animation: fadeOut 5s forwards;
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
     }
 
     .slice {
@@ -295,79 +235,84 @@ window.onload = async () => {
 }
 </style>
 
-<!-- Container-Confirmed -->
+<!-- Box-and-Borders -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
 <style>
-        /* Hide the default checkbox */
-    .container-confirmed input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-    }
+        #status{
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: rgb(255, 255, 255);}
+        :root {
+        --frame-border-size: 0.50rem;
+        --frame-height: 2rem;
+        --frame-width: 2rem;
+        }
+        .box {
+            border: var(--frame-border-size) solid rgb(255, 255, 255);
+            padding: var(--frame-height) var(--frame-width);
+            height: 18rem;
+            width: 50rem;
+            max-width: 90%;
+            position: relative;
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .box__inner {
+            height: 100%;
+            width: 100%;
+            background: rgba(184, 186, 187, 0.253);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .box::before {
+            content: '';
+            position: absolute;
+            left: var(--frame-width);
+            right: var(--frame-width);
+            top: calc(-1 * var(--frame-border-size));
+            bottom: calc(-1 * var(--frame-border-size));
+            border-top: var(--frame-height) solid  rgb(3, 56, 62);
+            border-bottom: var(--frame-height) solid  rgb(3, 56, 62);
+        }
+        .box::after {
+            content: '';
+            position: absolute;
+            top: var(--frame-height);
+            bottom: var(--frame-height);
+            left: calc(-1 * var(--frame-border-size));
+            right: calc(-1 * var(--frame-border-size));
+            border-left: var(--frame-width) solid rgb(3, 56, 62);
+            border-right: var(--frame-width) solid  rgb(3, 56, 62);
+        }
+        @media (max-width: 600px) {
+        .box {
+        max-width: 100%;
+        padding: 1rem;
+        }
+    
+        .box__inner {
+        padding: 1rem;
+        }
+    
+        .box::before, 
+        .box::after {
+        border: none; 
+        }
+        
+        #status {
+            margin-top: 1rem;
+        }
 
-    .hidden{
-        display: none;
-    }
-
-    .container-confirmed {
-        display: block;
-        position: relative;
-        cursor: pointer;
-        font-size: 25px;
-        user-select: none;
-    }
-
-    /* Create a custom checkbox */
-    .checkmark {
-        position: relative;
-        top: 0;
-        left: 0;
-        height: 1.3em;
-        width: 1.3em;
-        background: black;
-        border-radius: 50px;
-        transition: all 0.7s;
-        --spread: 20px;
-    }
-
-    /* When the checkbox is checked, add a blue background */
-    .container-confirmed input:checked ~ .checkmark {
-        background: black;
-        box-shadow: -10px -10px var(--spread) 0px #5B51D8, 0 -10px var(--spread) 0px #833AB4, 10px -10px var(--spread) 0px #E1306C, 10px 0 var(--spread) 0px #FD1D1D, 10px 10px var(--spread) 0px #F77737, 0 10px var(--spread) 0px #FCAF45, -10px 10px var(--spread) 0px #FFDC80;
-    }
-
-    /* Create the checkmark/indicator (hidden when not checked) */
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
-
-    /* Show the checkmark when checked */
-    .container-confirmed input:checked ~ .checkmark:after {
-        display: block;
-    }
-
-    /* Style the checkmark/indicator */
-    .container-confirmed .checkmark:after {
-        left: 0.45em;
-        top: 0.25em;
-        width: 0.25em;
-        height: 0.5em;
-        border: solid #f0f0f0;
-        border-width: 0 0.15em 0.15em 0;
-        transform: rotate(45deg);
-    }
-</style>
-
-<style>
-    .container-confirmed,
-    .container-loader {
-        opacity: 0;
-    }
-
-    .transition {
-        transition: opacity 0.5s ease;
+        .container-loader{
+            margin-top: 1rem;
+        }
     }
 </style>
