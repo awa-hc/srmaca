@@ -52,8 +52,7 @@ import Layout from "../layouts/Layout.astro";
           <button
             id="enviarCorreo"
             class="flex mx-auto text-white bg-green-800 border-0 py-2 px-8 focus:outline-none hover:bg-gradient-to-br hover:bg-[#7A6121] transition-all delay-75 duration-300 ease-in-out rounded text-lg"
-            >Button</button
-          >
+            >Enviar</button>
         </div>
         <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
           <a class="text-[#185B69]">info@perfect-systems.net</a>
@@ -152,20 +151,32 @@ import Layout from "../layouts/Layout.astro";
 
 <script>
   function GestionarCorreo() {
-    var nombre = document.getElementById("name");
-    var email = document.getElementById("message");
-    var mensaje = document.getElementById("mensaje");
+    var nombre = (document.getElementById("name")as HTMLInputElement).value;
+    var email = (document.getElementById("email")as HTMLInputElement).value;
+    var mensaje = (document.getElementById("message")as HTMLInputElement).value;
 
-    var mailtoLink =
-      "mailto:correo@empresa.com?subject=" +
-      encodeURIComponent("Nuevo mensaje de contacto") +
-      "&body=" +
-      encodeURIComponent(
-        "Nombre: " + nombre + "\nEmail: " + email + "\nMensaje: " + mensaje
-      );
+    var datos = {
+      nombre: nombre,
+      email: email,
+      mensaje: mensaje,
+    };
 
-    window.location.href = mailtoLink;
-  }
+    fetch('https://srmacaback.fly.dev/email/contact',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datos)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    }
+
   const button = document.getElementById("enviarCorreo");
   button.addEventListener("click", GestionarCorreo);
 </script>
