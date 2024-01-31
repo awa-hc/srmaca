@@ -35,8 +35,8 @@ import Layout from '../../layouts/Layout.astro'
         }
     
         try {
-            // const response = await fetch(`https://srmacaback.fly.dev/auth/verify/${token}`);
-            const response = await fetch(`http://localhost:8080/auth/verify/${token}`);
+            const response = await fetch(`https://srmacaback.fly.dev/auth/verify/${token}`);
+            // const response = await fetch(`http://localhost:8080/auth/verify/${token}`);
     
             if (!response.ok) {
                 const data = await response.json();
