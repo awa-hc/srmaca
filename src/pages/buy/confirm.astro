@@ -4,15 +4,16 @@ import Layout from "../../layouts/Layout.astro";
 
 <Layout title="Confirma tu compra">
   <section
-    class="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen w-screen flex flex-col items-center justify-center"
+    class="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen w-screen flex flex-col md:flex-row items-center justify-center px-5"
   >
-    <main>
-      <div>
+    <main class="flex flex-col">
+      <div class="mt-52 md:mt-40">
         <input
           type="radio"
           id="cash"
           name="payment-method"
           value="cash"
+          class="z-20"
           checked
           onclick="updatePaymentMethod()"
         />
@@ -28,68 +29,78 @@ import Layout from "../../layouts/Layout.astro";
       <h1 class="font-bold text-2xl my-6">Pasos para comprar en Sr Maca!</h1>
       <div
         id="bank-details"
+        class="flex xl:flex-row flex-col justify-between border-t border-white border-l-0 border-r-0 border-b-0 py-5 mt-5"
         style="max-height: 0; overflow: hidden; transition: max-height 0.8s;"
       >
-        <h1>
-          Realiza tu deposito a la cuenta: <strong>1001358547</strong>
-        </h1>
-        <h2>
-          Banco: <strong>Ganadero</strong>
-        </h2>
-        <h2>
-          Cuenta: <strong>Caja de Ahorros</strong>
-        </h2>
-        <h2>
-          Nombre: <strong>Nicolás Hernández</strong>
-        </h2>
-        <h2>
-          C.I: <strong>E-10271474</strong>
-        </h2>
+        <section class="px-5">
+          <h1>
+            Realiza tu deposito a la cuenta: <strong>1001358547</strong>
+          </h1>
+          <h2>
+            Banco: <strong>Ganadero</strong>
+          </h2>
+          <h2>
+            Cuenta: <strong>Caja de Ahorros</strong>
+          </h2>
+          <h2>
+            Nombre: <strong>Nicolás Hernández</strong>
+          </h2>
+          <h2>
+            C.I: <strong>E-10271474</strong>
+          </h2>
+        </section>
+        <section class="px-2 border-l border-white">
+          <h2>O has tu transferencia escanenado el codigo QR!</h2>
+          <img src="/images/qr/qr.png" class="w-full h-auto object-cover" />
+        </section>
       </div>
-      <h2>
-        Cantidad: <strong id="quantity">0</strong>
-      </h2>
-      <h2>
-        Monto: <strong id="price">0 BS</strong>
-      </h2>
-      <h1 class="font-bold text-2xl my-6">Despues Rellena este formulario!</h1>
-      <form class="rounded-md border-white border p-4">
-        <div
-          id="upload-receipt"
-          style="max-height: 0; overflow: hidden; transition: max-height 0.8s;"
-        >
-          <h2 class="mt-5 font-bold">Sube tu comprobante.</h2>
-          <input type="file" id="image" accept="image/*" />
-        </div>
-
-        <label for="Glosa" class="leading-7 font-bold text-white">Glosa:</label>
-        <input
-          type="text"
-          id="Glosa"
-          name="Glosa"
-          class="w-full bg-[#526C63] rounded border bg-opacity-40 border-gray-700 focus:ring-2 focus:ring-white focus:bg-transparent focus:border-white text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-        />
-        <h4 class="text-sm mb-5">Especifica Tu Compra!</h4>
-
-        <label class="text-sm mb-5" for="delivery">
-          <input
-            type="checkbox"
-            class="form-checkbox mr-4"
-            id="delivery"
-            name="delivery"
-          />
-          <strong class="font-bold text-base">Delivery?</strong> A la direccion con
-          la que creaste tu cuenta
-        </label>
-
-        <button
-          type="submit"
-          class="flex mx-auto mt-5 text-white bg-[#526C63] border-0 py-2 px-8 focus:outline-none hover:bg-[#526C63] rounded text-lg"
-        >
-          Enviar!
-        </button>
-      </form>
+      <section class="">
+        <h2>
+          Cantidad: <strong id="quantity">0</strong>
+        </h2>
+        <h2>
+          Monto: <strong id="price">0 BS</strong>
+        </h2>
+      </section>
     </main>
+    <form class="rounded-md border-white border p-4">
+      <h1 class="font-bold text-2xl my-6">Despues Rellena este formulario!</h1>
+
+      <div
+        id="upload-receipt"
+        style="max-height: 0; overflow: hidden; transition: max-height 0.8s;"
+      >
+        <h2 class="mt-5 font-bold">Sube tu comprobante.</h2>
+        <input type="file" id="image" accept="image/*" />
+      </div>
+
+      <label for="Glosa" class="leading-7 font-bold text-white">Glosa:</label>
+      <input
+        type="text"
+        id="Glosa"
+        name="Glosa"
+        class="w-full bg-[#526C63] rounded border bg-opacity-40 border-gray-700 focus:ring-2 focus:ring-white focus:bg-transparent focus:border-white text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+      />
+      <h4 class="text-sm mb-5">Especifica Tu Compra!</h4>
+
+      <label class="text-sm mb-5" for="delivery">
+        <input
+          type="checkbox"
+          class="form-checkbox mr-4"
+          id="delivery"
+          name="delivery"
+        />
+        <strong class="font-bold text-base">Delivery?</strong> A la direccion con
+        la que creaste tu cuenta
+      </label>
+
+      <button
+        type="submit"
+        class="flex mx-auto mt-5 text-white bg-[#526C63] border-0 py-2 px-8 focus:outline-none hover:bg-[#526C63] rounded text-lg"
+      >
+        Enviar!
+      </button>
+    </form>
   </section>
 </Layout>
 
@@ -170,7 +181,7 @@ import Layout from "../../layouts/Layout.astro";
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       credentials: "include",
       body: JSON.stringify(request),
