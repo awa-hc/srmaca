@@ -190,6 +190,7 @@ import Layout from "../../layouts/Layout.astro";
       }
     }
     loginbutton.onclick = Login;
+    loginbutton.addEventListener("click", Login);
 
     function setCookie(name, value, days) {
       const expirationDate = new Date();
