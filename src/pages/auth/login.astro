@@ -189,8 +189,7 @@ import Layout from "../../layouts/Layout.astro";
         responsediv.innerHTML = data.error;
       }
     }
-
-    loginbutton.addEventListener("click", Login);
+    loginbutton.onclick = Login;
 
     function setCookie(name, value, days) {
       const expirationDate = new Date();
