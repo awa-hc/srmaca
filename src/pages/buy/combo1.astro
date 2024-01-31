@@ -1,0 +1,121 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="maca-negra">
+  <section
+    class="text-white bg-gradient-to-b from-[#081742] to-[#7A6121] body-font min-h-screen overflow-hidden"
+  >
+    <div class="container px-5 py-24 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div
+          class="lg:w-1/2 w-full lg:pr-10 lg:py-6 flex flex-col justify-center mb-6 lg:mb-0"
+        >
+          <h2 class="text-sm title-font text-white tracking-widest">
+            Combo 1!!
+          </h2>
+          <h1 class="text-gray-200 text-3xl title-font font-medium mb-4">
+            Testo Plus y Cartilago de tiburon
+          </h1>
+          <div class="flex mb-4">
+            <a
+              class="flex-grow text-white/90 border-b-2 border-white py-2 text-lg px-1"
+              >Description</a
+            >
+          </div>
+          <p class="leading-relaxed mb-4">
+            Testo Plus es un suplemento alimenticio que ayuda a aumentar la
+            testosterona de forma natural, mientras que el cartilago de tiburon
+            es un suplemento que ayuda a mejorar la salud de las articulaciones.
+          </p>
+
+          <div class="flex flex-row align-center" id="div-quantity">
+            <span class="title-font font-medium text-2xl"> Cantidad :</span>
+            <input
+              class="bg-transparent font-2xl text-white border border-white rounded-md w-10 h-10 text-center"
+              type="number"
+              id="quantity"
+              value="1"
+              min="1"
+              onchange="updatePrice()"
+            />
+          </div>
+          <div class="flex">
+            <span class="title-font font-medium text-2xl" id="price">
+              Precio: 250 Bs.</span
+            >
+            <button
+              type="button"
+              id="buycombo1"
+              onclick="BuyCombo1()"
+              class="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded"
+              >Comprar</button
+            >
+          </div>
+        </div>
+        <img
+          alt="ecommerce"
+          class="lg:w-1/2 w-full lg:h-auto h-64 object-fill lg:object-fill object-center rounded"
+          src="/images/combo2/combo2.jpeg"
+        />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function checkCookie(name) {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + "=")) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  const pricePerItem = 250; // Precio por artículo
+  function updatePrice() {
+    const quantity = (document.querySelector("#quantity") as HTMLInputElement)
+      .valueAsNumber;
+    const totalPrice = quantity * pricePerItem;
+    document.querySelector("#price").textContent = `Precio: ${totalPrice} Bs.`;
+  }
+
+  document.getElementById("quantity").onchange = updatePrice; // Actualiza el precio cuando se cambia la cantidad
+  updatePrice(); // Actualiza el precio al cargar la página
+
+  function BuyCombo1() {
+    const quantity = (document.querySelector("#quantity") as HTMLInputElement)
+      .valueAsNumber;
+    const pricePerItem = 250;
+    const totalPrice = quantity * pricePerItem;
+
+    localStorage.setItem("totalPrice", totalPrice.toString());
+    localStorage.setItem("quantity", quantity.toString());
+
+    if (checkCookie("Auth")) {
+      window.location.href = "/buy/confirm";
+    } else {
+      window.location.href = "/auth/login";
+    }
+  }
+
+  const button = document.querySelector("#buycombo1");
+  button.addEventListener("click", BuyCombo1);
+</script>
+
+<style>
+  input[type="number"] {
+    width: 45px; /* Ajusta el ancho del input */
+    height: 25px; /* Ajusta la altura del input */
+    margin-top: 5px; /* Añade margen en la parte superior si es necesario */
+    margin-bottom: 10px; /* Añade margen en la parte inferior si es necesario */
+    margin-left: auto; /* Añade margen izquierdo automáticamente */
+  }
+
+  #div-quantity {
+    align-items: center;
+  }
+</style>
