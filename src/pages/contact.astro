@@ -150,6 +150,7 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <script>
+  document.addEventListener('DOMContentLoaded', (event) => {
   function GestionarCorreo() {
     var nombre = (document.getElementById("name")as HTMLInputElement).value;
     var email = (document.getElementById("email")as HTMLInputElement).value;
@@ -179,4 +180,5 @@ import Layout from "../layouts/Layout.astro";
 
   const button = document.getElementById("enviarCorreo");
   button.addEventListener("click", GestionarCorreo);
+  });
 </script>
