@@ -13,6 +13,7 @@ import Layout from "../layouts/Layout.astro";
           Envianos un mensaje y te responderemos lo antes posible.
         </p>
       </div>
+      <form id="contactForm">
       <div class="lg:w-1/2 md:w-2/3 mx-auto">
         <div class="flex flex-wrap -m-2">
           <div class="p-2 w-1/2">
@@ -51,9 +52,11 @@ import Layout from "../layouts/Layout.astro";
         <div class="p-2 w-full">
           <button
             id="enviarCorreo"
+            type="submit"
             class="flex mx-auto text-white bg-green-800 border-0 py-2 px-8 focus:outline-none hover:bg-gradient-to-br hover:bg-[#7A6121] transition-all delay-75 duration-300 ease-in-out rounded text-lg"
             >Enviar</button>
         </div>
+        </form>
         <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
           <a class="text-[#185B69]">info@perfect-systems.net</a>
           <p class="leading-normal my-5">
@@ -149,7 +152,40 @@ import Layout from "../layouts/Layout.astro";
   </section>
 </Layout>
 
-<script>
+<script type="module">
+  document.querySelector('#contactForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    var nombre = document.querySelector("#name").value;
+    var email = document.querySelector("#email").value;
+    var mensaje = document.querySelector("#message").value;
+
+    var datos = {
+      nombre: nombre,
+      email: email,
+      mensaje: mensaje,
+    };
+
+    console.log(datos); // Imprimir los datos en la consola
+
+    fetch('https://srmacaback.fly.dev/email/contact',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datos)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  });
+</script>
+
+<!-- <script>
   document.addEventListener('DOMContentLoaded', (event) => {
   function GestionarCorreo() {
     var nombre = (document.getElementById("name")as HTMLInputElement).value;
@@ -179,6 +215,7 @@ import Layout from "../layouts/Layout.astro";
     }
 
   const button = document.getElementById("enviarCorreo");
-  button.addEventListener("click", GestionarCorreo);
+  button.addEventListener("submit", GestionarCorreo);
   });
 </script>
+ -->
