@@ -156,14 +156,14 @@ import Layout from "../layouts/Layout.astro";
   document.querySelector('#contactForm').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    var nombre = document.querySelector("#name").value;
+    var name = document.querySelector("#name").value;
     var email = document.querySelector("#email").value;
-    var mensaje = document.querySelector("#message").value;
+    var message = document.querySelector("#message").value;
 
     var datos = {
-      nombre: nombre,
+      name: name,
       email: email,
-      mensaje: mensaje,
+      message: message,
     };
 
     console.log(datos); // Imprimir los datos en la consola
