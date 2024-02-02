@@ -184,38 +184,3 @@ import Layout from "../layouts/Layout.astro";
       });
   });
 </script>
-
-<!-- <script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-  function GestionarCorreo() {
-    var nombre = (document.getElementById("name")as HTMLInputElement).value;
-    var email = (document.getElementById("email")as HTMLInputElement).value;
-    var mensaje = (document.getElementById("message")as HTMLInputElement).value;
-
-    var datos = {
-      nombre: nombre,
-      email: email,
-      mensaje: mensaje,
-    };
-
-    fetch('https://srmacaback.fly.dev/email/contact',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(datos)
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-    }
-
-  const button = document.getElementById("enviarCorreo");
-  button.addEventListener("submit", GestionarCorreo);
-  });
-</script>
- -->

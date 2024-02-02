@@ -11,7 +11,7 @@ export const data = [
     detailstitle: "Testo Plus",
     description: "elevador de testosterona natural testo plus",
     pilsData: {
-      principal: "/images/testoplus/tes1.png",
+      principal: "/images/testoplus/testo3.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "testo",
@@ -64,7 +64,7 @@ export const data = [
     detailstitle: "Cartilago de tiburon",
     description: "elevador de testosterona narutal cartilago de tiburon",
     pilsData: {
-      principal: "/images/cartilago/2.png",
+      principal: "/images/cartilago/tiburon03.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "cartilago",
@@ -74,7 +74,7 @@ export const data = [
     addTextData: {
       fontsize: "text-sm",
       title:
-        "Tejido que proporciona soporte a articulaciones y ligamentos en el cuerpo",
+        "Tejido que proporciona soporte a articulaciones y ligamentos en el cuerpo.",
       buttonbg1: "#fff",
       buttonbg2: "#00E0FF",
       buttontc1: "black",
@@ -112,7 +112,7 @@ export const data = [
     bgend: "to-[#000]",
     textcolor: "from-[#2B1915]",
     detailstitle: "Maca Negra",
-    description: "elevador de testosterona natural maca negra",
+    description: "Regulador hormonal y energizante natural.",
     pilsData: {
       principal: "/images/macanegra/3.png",
       pils1: "/images/pildora1.png",
@@ -124,7 +124,7 @@ export const data = [
     addTextData: {
       fontsize: "text-sm",
       title:
-        "Suplemento Natural y diseñado para estimular al propio cuerpo que genere más testosterona",
+        "Regulador hormonal y energizante natural.",
       buttonbg1: "#C0DDC8",
       buttonbg2: "#B99B4F",
       buttontc1: "black",
