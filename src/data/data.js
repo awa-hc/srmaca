@@ -9,7 +9,7 @@ export const data = [
     bgend: "to-[#000]",
     textcolor: "from-[#294437]",
     detailstitle: "Testo Plus",
-    description: "elevador de testosterona natural testo plus",
+    description: "Elevador de testosterona natural",
     pilsData: {
       principal: "/images/testoplus/testo3.png",
       pils1: "/images/pildora1.png",
@@ -32,9 +32,9 @@ export const data = [
       buttontitle2: "Compra ya",
     },
     whatis:
-      "suplemento natural y diseñado para estimular al propio cuerpo que genere más testosterona",
+      "Suplemento natural y diseñado para estimular al propio cuerpo que genere más testosterona",
     howworks:
-      "su principal uso es aumentar los niveles de testosterona de forma natural en el cuerpo",
+      "Su principal uso es aumentar los niveles de testosterona de forma natural en el cuerpo para tener un aumento de fuerza.",
     ingredients: {
       ingredient1: "Huanarpo Machi",
       ingredient2: "Barojo",
@@ -137,7 +137,7 @@ export const data = [
     whatis:
       "Es un Tuberculo el cual es un regulador hormonal y energizante natural",
     howworks:
-      "Su principal funcion es mantener un balance en tu sistema hormonal y aportar energia extra para tus actividades diarias",
+      "Un potente regulador hormonal y energizante natural. Extraída de los Andes, este superalimento mejora la vitalidad y promueve un bienestar general.",
     ingredients: {
       ingredient1: "Cartilago de Tiburon",
     },
@@ -150,7 +150,7 @@ export const data = [
       arificial3: "Poco seguro y procedencia dudosa",
     },
     howuse:
-      "Levantarse con el mejor de los animos, Estando en ayunas, tomar 2 capsulas de Testo Plus al dia",
+      "Levantarse con el mejor de los animos, ingesta diaria de 2 capsulas después de alguna comida fuerte.",
   },
   {
     id: 4,
@@ -162,7 +162,7 @@ export const data = [
     bgend: "to-[#000]",
     textcolor: "from-[#fff]",
     detailstitle: "Psyllium",
-    description: "elevador de testosterona natural maca negra",
+    description: "Laxante 100% natural vitaminico",
     pilsData: {
       principal: "/images/psyllium/4.png",
       pils1: "/images/pildora1.png",
@@ -174,7 +174,7 @@ export const data = [
     addTextData: {
       fontsize: "text-sm",
       title:
-        "Suplemento Natural y diseñado para estimular al propio cuerpo que genere más testosterona",
+        "Laxante 100% natural el cual aporta fibra en gran cantidad y multiples vitaminas al cuerpo.",
       buttonbg1: "#C0DDC8",
       buttonbg2: "#2B9D6D",
       buttontc1: "black",
@@ -187,7 +187,7 @@ export const data = [
     whatis:
       "Es un Tuberculo el cual es un regulador hormonal y energizante natural",
     howworks:
-      "Su principal funcion es mantener un balance en tu sistema hormonal y aportar energia extra para tus actividades diarias",
+      "Un remedio 100% natural, rico en fibra y vitaminas. Su alto contenido de fibra es ideal para combatir el estreñimiento, a la vez que previene enfermedades cardiacas y controla la diabetes.",
     ingredients: {
       ingredient1: "Psyllium",
     },
@@ -200,7 +200,7 @@ export const data = [
       arificial3: "Poco seguro y procedencia dudosa",
     },
     howuse:
-      "Levantarse con el mejor de los animos, Estando en ayunas, tomar 2 capsulas de Testo Plus al dia",
+      "Se toman 2 capsulas de preferencia con alguna comida, ingerir la cantidad adecuada de agua.",
   },
   {
     id: 5,
