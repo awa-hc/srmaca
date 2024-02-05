@@ -1,4 +1,5 @@
 export const data = [
+  // Testo Plus
   {
     id: 1,
     imagebg: "/images/imagebgtest.png",
@@ -11,7 +12,7 @@ export const data = [
     detailstitle: "Testo Plus",
     description: "Elevador de testosterona natural",
     pilsData: {
-      principal: "/images/testoplus/testo3.png",
+      principal: "/images/testoplus/testo_principal.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "testo",
@@ -52,6 +53,7 @@ export const data = [
     howuse:
       "Levantarse con el mejor de los animos, Estando en ayunas, tomar 2 capsulas de Testo Plus al dia",
   },
+  // Cartilago de tiburon
   {
     id: 2,
     imagebg: "/images/Group 3.png",
@@ -64,7 +66,7 @@ export const data = [
     detailstitle: "Cartilago de tiburon",
     description: "elevador de testosterona narutal cartilago de tiburon",
     pilsData: {
-      principal: "/images/cartilago/tiburon03.png",
+      principal: "/images/cartilago/tiburon_principal.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "cartilago",
@@ -102,6 +104,7 @@ export const data = [
     howuse:
       "Levantarse con el mejor de los animos, Estando en ayunas, tomar 2 capsulas de Cartilago al dia",
   },
+  // Maca Negra
   {
     id: 3,
     imagebg: "/images/Group 3.png",
@@ -114,7 +117,7 @@ export const data = [
     detailstitle: "Maca Negra",
     description: "Regulador hormonal y energizante natural.",
     pilsData: {
-      principal: "/images/macanegra/3.png",
+      principal: "/images/macanegra/maca_principal.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "macanegra",
@@ -152,6 +155,7 @@ export const data = [
     howuse:
       "Levantarse con el mejor de los animos, ingesta diaria de 2 capsulas después de alguna comida fuerte.",
   },
+  // Psyllium
   {
     id: 4,
     imagebg: "/images/imagebgtest.png",
@@ -164,7 +168,7 @@ export const data = [
     detailstitle: "Psyllium",
     description: "Laxante 100% natural vitaminico",
     pilsData: {
-      principal: "/images/psyllium/4.png",
+      principal: "/images/psyllium/psy1.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "psyllium",
@@ -202,6 +206,7 @@ export const data = [
     howuse:
       "Se toman 2 capsulas de preferencia con alguna comida, ingerir la cantidad adecuada de agua.",
   },
+  // Combo 1
   {
     id: 5,
     imagebg: "/images/imagebgtest.png",
@@ -215,7 +220,7 @@ export const data = [
     description:
       "Compuesto por una combinacion de Testo Plus y Cartilago de Tiburon",
     pilsData: {
-      principal: "/images/combo2/tyc.png",
+      principal: "/images/combo2/tyc_out.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "combotyc",
@@ -253,6 +258,7 @@ export const data = [
     howuse:
       "Levantarse con el mejor de los animos, Estando en ayunas, tomar 2 capsulas de Testo Plus al dia",
   },
+  // Combo 2
   {
     id: 6,
     imagebg: "/images/imagebgtest.png",
@@ -304,6 +310,7 @@ export const data = [
     howuse:
       "Levantarse con el mejor de los animos, Estando en ayunas, tomar 2 capsulas de Testo Plus al dia",
   },
+  // Combo 3
   {
     id: 7,
     imagebg: "/images/imagebgtest.png",
