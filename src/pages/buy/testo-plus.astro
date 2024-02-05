@@ -4,7 +4,8 @@ import Layout from "../../layouts/Layout.astro";
 
 <Layout title="testo-plus">
   <head>
-    <link rel="stylesheet" href="/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css" />
+    <!-- <link rel="stylesheet" href="/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
   </head>
   <section
     class="text-white bg-gradient-to-b from-[#294437] to-black body-font min-h-screen overflow-hidden"
@@ -66,7 +67,7 @@ import Layout from "../../layouts/Layout.astro";
         <div class="lg:w-1/2 w-full flex image-container">
           <a href="/images/testoplus/testo1.png" data-fancybox="gallery">
             <img
-              alt="ecommerce"
+              alt="testo-plus"
               class="main-image lg:w-full w-full lg:h-auto h-64 md:h-64 sm:h-48 object-cover lg:object-fill object-center rounded"
               src="/images/testoplus/testo1.png"
             />
@@ -83,8 +84,10 @@ import Layout from "../../layouts/Layout.astro";
 </Layout>
 
 <!-- Visor de imagen -->
-<script src="/node_modules/jquery/dist/jquery.min.js" is:inline></script>
-<script src="/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js" is:inline></script>
+<!-- <script src="/node_modules/jquery/dist/jquery.min.js" is:inline></script>
+<script src="/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js" is:inline></script> -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" is:inline></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" is:inline></script>
 
 <!-- Miniaturas de imagenes -->
 <script>
