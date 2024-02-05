@@ -107,7 +107,7 @@
 
 <!-- Logica del NavBar -->
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+/*   document.addEventListener("DOMContentLoaded", function () {
     const authSection = document.getElementById("authsection");
     const authCookie = getCookie("Auth");
     if (authCookie) {
@@ -134,8 +134,8 @@
         `;
     }
   });
-
-/* function checkAuth() {
+ */
+function checkAuth() {
   const authSection = document.getElementById("authsection");
   const authCookie = getCookie("Auth");
   if (authCookie) {
@@ -186,7 +186,7 @@ history.replaceState = ( f => function replaceState(){
 
 window.addEventListener('locationchange', function(){
     checkAuth();
-}) */
+})
 
   function getCookie(name) {
     const value = `; ${document.cookie}`;
