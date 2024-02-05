@@ -107,34 +107,6 @@
 
 <!-- Logica del NavBar -->
 <script>
-/*   document.addEventListener("DOMContentLoaded", function () {
-    const authSection = document.getElementById("authsection");
-    const authCookie = getCookie("Auth");
-    if (authCookie) {
-      authSection.innerHTML = `
-          <ul>
-            <li>
-              <a href="/user/profile" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Mi Perfil</a>
-            </li>
-            <li>
-              <button id="logoutbutton">Logout</button>
-            </li>
-          </ul>
-        `;
-    } else {
-      authSection.innerHTML = `
-          <ul>
-            <li>
-              <a href="/auth/login" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
-            </li>
-            <li>
-              <a href="/auth/register" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Register</a>
-            </li>
-          </ul>
-        `;
-    }
-  });
- */
 function checkAuth() {
   const authSection = document.getElementById("authsection");
   const authCookie = getCookie("Auth");
@@ -219,6 +191,9 @@ window.addEventListener('locationchange', function(){
       menu.classList.add("border-white");
     });
   });
+  $(document).on('afterClose.fb', function( e, instance, slide ) {
+  checkAuth();
+});
 </script>
 
 <!-- Estilos del NavBar -->
@@ -233,3 +208,31 @@ window.addEventListener('locationchange', function(){
         > -->
 <!-- <ul class="dropdown opacity-0 invisible absolute left-0 pt-2 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-white group-hover/products:opacity-100 group-hover/products:visible hover:opacity-100 hover:visible transition-opacity duration-700 ease-in-out"> -->
 <!-- <ul class="dropdown opacity-0 translate-y-[-100%] absolute left-0 pt-2 space-y-2 border-r border-b [&>li]:p-2 shadow-lg border-white rounded-lg text-white group-hover/products:opacity-100 group-hover/products:translate-y-0 hover:opacity-100 hover:translate-y-0 transition-all duration-700 ease-in-out"> -->
+
+  <!-- document.addEventListener("DOMContentLoaded", function () {
+    const authSection = document.getElementById("authsection");
+    const authCookie = getCookie("Auth");
+    if (authCookie) {
+      authSection.innerHTML = `
+          <ul>
+            <li>
+              <a href="/user/profile" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Mi Perfil</a>
+            </li>
+            <li>
+              <button id="logoutbutton">Logout</button>
+            </li>
+          </ul>
+        `;
+    } else {
+      authSection.innerHTML = `
+          <ul>
+            <li>
+              <a href="/auth/login" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+            </li>
+            <li>
+              <a href="/auth/register" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Register</a>
+            </li>
+          </ul>
+        `;
+    }
+  }); -->
