@@ -85,8 +85,6 @@ import Layout from "../../layouts/Layout.astro";
 <!-- Visor de imagen -->
 <script src="/node_modules/jquery/dist/jquery.min.js" is:inline></script>
 <script src="/node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js" is:inline></script>
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/panzoom/panzoom.umd.js" is:inline></script>
-
 
 <!-- Miniaturas de imagenes -->
 <script>
@@ -94,27 +92,6 @@ import Layout from "../../layouts/Layout.astro";
   var src = $(this).attr('src');
   $('[data-fancybox="gallery"]').attr('href', src);
   $('[data-fancybox="gallery"] img').attr('src', src);
-  });
-
-    // Inicializa Panzoom
-    declare var Panzoom: any;
-    const container = document.querySelector('[data-fancybox="gallery"]');
-    const instance = new Panzoom(container, {
-    panMode: 'mousemove',
-    mouseMoveFactor: 1.25,
-    click: false,
-    wheel: false
-  });
-
-  container.addEventListener("mouseenter", (event: MouseEvent) => {
-  if (!event.buttons) {
-    instance.zoomToCover(event);
-  }
-});
-
-
-  container.addEventListener("mouseleave", () => {
-    instance.zoomToFit();
   });
 
   function changeMainImage(img) {
