@@ -168,7 +168,7 @@ export const data = [
     detailstitle: "Psyllium",
     description: "Laxante 100% natural vitaminico",
     pilsData: {
-      principal: "/images/psyllium/psy1.png",
+      principal: "/images/psyllium/psy_principal.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "psyllium",
@@ -220,7 +220,7 @@ export const data = [
     description:
       "Compuesto por una combinacion de Testo Plus y Cartilago de Tiburon",
     pilsData: {
-      principal: "/images/combo2/tyc_out.png",
+      principal: "/images/combo1/tyc.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "combotyc",
@@ -324,7 +324,7 @@ export const data = [
     description:
       "Compuesto por una combinacion de Testo Plus y Cartilago de Tiburon",
     pilsData: {
-      principal: "/images/combo3/combo3.png",
+      principal: "/images/combo3/mtc.png",
       pils1: "/images/pildora1.png",
       pils2: "/images/pildora2.png",
       transitionname: "comboteu",

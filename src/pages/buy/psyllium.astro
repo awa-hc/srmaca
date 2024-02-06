@@ -3,8 +3,11 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="psyllium">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+  </head>
   <section
-    class="text-white bg-gradient-to-b from-[#294424] to-black body-font min-h-screen overflow-hidden"
+    class="text-white bg-gradient-to-b from-[#b6b3b2] to-black body-font min-h-screen overflow-hidden"
   >
     <div class="container px-5 py-24 mx-auto">
       <div class="lg:w-4/5 mx-auto flex flex-wrap">
@@ -65,16 +68,62 @@ import Layout from "../../layouts/Layout.astro";
             >
           </div>
         </div>
-        <img
-          alt="ecommerce"
-          class="lg:w-1/2 w-full lg:h-auto h-64 object-cover lg:object-fill object-center rounded"
-          src="/images/testoplus/testo3.jpeg"
-        />
+        <div class="lg:w-1/2 w-full flex image-container">
+          <a href="/images/psyllium/psy1.png" data-fancybox="gallery">
+            <img
+              alt="psyllium"
+              class="main-image lg:w-full w-full lg:h-auto h-64 md:h-64 sm:h-48 object-cover lg:object-fill object-center rounded"
+              src="/images/psyllium/psy1.png"
+            />
+          </a>
+          <div class="thumbnails">
+            <img class="thumbnail" src="/images/psyllium/psy1.png" alt="psy1" onclick="changeMainImage(this)"/>
+            <img class="thumbnail" src="/images/psyllium/psy2.png" alt="psy2" onclick="changeMainImage(this)"/>
+            <img class="thumbnail" src="/images/psyllium/psy3.png" alt="psy3" onclick="changeMainImage(this)"/>
+          </div>
+      </div>
       </div>
     </div>
   </section>
 </Layout>
 
+<!-- Visor de imagen -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" is:inline></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" is:inline></script>
+
+<!-- Miniaturas de imagenes -->
+<script>
+  $(document).on('click', '.thumbnail', function() {
+  var src = $(this).attr('src');
+  $('[data-fancybox="gallery"]').attr('href', src);
+  $('[data-fancybox="gallery"] img').attr('src', src);
+  });
+
+  function changeMainImage(img) {
+  const src = img.getAttribute('src');
+  const mainImage = document.querySelector('.main-image') as HTMLImageElement;
+  mainImage.src = src;
+  (document.querySelector('[data-fancybox]') as HTMLAnchorElement).href = src;
+}
+</script>
+<style>
+  .thumbnails {
+  display: flex;
+  flex-direction: column;
+  }
+
+  .thumbnail {
+    width: 20vh; 
+    height: 10vh;
+    object-fit: contain;
+    object-position: center;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+</style>
+
+<!-- Logica de la pagina -->
 <script>
   function checkCookie(name) {
     const cookies = document.cookie.split(";");
@@ -118,6 +167,7 @@ import Layout from "../../layouts/Layout.astro";
   button.addEventListener("click", BuyPsy);
 </script>
 
+<!-- Estilos de la pagina -->
 <style>
   input[type="number"] {
     width: 45px; /* Ajusta el ancho del input */
