@@ -13,6 +13,8 @@
     "@astrojs/tailwind": "^5.0.2",
     "@astrojs/vercel": "^5.1.0",
     "@fancyapps/fancybox": "^3.5.7",
+    "@types/google.maps": "^3.55.1",
+    "@types/googlemaps": "^3.43.3",
     "@vercel/analytics": "^1.1.1",
     "astro": "^3.3.2",
     "jquery": "^3.7.1",
