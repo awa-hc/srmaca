@@ -9,7 +9,8 @@ import SideAdmin from "../../../layouts/SideAdmin.astro";
 
 <script>
   async function GetRejectedVouchers() {
-    const res = await fetch("https://srmacaback.fly.dev/voucher/rejected", {
+    const res = await fetch("http://localhost:8080/voucher/rejected", {
+    // const res = await fetch("https://srmacaback.fly.dev/voucher/rejected", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
