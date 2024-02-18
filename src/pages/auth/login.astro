@@ -41,43 +41,63 @@ import Layout from "../../layouts/Layout.astro";
 </Layout>
 
 <script>
-// Referencias del DOM
-const emailInput = document.getElementById('email') as HTMLInputElement;
-const passInput = document.getElementById('password') as HTMLInputElement; 
-const loginBtn = document.getElementById('loginButton') as HTMLButtonElement;
+// Escuchar cuando carga el DOM
+document.addEventListener('DOMContentLoaded', () => {
 
+// Obtener referencia al botón 
+const loginBtn = document.getElementById('loginBtn');
+
+// Revisar que exista
+if(!loginBtn) {
+  console.error('Botón de login no encontrado');
+  return; 
+}
+
+// Listener del click
 loginBtn.addEventListener('click', async () => {
 
-try {
-  // Obtener valores de inputs
-  const email = emailInput.value;
+  // Input email
+  const emailInput = document.getElementById('email') as HTMLInputElement;
+  console.log({emailInput});
+
+  // Input password
+  const passInput = document.getElementById('password') as HTMLInputElement;
+  console.log({passInput});
+
+  // Obtener valores
+  const email = emailInput.value; 
   const pass = passInput.value;
-  const response = await fetch('https://srmacaback.fly.dev/auth/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type':'application/json'  
-    },
-    body: JSON.stringify({email, pass}) 
-  });
 
-  if(response.ok) {
-    // Flujo OK
-    const {token} = await response.json();
+  console.log('Iniciando fetch...');
+  
+  try {
+    // Petición POST
+    const response = await fetch('https://srmacaback.fly.dev/auth/login', { 
+      headers: { 
+        'Content-Type': 'application/json',
+        'Allow-Control-Allow-Origin': 'https://srmaca.vercel.app', 
+      },
+      body: JSON.stringify({email, pass})
+    });
 
-    document.cookie = `Auth=${token}`;
-    window.location.href = '/';
+    console.log('Respuesta recibida');
 
-  } else {
-    throw new Error('Credenciales inválidas!');
+    if(response.ok) {
+      // Token de respuesta
+      const {token} = await response.json();
+
+      // ...
+    } else {
+      throw 'Credenciales inválidas';  
+    }
+
+    
+  } catch(error) {
+    // Mostrar error
+    console.error('Error:', error);
   }
 
-} catch (error) {
-
-  // Mostrar error en interfaz
-  const errorElement = document.getElementById('response');
-  errorElement.innerText = error.message;
-
-}
+});
 
 });
 </script>
