@@ -28,7 +28,6 @@ import SideAdmin from "../../layouts/SideAdmin.astro";
   }
 
   async function getVouchers() {
-    // const response = await fetch("http://localhost:8080/voucher/", {
     const response = await fetch("https://srmacaback.fly.dev/voucher/", {
       method: "GET",
       headers: {

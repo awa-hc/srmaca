@@ -12,7 +12,7 @@ const { title, bgstart, bgend, textcolor, imagebg, transitiontext } =
   Astro.props;
 ---
 
-<div
+<main
   id={title}
   class={`flex flex-col  bg-gradient-to-b ${bgstart} ${bgend} h-screen min-h-screen items-center  justify-center  z-0  snap-center`}
 >
@@ -22,7 +22,7 @@ const { title, bgstart, bgend, textcolor, imagebg, transitiontext } =
     alt="background image for every screen"
   />
 
-  <div class="absolute z-10">
+  <main class="absolute z-10">
     <h1
       transition:animate="fade"
       transition:name={transitiontext}
@@ -30,7 +30,7 @@ const { title, bgstart, bgend, textcolor, imagebg, transitiontext } =
     >
       {title}
     </h1>
-  </div>
+  </main>
   <span class="flex-grow"></span>
   <slot />
-</div>
+</main>

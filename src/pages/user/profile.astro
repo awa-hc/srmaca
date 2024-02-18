@@ -3,80 +3,28 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="Mi Perfil 💪🏻">
-  <div class="flex bg-gradient-to-br from-[#554732] to-black">
-    <!-- Sidebar -->
-    <div class="w-64 p-8 mt-24">
-      <h3 class="text-xl text-white">Mi Cuenta</h3>
-
-      <nav class="mt-4 text-gray-400">
-        <a href="#" class="block py-2 hover:text-white">Pedidos</a>
-        <a href="#" class="block py-2 hover:text-white">Información de Cuenta</a
-        >
-      </nav>
-    </div>
-    <!-- <div
+  <div
     class="bg-gradient-to-br from-[#554732] to-black h-screen w-screen flex flex-col items-center justify-center text-white"
-  > -->
-    <div class="flex-1 p-8" id="main-content">
-      <h3 class="mt-24 text-white text-center text-2xl">
-        Bienvenido a tu perfil en SrMaca!. 💪🏻
-      </h3>
-      <div class="flex overflow-hidden">
-        <section id="info-container"></section>
-        <section
-          id="voucher-container"
-          class="grid grid-cols-3 gap-4 overflow-y-auto"
-          style="display:none"
-        >
-        </section>
-      </div>
+  >
+    <h3 class="mt-60">Bienvenido a tu perfil en SrMaca!. 💪🏻</h3>
+    <div class="flex overflow-hidden">
+      <section id="info-container"></section>
+      <section id="voucher-container" class="h-2/3 overflow-y-auto"></section>
     </div>
   </div>
 </Layout>
 
-<!-- Logica de la pagina -->
 <script>
   import formatDate from "../../utils/FormatDate.js";
+
   import getCookie from "../../utils/GetCookie";
-
-  // Obtener elementos del DOM
-  const sidebarLinks = document.querySelectorAll(".sidebar-link");
-  const mainContent = document.getElementById("main-content");
-
-  async function showProfile() {
-    infoContainer.style.display = "block";
-    voucherContainer.style.display = "none";
-    const userData = await GetUser();
-    fillProfile(userData);
-  }
-
-  async function showVouchers() {
-    infoContainer.style.display = "none";
-    voucherContainer.style.display = "block";
-    const vouchersData = await GetUserVouchers();
-    fillVouchers(vouchersData);
-  }
-
-  // Al cargar, mostrar perfil
-  showProfile();
-
-  // Agregar listeners a links del sidebar
-  sidebarLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (link.textContent === "Pedidos") {
-        showVouchers();
-      } else if (link.textContent === "Información de Cuenta") {
-        showProfile();
-      }
-    });
-  });
 
   const infoContainer = document.getElementById("info-container");
   const token = getCookie("Auth");
+  console.log(token);
 
   const voucherContainer = document.getElementById("voucher-container");
   async function GetUser() {
-    // const response = await fetch("http://localhost:8080/user/", {
     const response = await fetch("https://srmacaback.fly.dev/user/", {
       method: "GET",
       headers: {
@@ -91,7 +39,6 @@ import Layout from "../../layouts/Layout.astro";
   const data = await GetUser();
 
   async function GetUserVouchers() {
-    // const response = await fetch("http://localhost:8080/voucher/user/", {
     const response = await fetch("https://srmacaback.fly.dev/voucher/user/", {
       method: "GET",
       headers: {
@@ -147,12 +94,3 @@ import Layout from "../../layouts/Layout.astro";
   fillProfile(data);
   fillVouchers(dataVouchers);
 </script>
-
-<!-- Estilos de la pagina -->
-<style>
-  #voucher-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-  }
-</style>

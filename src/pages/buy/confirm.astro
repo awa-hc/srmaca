@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 
 <Layout title="Confirma tu compra">
   <section
-    class="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen flex flex-col md:flex-row items-center justify-center px-5 pb-5"
+    class="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen w-screen flex flex-col md:flex-row items-center justify-center px-5"
   >
     <main class="flex flex-col">
       <div class="mt-52 md:mt-40">
@@ -15,6 +15,7 @@ import Layout from "../../layouts/Layout.astro";
           value="cash"
           class="z-20"
           checked
+          onclick="updatePaymentMethod()"
         />
         <label for="cash">Efectivo</label><br />
         <input
@@ -26,17 +27,6 @@ import Layout from "../../layouts/Layout.astro";
         <label for="transfer">Transferencia Bancaria</label>
       </div>
       <h1 class="font-bold text-2xl my-6">Pasos para comprar en Sr Maca!</h1>
-
-      <div
-        id="show-bank-details"
-        style="max-height: 0; overflow: hidden; transition: max-height 0.5s;"
-      >
-        <button
-          type="button"
-          class="text-white bg-[#526C63] border-0 py-2 px-8 focus:outline-none hover:bg-[#526C63] rounded text-lg"
-          >Mostrar código QR</button
-        >
-      </div>
       <div
         id="bank-details"
         class="flex xl:flex-row flex-col justify-between border-t border-white border-l-0 border-r-0 border-b-0 py-5 mt-5"
@@ -132,19 +122,6 @@ import Layout from "../../layouts/Layout.astro";
       reader.onerror = (error) => reject(error);
     });
   }
-  const showBankDetailsWrapper = document.querySelector(
-    "#show-bank-details"
-  ) as HTMLDivElement;
-
-  const bankDetails = document.querySelector("#bank-details");
-  const uploadReceipt = document.querySelector("#upload-receipt");
-
-  showBankDetailsWrapper
-    .querySelector("button")
-    ?.addEventListener("click", () => {
-      (bankDetails as HTMLElement).style.maxHeight = "500px"; // Cambia esto al valor que necesites
-      showBankDetailsWrapper.style.maxHeight = "0";
-    });
 
   function updatePaymentMethod() {
     const paymentMethod = (
@@ -152,10 +129,11 @@ import Layout from "../../layouts/Layout.astro";
         'input[name="payment-method"]:checked'
       ) as HTMLInputElement
     ).value;
+    const bankDetails = document.querySelector("#bank-details");
+    const uploadReceipt = document.querySelector("#upload-receipt");
 
     if (paymentMethod === "transfer") {
-      showBankDetailsWrapper.style.maxHeight = "500px";
-
+      (bankDetails as HTMLElement).style.maxHeight = "500px"; // Cambia esto al valor que necesites
       (uploadReceipt as HTMLElement).style.maxHeight = "500px"; // Cambia esto al valor que necesites
     } else {
       (bankDetails as HTMLElement).style.maxHeight = "0";

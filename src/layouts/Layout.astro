@@ -4,10 +4,9 @@ import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
-  class?: string;
 }
 
-const { title, class: classes } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,8 +23,10 @@ const { title, class: classes } = Astro.props;
     <title>{title}</title>
   </head>
 
-  <body class:list={[classes]}>
+  <header>
     <NavBar />
-    <slot />
+  </header>
+  <body>
+      <slot />
   </body>
 </html>
