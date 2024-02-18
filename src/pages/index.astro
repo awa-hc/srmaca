@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BgLayout from "../layouts/BgLayout.astro";
+import Pils from "../components/Pils.astro";
+import Addtext from "../components/Addtext.astro";
+
+import { data } from "../data/data";
+---
+
+<Layout title="Sr Maca">
+  <main
+    class="snap-y snap-mandatory h-screen relative w-full overflow-auto max-h-screen"
+  >
+    {
+      data.map((item) => {
+        return (
+          <BgLayout
+            transitiontext={item.transitionname}
+            imagebg={item.imagebg}
+            title={item.title}
+            bgstart={item.bgstart}
+            bgend={item.bgend}
+            textcolor={item.textcolor}
+          >
+            <Pils
+              transitionpils1={item.pilsData.transitionpils1}
+              transitionpils2={item.pilsData.transitionpils2}
+              principal={item.pilsData.principal}
+              pils1={item.pilsData.pils1}
+              pils2={item.pilsData.pils2}
+              transitionname={item.pilsData.transitionname}
+            />
+            <Addtext
+              fontsize={item.addTextData.fontsize}
+              title={item.addTextData.title}
+              buttonbg1={item.addTextData.buttonbg1}
+              buttonbg2={item.addTextData.buttonbg2}
+              buttontc1={item.addTextData.buttontc1}
+              buttontc2={item.addTextData.buttontc2}
+              buttongo1={item.addTextData.buttongo1}
+              buttongo2={item.addTextData.buttongo2}
+              buttontitle1={item.addTextData.buttontitle1}
+              buttontitle2={item.addTextData.buttontitle2}
+            />
+          </BgLayout>
+        );
+      })
+    }
+  </main>
+</Layout>

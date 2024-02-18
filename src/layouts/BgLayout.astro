@@ -1,0 +1,36 @@
+---
+interface Props {
+  title: string;
+  bgstart: string;
+  bgend: string;
+  textcolor: string;
+  imagebg: string;
+  transitiontext: string;
+}
+
+const { title, bgstart, bgend, textcolor, imagebg, transitiontext } =
+  Astro.props;
+---
+
+<main
+  id={title}
+  class={`flex flex-col  bg-gradient-to-b ${bgstart} ${bgend} h-screen min-h-screen items-center  justify-center  z-0  snap-center`}
+>
+  <img
+    src={imagebg}
+    class="absolute z-0 w-full h-full object-fit"
+    alt="background image for every screen"
+  />
+
+  <main class="absolute z-10">
+    <h1
+      transition:animate="fade"
+      transition:name={transitiontext}
+      class={`select-none text-[50px] md:text-[120px] xl:text-[200px] text-center font-bold  bg-clip-text text-transparent bg-gradient-to-b ${textcolor} to-[#111111ff]  uppercase opacity-75`}
+    >
+      {title}
+    </h1>
+  </main>
+  <span class="flex-grow"></span>
+  <slot />
+</main>

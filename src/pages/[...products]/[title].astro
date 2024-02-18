@@ -1,0 +1,93 @@
+---
+import { data } from "../../data/data";
+import Layout from "../../layouts/Layout.astro";
+import DetailsLayout from "../../layouts/DetailsLayout.astro";
+import DetailsPils from "../../components/DetailsPils.astro";
+import Detailstext from "../../components/Detailstext.astro";
+
+const { title } = Astro.params;
+
+const info = data.find((b) => b.title === title);
+
+if (!info) {
+  return Astro.redirect("/404");
+}
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  const paths = data.flatMap((product) => {
+    return [{ params: { products: "products/", title: product.title } }];
+  });
+  return paths;
+}
+---
+
+<Layout title={`${title} 💪🏻`}>
+  <DetailsLayout
+    transitiontext={info.transitionname}
+    title={info.title}
+    bgstart={info.bgstart}
+    textcolor={info.textcolor}
+  >
+    <DetailsPils
+      transitionname={info.pilsData.transitionname}
+      principal={info.pilsData.principal}
+      pils1={info.pilsData.pils1}
+      pils2={info.pilsData.pils2}
+      transitionpils1={info.pilsData.transitionpils1}
+      transitionpils2={info.pilsData.transitionpils2}
+    />
+    <Detailstext
+      href={info.title}
+      title={info.detailstitle}
+      description={info.description}
+      howworks={info.howworks}
+      howuse={info.howuse}
+    />
+
+    <section class="text-center text-white mt-72 sm:mt-0">
+      <a
+        href={"/" + info.addTextData.buttongo2}
+        class="text-white px-4 py-2 bg-[#2B9D6D] rounded-lg"
+      >
+        Compra ahora!
+      </a>
+    </section>
+  </DetailsLayout>
+  <!-- <section
+    class={`bg-gradient-to-t ${info.bgstart} to-black text-white flex flex-col justify-center items-center py-10`}
+  >
+    <h3>M&aacute;s sobre <span>{info.title}</span></h3>
+    <div
+      class="grid grid-cols-12 [&>img]:object-cover [&>img]:p-2 [&>img]:w-full [&>img]:h-96"
+    >
+      <img
+        src="/images/testoplus/testo2.jpeg"
+        class="col-span-5 rounded-2xl bg-white"
+      />
+      <section class="w-full col-span-7 h-96 p-2 rounded-2xl text-white">
+        <ul
+          class="[&>li]:my-2 [&>li]:pl-2 [&>li]:border-l-[0.5px] [&>li]:border-white"
+        >
+          <li class="font-bold text-3xl italic">beneficios</li>
+          {
+            res.idProduct === 1 ? (
+              "testoplus"
+            ) : res.idProduct === 2 ? (
+              "cartilago"
+            ) : res.idProduct === 3 ? (
+              <ul>
+                <li>mas sexo</li>
+                <li>mas sangre</li>
+              </ul>
+            ) : (
+              "No found"
+            )
+          }
+        </ul>
+      </section>
+      <section class="w-full col-span-5 p-2 rounded-2xl">sfsf</section>
+    </div>
+  </section> -->
+</Layout>

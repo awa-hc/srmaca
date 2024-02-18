@@ -1,0 +1,183 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="psyllium">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+  </head>
+  <section
+    class="text-white bg-gradient-to-b from-[#b6b3b2] to-black body-font min-h-screen overflow-hidden"
+  >
+    <div class="container px-5 py-24 mx-auto">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <div
+          class="lg:w-1/2 w-full lg:pr-10 lg:py-6 flex flex-col justify-center mb-6 lg:mb-0"
+        >
+          <h2 class="text-sm title-font text-white tracking-widest">
+            Psyllium
+          </h2>
+          <h1 class="text-gray-200 text-3xl title-font font-medium mb-4">
+            Regulador hormonal y energizante narutal.
+          </h1>
+          <div class="flex mb-4">
+            <a
+              class="flex-grow text-white/90 border-b-2 border-white py-2 text-lg px-1"
+              >Descripcion</a
+            >
+          </div>
+          <p class="leading-relaxed mb-4">
+            laxantes 100% natural que aporta fibra en gran cantidad y vitaminas
+            al cuerpo, su aporte de fibra es ideal para combatir el
+            estreñimiento
+          </p>
+          <div class="flex border-t border-gray-200 py-2">
+            <span>Capsulas :</span>
+            <span class="ml-auto">120 capsulas.</span>
+          </div>
+          <div class="flex border-b mb-3 border-gray-200 pb-2">
+            <span>Dosis :</span>
+            <span class="ml-auto">2 capsulas diarias.</span>
+          </div>
+          <div class="flex flex-row align-center" id="div-quantity">
+            <span class="title-font font-medium text-2xl">
+              Cantidad :</span>
+            <input 
+              class="bg-transparent font-2xl text-white border border-white rounded-md w-10 h-10 text-center"
+              type="number" 
+              id="quantity" 
+              value="1" 
+              min="1" 
+              onchange="updatePrice()">
+          </div>
+          <div class="flex flex-col">
+            <span
+              class="title-font font-medium text-2xl line-through text-red-500 transform -skew-x-6" id=" price">
+              Precio: 250 Bs.
+            </span>
+
+            <span class="title-font font-medium text-2xl" id="offer">
+              Oferta!! 180 Bs.</span
+            >
+            <button
+              type="button"
+              id="buypsy"
+              onclick="BuyPsy()"
+              class="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded"
+              >Comprar</button
+            >
+          </div>
+        </div>
+        <div class="lg:w-1/2 w-full flex image-container">
+          <a href="/images/psyllium/psy1.png" data-fancybox="gallery">
+            <img
+              alt="psyllium"
+              class="main-image lg:w-full w-full lg:h-auto h-64 md:h-64 sm:h-48 object-cover lg:object-fill object-center rounded"
+              src="/images/psyllium/psy1.png"
+            />
+          </a>
+          <div class="thumbnails">
+            <img class="thumbnail" src="/images/psyllium/psy1.png" alt="psy1" onclick="changeMainImage(this)"/>
+            <img class="thumbnail" src="/images/psyllium/psy2.png" alt="psy2" onclick="changeMainImage(this)"/>
+            <img class="thumbnail" src="/images/psyllium/psy3.png" alt="psy3" onclick="changeMainImage(this)"/>
+          </div>
+      </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<!-- Visor de imagen -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" is:inline></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" is:inline></script>
+
+<!-- Miniaturas de imagenes -->
+<script>
+  $(document).on('click', '.thumbnail', function() {
+  var src = $(this).attr('src');
+  $('[data-fancybox="gallery"]').attr('href', src);
+  $('[data-fancybox="gallery"] img').attr('src', src);
+  });
+
+  function changeMainImage(img) {
+  const src = img.getAttribute('src');
+  const mainImage = document.querySelector('.main-image') as HTMLImageElement;
+  mainImage.src = src;
+  (document.querySelector('[data-fancybox]') as HTMLAnchorElement).href = src;
+}
+</script>
+<style>
+  .thumbnails {
+  display: flex;
+  flex-direction: column;
+  }
+
+  .thumbnail {
+    width: 20vh; 
+    height: 10vh;
+    object-fit: contain;
+    object-position: center;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+</style>
+
+<!-- Logica de la pagina -->
+<script>
+  function checkCookie(name) {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + "=")) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  const pricePerItem = 180; // Precio por artículo
+  function updatePrice() {
+    const quantity = (document.querySelector("#quantity") as HTMLInputElement)
+      .valueAsNumber;
+    const totalPrice = quantity * pricePerItem;
+    document.querySelector("#offer").textContent = `Precio: ${totalPrice} Bs.`;
+  }
+
+  document.getElementById('quantity').onchange = updatePrice; // Actualiza el precio cuando se cambia la cantidad
+  updatePrice(); // Actualiza el precio al cargar la página
+
+  function BuyPsy() {
+    const quantity = (document.querySelector("#quantity") as HTMLInputElement)
+      .valueAsNumber;
+    const pricePerItem = 180;
+    const totalPrice = quantity * pricePerItem;
+
+    localStorage.setItem('totalPrice', totalPrice.toString());
+    localStorage.setItem('quantity', quantity.toString());
+
+    if (checkCookie("Auth")) {
+      window.location.href = "/buy/confirm";
+    } else {
+      window.location.href = "/auth/login";
+    }
+  }
+
+  const button = document.querySelector("#buypsy");
+  button.addEventListener("click", BuyPsy);
+</script>
+
+<!-- Estilos de la pagina -->
+<style>
+  input[type="number"] {
+    width: 45px; /* Ajusta el ancho del input */
+    height: 25px; /* Ajusta la altura del input */
+    margin-top: 5px; /* Añade margen en la parte superior si es necesario */
+    margin-bottom: 10px; /* Añade margen en la parte inferior si es necesario */
+    margin-left: auto; /* Añade margen izquierdo automáticamente */
+  }
+
+  #div-quantity {
+    align-items: center;
+  }
+</style>

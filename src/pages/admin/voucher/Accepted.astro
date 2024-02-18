@@ -1,0 +1,29 @@
+<!-- ---
+import SideAdmin from "../../../layouts/SideAdmin.astro";
+---
+
+<SideAdmin>
+  <h1></h1>
+</SideAdmin>
+
+<script>
+  async function getVouchers() {
+    try {
+      const res = await fetch("https://srmacaback.fly.dev/voucher/accepted", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      res.json().then((data) => {
+        console.log(data);
+      });
+      console.log(res);
+    } catch {
+      console.log("╯°□°)╯︵┻━┻");
+    }
+  }
+
+  getVouchers();
+</script> -->
