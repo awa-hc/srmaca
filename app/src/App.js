@@ -62,7 +62,7 @@ export default function App() {
           id="name"
           type="email"
           placeholder="Enter your name"
-          value={name}
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
