@@ -71,32 +71,46 @@ function login() {
 
 <script>
   import SetCookie from "../../utils/SetCookie";
-  document.getElementById("loginButton").addEventListener("click", function () {
-    const email = (document.getElementById("email") as HTMLInputElement).value;
-    const password = (document.getElementById("password") as HTMLInputElement)
-      .value;
-
-    fetch("https://srmacaback.fly.dev/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Origin: "localhost:4321",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-
-        if (data.token) {
-          console.log("hola desde 200");
-          SetCookie("Auth", data.token, 30);
-          window.location.href = "/";
-          Astro.redirect("/");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  document.addEventListener("DOMContentLoaded", (event) => {
+    console.log("hola desde el domcontentloaded");
+    document
+      .getElementById("loginButton")
+      .addEventListener("click", loginFunction);
   });
+
+  function loginFunction() {
+    console.log("hola desde login function");
+    document
+      .getElementById("loginButton")
+      .addEventListener("click", function () {
+        const email = (document.getElementById("email") as HTMLInputElement)
+          .value;
+        const password = (
+          document.getElementById("password") as HTMLInputElement
+        ).value;
+
+        fetch("https://srmacaback.fly.dev/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Origin: "https://srmaca.vercel.app/",
+          },
+          body: JSON.stringify({ email, password }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+
+            if (data.token) {
+              console.log("hola desde 200");
+              SetCookie("Auth", data.token, 30);
+              window.location.href = "/";
+              Astro.redirect("/");
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+  }
 </script>
