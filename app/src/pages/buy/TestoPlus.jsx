@@ -37,8 +37,8 @@ const TestoPlus = () => {
   // Función para manejar la compra (simplificada para el ejemplo)
   const buyTesto = () => {
     localStorage.setItem("TestoPlus", true);
-    localStorage.setItem("TestoPrice", totalPrice);
-    localStorage.setItem("TestoQuantity", quantity);
+    localStorage.setItem("TestoPlusPrice", totalPrice);
+    localStorage.setItem("TestoPlusQuantity", quantity);
   };
 
   return (

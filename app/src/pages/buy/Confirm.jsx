@@ -14,7 +14,7 @@ const Confirm = () => {
   useEffect(() => {
     let maca = parseInt(localStorage.getItem("MacaNegraPrice"), 10) || 0;
     let Cartilago = parseInt(localStorage.getItem("CartilagoPrice"), 10) || 0;
-    let TestoPlus = parseInt(localStorage.getItem("TestoPrice"), 10) || 0;
+    let TestoPlus = parseInt(localStorage.getItem("TestoPlusPrice"), 10) || 0;
     let Psyllium = parseInt(localStorage.getItem("PsylliumPrice"), 10) || 0;
     if (isNaN(maca)) {
       maca = 0;
@@ -40,7 +40,7 @@ const Confirm = () => {
       },
       {
         name: "TestoPlus",
-        quantity: localStorage.getItem("TestoQuantity") || 0,
+        quantity: localStorage.getItem("TestoPlusQuantity") || 0,
       },
       {
         name: "Psyllium",
@@ -259,11 +259,11 @@ const Confirm = () => {
                 <div className=" ml-2">
                   <h2>
                     TestoPlus:{" "}
-                    <strong>{localStorage.getItem("TestoQuantity")}</strong>
+                    <strong>{localStorage.getItem("TestoPlusQuantity")}</strong>
                   </h2>
                   <h2>
                     Precio:{" "}
-                    <strong>{localStorage.getItem("TestoPrice")} BS</strong>
+                    <strong>{localStorage.getItem("TestoPlusPrice")} BS</strong>
                   </h2>
                 </div>
               </div>
@@ -328,7 +328,7 @@ const Confirm = () => {
                 </div>
               </div>
             )}
-            <h1>Precio total = {totalPrice}</h1>
+            <h1>Precio total = {totalPrice} Bs.</h1>
           </section>
         </div>
       </div>

@@ -9,26 +9,6 @@ export default function ProfilePage() {
     getuserVouchers();
   }, []);
 
-  //   function getuser() {
-  //     fetch("http://localhost:8080/user/", {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application",
-  //       },
-  //       credentials: "include",
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         console.log(data.user);
-  //         setUser(data.user);
-  //         setLoading(false);
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //         setError("Error al obtener el usuario");
-  //         setLoading(false);
-  //       });
-  //   }
   function getuserVouchers() {
     fetch("http://localhost:8080/voucher/user/", {
       method: "GET",
@@ -59,7 +39,7 @@ export default function ProfilePage() {
           <div class="bg-white relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto">
             <div class="flex justify-center">
               <img
-                src="https://avatars0.githubusercontent.com/u/35900628?v=4"
+                src="https://th.bing.com/th/id/OIP.F_R5vSp2LEiLzJqaQuB99wAAAA?rs=1&pid=ImgDetMain"
                 alt=""
                 class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
               />
@@ -113,18 +93,6 @@ export default function ProfilePage() {
                   Recent activites
                 </h3>
                 <div class="mt-5 w-full flex flex-col items-center overflow-hidden text-sm">
-                  <a
-                    href="#"
-                    class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3  block hover:bg-gray-100 transition duration-150"
-                  >
-                    <img
-                      src="https://avatars0.githubusercontent.com/u/35900628?v=4"
-                      alt=""
-                      class="rounded-full h-6 shadow-md inline-block mr-2"
-                    />
-                    Updated his status
-                    <span class="text-gray-500 text-xs">24 min ago</span>
-                  </a>
                   {userVouchers.map((voucher) => {
                     console.log(voucher);
                     return (
@@ -133,12 +101,15 @@ export default function ProfilePage() {
                         class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3  block hover:bg-gray-100 transition duration-150"
                       >
                         <img
-                          src="https://avatars0.githubusercontent.com/u/35900628?v=4"
+                          src="/images/testoplus/testo_principal.png"
                           alt=""
                           class="rounded-full h-6 shadow-md inline-block mr-2"
                         />
-                        Updated his status
-                        <span class="text-gray-500 text-xs">
+                        Hiciste una compra!!
+                        <span className="ml-4 text-gray-500 text-md underline">
+                          {voucher.glosa}{" "}
+                        </span>
+                        <span class="text-gray-500 text-xs ml-4">
                           {voucher.CreatedAt}
                         </span>
                       </a>

@@ -1,19 +1,19 @@
 import { GetCookie } from "../utils/Cookie";
 import { useState } from "react";
+import Cart from "./Cart";
+import { useEffect } from "react";
 
 export default function Navbar() {
-  useState(() => {
-    console.log("Navbar");
-    const userloged = DetectUser();
-    console.log(userloged);
-  }, []);
+  const [userLogged, setUserLogged] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  function DetectUser() {
+  useEffect(() => {
     const user = GetCookie("Auth");
     if (user) {
-      return true;
-    } else return false;
-  }
+      console.log("Logueado c: ");
+      setUserLogged(true);
+    }
+  }, []);
 
   function Logout() {
     document.cookie = "Auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -124,13 +124,29 @@ export default function Navbar() {
                 class="flex gap-4 ml-auto justify-center items-center"
                 id="authsection"
               >
-                {DetectUser() ? (
-                  <button
-                    onClick={Logout}
-                    class="bg-red-500 px-4 py-2 rounded-lg"
-                  >
-                    Logout
-                  </button>
+                {userLogged ? (
+                  <>
+                    <Cart />
+                    <button
+                      onClick={() => setOpen(!open)}
+                      class="bg-transparent px-4 py-2 rounded-lg "
+                    >
+                      Mi Perfil
+                      {open && (
+                        <ul className="absolute border border-white rounded-lg text-left ">
+                          <li class="bg-tranparent px-4 py-2 rounded-lg hover:bg-blue-500 transition-colors ease-linear duration-300">
+                            <a href="/profile">Mi Perfil</a>
+                          </li>
+                          <li
+                            onClick={Logout}
+                            class="px-4 py-2 rounded-lg hover:bg-red-500 transition-colors ease-linear duration-300 "
+                          >
+                            Cerrar Sesion
+                          </li>
+                        </ul>
+                      )}
+                    </button>
+                  </>
                 ) : (
                   <>
                     <a
