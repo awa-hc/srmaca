@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 export default function App() {
-  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
@@ -17,7 +16,7 @@ export default function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, password }),
+      body: JSON.stringify({ email: email, password: password }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -37,12 +36,12 @@ export default function App() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        fullname,
-        email,
-        password,
-        phone,
-        confirmpassword,
-        address,
+        fullname: fullname,
+        email: email,
+        password: password,
+        confirmpassword: confirmpassword,
+        phone: phone,
+        address: address,
       }),
     })
       .then((response) => response.json())
@@ -64,7 +63,7 @@ export default function App() {
           type="email"
           placeholder="Enter your name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           id="password"
