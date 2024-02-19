@@ -25,7 +25,7 @@ export default function RegisterPage() {
       return;
     }
 
-    fetch("http://localhost:8080/auth/signup", {
+    fetch("https://srmacaback.fly.dev/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
