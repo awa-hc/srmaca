@@ -2,6 +2,16 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
+import ProductPage from "./pages/[...products]/[title]";
+import Navbar from "./Components/Navbar";
+import TestoPlus from "./pages/buy/TestoPlus";
+import Cartilago from "./pages/buy/Cartilago";
+import MacaNegra from "./pages/buy/MacaNegra";
+import Confirm from "./pages/buy/Confirm";
+import Psyllium from "./pages/buy/Psyllium";
+import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/Profilepage";
+
 export default function App() {
   const routes = [
     {
@@ -9,39 +19,46 @@ export default function App() {
       element: <HomePage />,
     },
     {
+      path: "/register",
+      element: <RegisterPage />,
+    },
+    {
       path: "/login",
       element: <LoginPage />,
     },
+    {
+      path: "/products/:title",
+      element: <ProductPage />,
+    },
+    {
+      path: "/buy/testo-plus",
+      element: <TestoPlus />,
+    },
+    {
+      path: "/buy/cartilago",
+      element: <Cartilago />,
+    },
+    {
+      path: "/buy/maca-negra",
+      element: <MacaNegra />,
+    },
+    {
+      path: "/buy/psyllium",
+      element: <Psyllium />,
+    },
+    {
+      path: "/buy/confirm",
+      element: <Confirm />,
+    },
+    {
+      path: "/profile",
+      element: <ProfilePage />,
+    },
   ];
-
-  // function register(event) {
-  //   event.preventDefault(); // Prevenir la recarga de la página
-  //   fetch("https://srmacaback.fly.dev/auth/signup", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       fullname: fullname,
-  //       email: email,
-  //       password: password,
-  //       confirmpassword: confirmpassword,
-  //       phone: phone,
-  //       address: address,
-  //     }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       // Aquí podrías redirigir al usuario o manejar la respuesta de la API como necesites
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
 
   return (
     <Router>
+      <Navbar />
       <Routes>
         {routes.map((route, index) => (
           <Route key={index} path={route.path} element={route.element} />

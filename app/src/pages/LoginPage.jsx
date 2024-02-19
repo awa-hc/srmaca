@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GetCookie } from "../utils/Cookie";
 export default function LoginPage() {
-  window.addEventListener("load", function () {
+  useEffect(() => {
     if (GetCookie("Auth")) {
       window.location.href = "/";
     }
@@ -11,7 +11,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   function login(event) {
     event.preventDefault();
-    fetch("https://srmacaback.fly.dev/auth/login", {
+    fetch("http://localhost:8080/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,6 +22,7 @@ export default function LoginPage() {
       .then((data) => {
         console.log(data);
         if (data.token) {
+          document.cookie = `Auth=${data.token}; max-age=3600; path=/`;
           window.location.href = "/";
         }
         if (data.error) {

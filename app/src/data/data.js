@@ -1,7 +1,9 @@
 export const data = [
   {
     id: 1,
-    imagebg: "/images/imagebgtest.png",
+    // imagebg: "/images/imagebgtest.png",
+    imagebg: `${process.env.PUBLIC_URL}/images/imagebgtest.png`,
+
     title: "testo-plus",
     price: 210,
     transitionname: "ttesto",
@@ -11,8 +13,8 @@ export const data = [
     detailstitle: "Testo Plus",
     description: "Elevador de testosterona natural",
     pilsData: {
-      principal: "/images/testoplus/testo_principal.png",
-      pils1: "/images/pildora1.png",
+      principal: `${process.env.PUBLIC_URL}/images/testoplus/testo_principal.png`,
+      pils1: `${process.env.PUBLIC_URL}/images/pildora1.png`,
       pils2: "/images/pildora2.png",
       transitionname: "testo",
       transitionpils1: "testopils1",
