@@ -1,0 +1,18 @@
+export default function DetailsLayout({ bgstart, title, children, textcolor }) {
+  return (
+    <main
+      class={` flex bg-gradient-to-b ${bgstart} to-black h-max min-h-screen overflow-hidden justify-center items-center z-0  snap-center`}
+    >
+      <main class="absolute z-10 -translate-x-[100px] xl:-translate-x-[600px]">
+        <h1
+          class={`select-none text-[50px] md:text-[110px] xl:text-[200px] font-extrabold  bg-clip-text text-transparent bg-gradient-to-b ${textcolor} to-[#111111]  uppercase `}
+        >
+          {title}
+        </h1>
+      </main>
+      <section class="grid grid-cols-1 md:grid-cols-2 justify-items-center  md:mt-20 xl:mt-0 items-center w-screen">
+        {children}
+      </section>
+    </main>
+  );
+}
