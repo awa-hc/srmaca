@@ -58,7 +58,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="pt-20 md:pt-0 min-h-screen bg-gradient-to-br from-[#185B69] to-black flex flex-col justify-center items-center text-white mt-24">
+    <div className="pt-20 md:pt-0 min-h-screen bg-gradient-to-br from-[#185B69] to-black flex flex-col justify-center items-center text-white">
       <section className="text-2xl font-bold">
         Unete a la fuerza de SrMaca!
       </section>
