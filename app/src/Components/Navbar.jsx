@@ -7,6 +7,14 @@ export default function Navbar() {
   const [userLogged, setUserLogged] = useState(false);
   const [open, setOpen] = useState(false);
 
+    // State para controlar si está abierto
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Función para cambiar el state
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  }
+
   useEffect(() => {
     const user = GetCookie("Auth");
     if (user) {
@@ -21,33 +29,34 @@ export default function Navbar() {
   }
 
   return (
-    <section class="flex md:m-0 md:gap-0 items-center justify-center top-0 fixed w-screen max-h-20 min-h-20 h-20 max-w-screen z-40 text-white px-10 py-5 md:px-24 md:py-4 uppercase font-bold font-sans rounded-2xl">
-      <nav class="bg-transparent">
-        <div class="w-screen flex flex-wrap items-center px-4 py-2 shadow-xl">
+    <section className="flex md:m-0 md:gap-0 items-center justify-center top-0 fixed w-screen max-h-20 min-h-20 h-20 max-w-screen z-40 text-white px-10 py-5 md:px-24 md:py-4 uppercase font-bold font-sans rounded-2xl">
+      <nav className="bg-transparent backdrop-blur-md">
+        <div className="w-screen flex flex-wrap items-center px-4 py-2 shadow-xl">
           <a
             href="/"
-            class="flex items-center w-max mr-auto md:w-1/3 md:mr-0 z-10"
+            className="flex items-center w-max mr-auto md:w-1/3 md:mr-0 z-10"
           >
             <img
               src="/images/logosrmaca.png"
-              class="h-8 mr-3"
+              className="h-8 mr-3"
               alt="srmaca Logo"
             />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               SrMaca.
             </span>
           </a>
           <button
+            onClick={toggleMenu}
             id="navbar-toggle"
             data-collapse-toggle="navbar-default"
             type="button"
-            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             aria-controls="navbar-default"
             aria-expanded="false"
           >
-            <span class="sr-only">Open main menu</span>
+            <span className="sr-only">Open main menu</span>
             <svg
-              class="w-5 h-5"
+              className="w-5 h-5"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -55,20 +64,20 @@ export default function Navbar() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               ></path>
             </svg>
           </button>
-          <div class="hidden md:block w-full md:w-2/3 px-5" id="navbar-default">
-            <div class="flex flex-col md:flex-row md:justify-evently w-full p-4 md:p-0 mt-4 rounded-lg md:space-x-8 md:mt-0 md:border-0">
-              <ul class="md:flex mr-auto">
+          <div className="hidden md:block w-full md:w-2/3 px-5" id="navbar-default">
+            <div className="flex flex-col md:flex-row md:justify-evently w-full p-4 md:p-0 mt-4 rounded-lg md:space-x-8 md:mt-0 md:border-0">
+              <ul className="md:flex mr-auto">
                 <li>
                   <a
                     href="/"
-                    class="block py-2 pl-3 pr-4 text-white rounded bg-transparent"
+                    className="block py-2 pl-3 pr-4 text-white rounded bg-transparent"
                     aria-current="page"
                   >
                     INICIO
@@ -77,7 +86,7 @@ export default function Navbar() {
                 <li>
                   <a
                     href="/about"
-                    class="block py-2 pl-3 pr-4 text-white rounded bg-transparent"
+                    className="block py-2 pl-3 pr-4 text-white rounded bg-transparent"
                   >
                     SOBRE NOSOTROS
                   </a>
@@ -88,13 +97,13 @@ export default function Navbar() {
                     id="product-toggle"
                     data-collapse-toggle="product-default"
                     type="button"
-                    class="block py-2 pl-3 pr-4 text-white rounded bg-transparent"
+                    className="block py-2 pl-3 pr-4 text-white rounded bg-transparent"
                   >
                     PRODUCTOS
                   </button>
 
                   <ul
-                    class="hidden w-full md:w-auto absolute [&>li]:py-4 bg-black bg-opacity-90 backdrop-blur-2xl border borderwhite shadow-lg border-white rounded-lg text-white [&>li]:p-4"
+                    className="hidden w-full md:w-auto absolute [&>li]:py-4 bg-black bg-opacity-90 backdrop-blur-2xl border borderwhite shadow-lg border-white rounded-lg text-white [&>li]:p-4"
                     id="products-default"
                   >
                     <li>
@@ -114,14 +123,14 @@ export default function Navbar() {
                 <li>
                   <a
                     href="/contact"
-                    class="block py-2 pl-3 pr-4 text-white rounded bg-transparent"
+                    className="block py-2 pl-3 pr-4 text-white rounded bg-transparent"
                   >
                     CONTACTO
                   </a>
                 </li>
               </ul>
               <section
-                class="flex gap-4 ml-auto justify-center items-center"
+                className="flex gap-4 ml-auto justify-center items-center"
                 id="authsection"
               >
                 {userLogged ? (
@@ -129,17 +138,17 @@ export default function Navbar() {
                     <Cart />
                     <button
                       onClick={() => setOpen(!open)}
-                      class="bg-transparent px-4 py-2 rounded-lg "
+                      className="bg-transparent px-4 py-2 rounded-lg "
                     >
                       Mi Perfil
                       {open && (
                         <ul className="absolute border border-white rounded-lg text-left ">
-                          <li class="bg-tranparent px-4 py-2 rounded-lg hover:bg-blue-500 transition-colors ease-linear duration-300">
+                          <li className="bg-tranparent px-4 py-2 rounded-lg hover:bg-blue-500 transition-colors ease-linear duration-300">
                             <a href="/profile">Mi Perfil</a>
                           </li>
                           <li
                             onClick={Logout}
-                            class="px-4 py-2 rounded-lg hover:bg-red-500 transition-colors ease-linear duration-300 "
+                            className="px-4 py-2 rounded-lg hover:bg-red-500 transition-colors ease-linear duration-300 "
                           >
                             Cerrar Sesion
                           </li>
@@ -155,7 +164,7 @@ export default function Navbar() {
                     >
                       Registro
                     </a>
-                    <a href="/login" class="bg-green-500 px-4 py-2 rounded-lg">
+                    <a href="/login" className="bg-green-500 px-4 py-2 rounded-lg">
                       Login
                     </a>
                   </>
@@ -165,6 +174,55 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
+      {
+  menuOpen && (
+    <ul className="absolute right-4 top-20 backdrop-blur-md text-white rounded-2xl" 
+          style={{
+            border: '2px solid rgba(255, 255, 255, 0.4)',
+            background: 'rgba(255, 255, 255, 0.1)'   
+          }}>
+      <li>
+        <a className="block py-2 px-4 uppercase" href="/">
+          Inicio
+        </a>
+      </li>
+        <li>
+        <a className="block py-2 px-4 uppercase" href="/nosotros">
+          Nosotros
+        </a>
+        </li>
+      <li>
+        <details>
+          <summary className="py-2 px-4 uppercase">
+            Productos  
+          </summary>
+          <ul className="">
+                    <li className="block text-sm py-1 px-6">
+                      <a href="/buy/testo-plus">Testo Plus</a>
+                    </li>
+                    <li className="block text-sm py-1 px-6">
+                      <a href="/buy/cartilago">Cartilago</a>
+                    </li>
+                    <li className="block text-sm py-1 px-6">
+                      <a href="/buy/maca-negra">Maca Negra</a>
+                    </li>
+                    <li className="block text-sm py-1 px-6">
+                      <a href="/buy/psyllium">Psyllium</a>
+                    </li>
+          </ul>
+        </details>
+      </li>
+      <li>
+                  <a
+                    href="/contact"
+                    className="block py-2 px-4 uppercase"
+                  >
+                    CONTACTO
+                  </a>
+      </li>
+    </ul>
+  )
+}
     </section>
   );
 }

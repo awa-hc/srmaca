@@ -2,7 +2,7 @@ export default function DetailsLayout({ bgstart, title, children, textcolor }) {
   return (
     <main
       id={title}
-      className={`flex flex-col bg-gradient-to-b ${bgstart} to-black h-max min-h-screen overflow-hidden justify-center items-center z-0  snap-center`}
+      className={`flex flex-col bg-gradient-to-b ${bgstart} to-black h-max min-h-screen overflow-hidden justify-center items-center z-0  snap-center`} style={{paddingTop: "4.5rem"}}
     >
       <main className="absolute z-10 -translate-x-[100px] xl:-translate-x-[600px]">
         <h1
