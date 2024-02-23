@@ -133,8 +133,8 @@ const Confirm = () => {
   };
 
   return (
-    <section class="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen w-screen flex flex-col pt-20 md:mt-0  items-center justify-center px-5">
-      <h2 class="title-font text-white tracking-widest">Confirmar Compra</h2>
+    <section className="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen w-screen flex flex-col pt-20 md:mt-0  items-center justify-center px-5">
+      <h2 className="title-font text-white tracking-widest">Confirmar Compra</h2>
       {message ? (
         <div className="absolute h-1/2 w-screen flex flex-col items-center justify-center text-white backdrop-blur-xl">
           <div className="bg-green-500/45 w-max px-4 py-2 text-center rounded-lg">
@@ -154,21 +154,21 @@ const Confirm = () => {
       ) : (
         <div></div>
       )}
-      <div class="mx-auto flex flex-col gap-16 md:flex-row items-center justify-center w-full">
+      <div className="mx-auto flex flex-col gap-16 md:flex-row items-center justify-center w-full">
         <form
-          class="w-full md:w-1/2 flex flex-col items-center justify-center"
+          className="w-full md:w-1/2 flex flex-col items-center justify-center"
           onSubmit={handleSubmit}
         >
-          <div class="flex flex-col w-full">
+          <div className="flex flex-col w-full">
             <label
-              for="paymentMethod"
-              class="text-white
+              htmlFor="paymentMethod"
+              className="text-white
                 text-lg font-semibold"
             >
               Método de Pago
             </label>
             <select
-              class="bg-white text-black w-full p-2 rounded-md"
+              className="bg-white text-black w-full p-2 rounded-md"
               id="paymentMethod"
               value={paymentMethod}
               onChange={handlePaymentMethodChange}
@@ -177,7 +177,7 @@ const Confirm = () => {
               <option value="transfer">Transferencia</option>
             </select>
             {paymentMethod === "cash" && (
-              <div class="flex flex-col w-full">
+              <div className="flex flex-col w-full">
                 <h2>Rellena este formulario</h2>
                 <span>Describe tu compra</span>
                 <input
@@ -206,7 +206,7 @@ const Confirm = () => {
                   </div>
                 </div>
 
-                <label for="receipt" class="text-white text-lg font-semibold">
+                <label htmlFor="receipt" className="text-white text-lg font-semibold">
                   1. Sube tu comprobante de Pago
                 </label>
                 <input
@@ -225,7 +225,7 @@ const Confirm = () => {
                 />
               </div>
             )}
-            <label class="inline-flex items-center cursor-pointer">
+            <label className="inline-flex items-center cursor-pointer">
               <input
                 type="checkbox"
                 id="delivery"
@@ -234,7 +234,7 @@ const Confirm = () => {
                 value={delivery}
                 onChange={(event) => setDelivery(event.target.checked)}
               />
-              <span class="w-4 h-4 inline-block mr-2 rounded border border-gray-300 bg-white peer-checked:bg-green-600 peer-checked:border-white"></span>
+              <span className="w-4 h-4 inline-block mr-2 rounded border border-gray-300 bg-white peer-checked:bg-green-600 peer-checked:border-white"></span>
               Entrega en tu Direccion?{" "}
               <span className="text-xs ml-4 italic  text-white">
                 {userDirection}

@@ -9,6 +9,7 @@ import Cartilago from "./pages/buy/Cartilago";
 import MacaNegra from "./pages/buy/MacaNegra";
 import Confirm from "./pages/buy/Confirm";
 import Psyllium from "./pages/buy/Psyllium";
+import Combo1 from "./pages/buy/Combo1";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/Profilepage";
 
@@ -45,6 +46,10 @@ export default function App() {
     {
       path: "/buy/psyllium",
       element: <Psyllium />,
+    },
+    {
+      path: "/buy/Combo1",
+      element: <Combo1 />,
     },
     {
       path: "/buy/confirm",
