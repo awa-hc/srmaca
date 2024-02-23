@@ -6,6 +6,7 @@ import { useEffect } from "react";
 export default function Navbar() {
   const [userLogged, setUserLogged] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
     // State para controlar si está abierto
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,9 +30,9 @@ export default function Navbar() {
   }
 
   return (
-    <section className="flex md:m-0 md:gap-0 items-center justify-center top-0 fixed w-screen max-h-20 min-h-20 h-20 max-w-screen z-40 text-white px-10 py-5 md:px-24 md:py-4 uppercase font-bold font-sans rounded-2xl">
+    <section className="flex md:m-0 md:gap-0 items-center justify-center top-0 fixed w-screen max-h-14 min-h-14 h-14 max-w-screen z-40 text-white px-4 py-5 md:px-24 md:py-4 uppercase font-bold font-sans rounded-2xl">
       <nav className="bg-transparent backdrop-blur-md">
-        <div className="w-screen flex flex-wrap items-center px-4 py-2 shadow-xl">
+        <div className="w-screen flex flex-wrap items-center px-2 py-2 shadow-xl">
           <a
             href="/"
             className="flex items-center w-max mr-auto md:w-1/3 md:mr-0 z-10"
@@ -91,19 +92,19 @@ export default function Navbar() {
                     SOBRE NOSOTROS
                   </a>
                 </li>
-
                 <li>
                   <button
                     id="product-toggle"
                     data-collapse-toggle="product-default"
                     type="button"
                     className="block py-2 pl-3 pr-4 text-white rounded bg-transparent"
+                    onClick={() => setIsOpen(!isOpen)}
                   >
                     PRODUCTOS
                   </button>
-
+                  <div className={`transition-all duration-300 origin-top ${isOpen ? '' : 'hidden'}`}>
                   <ul
-                    className="hidden w-full md:w-auto absolute [&>li]:py-4 bg-black bg-opacity-90 backdrop-blur-2xl border borderwhite shadow-lg border-white rounded-lg text-white [&>li]:p-4"
+                    className="w-full md:w-auto absolute [&>li]:py-4 bg-black bg-opacity-90 backdrop-blur-2xl border borderwhite shadow-lg border-white rounded-lg text-white [&>li]:p-4"
                     id="products-default"
                   >
                     <li>
@@ -119,6 +120,7 @@ export default function Navbar() {
                       <a href="/buy/psyllium">Psyllium</a>
                     </li>
                   </ul>
+                  </div>
                 </li>
                 <li>
                   <a
@@ -160,11 +162,21 @@ export default function Navbar() {
                   <>
                     <a
                       href="/register"
-                      className="bg-green-500 px-4 py-2 rounded-lg"
+                      className="text-white bg-transparent px-4 py-2 rounded-lg"
+                      style={{  
+                        border: '0.1em solid white',
+                        padding: '0.2rem 0.2rem',
+                        borderRadius: '0.5rem'
+                    }}
                     >
                       Registro
                     </a>
-                    <a href="/login" className="bg-green-500 px-4 py-2 rounded-lg">
+                    <a href="/login" className="text-white bg-transparent px-4 py-2 rounded-lg"
+                      style={{  
+                        border: '0.1em solid white',
+                        padding: '0.2rem 0.2rem',
+                        borderRadius: '0.5rem'
+                    }}>
                       Login
                     </a>
                   </>
