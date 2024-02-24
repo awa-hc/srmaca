@@ -12,6 +12,10 @@ import Psyllium from "./pages/buy/Psyllium";
 import Combo1 from "./pages/buy/Combo1";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/Profilepage";
+import Combo2 from "./pages/buy/Combo2";
+import Combo3 from "./pages/buy/Combo3";
+import Contact from "./pages/ContactPage";
+import About from "./pages/AboutPage";
 
 export default function App() {
   const routes = [
@@ -32,6 +36,14 @@ export default function App() {
       element: <ProductPage />,
     },
     {
+      path: "/contact",
+      element: <Contact />,
+    },
+    {
+      path: "/about",
+      element: <About />,
+    },
+    {
       path: "/buy/testo-plus",
       element: <TestoPlus />,
     },
@@ -50,6 +62,14 @@ export default function App() {
     {
       path: "/buy/Combo1",
       element: <Combo1 />,
+    },
+    {
+      path: "/buy/Combo2",
+      element: <Combo2 />,
+    },
+    {
+      path: "/buy/Combo3",
+      element: <Combo3 />,
     },
     {
       path: "/buy/confirm",

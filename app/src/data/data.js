@@ -1,4 +1,5 @@
 export const data = [
+  // Testo Plus
   {
     id: 1,
     // imagebg: "/images/imagebgtest.png",
@@ -79,7 +80,7 @@ export const data = [
       title:
         "Tejido que proporciona soporte a articulaciones y ligamentos en el cuerpo.",
       buttonbg1: "#fff",
-      buttonbg2: "#00E0FF",
+      buttonbg2: "#4c6e91",
       buttontc1: "black",
       buttontc2: "white",
       buttongo1: "products/cartilago",
@@ -180,7 +181,7 @@ export const data = [
       title:
         "Laxante 100% natural el cual aporta fibra en gran cantidad y multiples vitaminas al cuerpo.",
       buttonbg1: "#C0DDC8",
-      buttonbg2: "#2B9D6D",
+      buttonbg2: "#5b755c",
       buttontc1: "black",
       buttontc2: "white",
       buttongo1: "products/psyllium",
@@ -235,8 +236,8 @@ export const data = [
       buttonbg2: "#2B9D6D",
       buttontc1: "black",
       buttontc2: "white",
-      buttongo1: "products/Combo1",
-      buttongo2: "buy/Combo1",
+      buttongo1: "products/combo1",
+      buttongo2: "buy/combo1",
       buttontitle1: "conoce más",
       buttontitle2: "compra ya",
     },
@@ -245,7 +246,7 @@ export const data = [
     howworks:
       "Su principal funcion es mantener un balance en tu sistema hormonal y aportar energia extra para tus actividades diarias",
     ingredients: {
-      ingredient1: "Psyllium",
+      ingredient1: "Testo Plus",
     },
     comparation: {
       natural1: "sin contradicciones",
