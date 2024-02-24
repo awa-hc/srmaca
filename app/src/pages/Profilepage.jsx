@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
+import { GetCookie } from "../utils/Cookie";
 export default function ProfilePage() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userVouchers, setUserVouchers] = useState([]);
 
   useEffect(() => {
     getuserVouchers();
+    getUser();
+
+    if (GetCookie("Auth") === null) {
+      window.location.href = "/login";
+    }
   }, []);
 
   function getuserVouchers() {
@@ -14,6 +20,7 @@ export default function ProfilePage() {
       method: "GET",
       headers: {
         "Content-Type": "application",
+        Authorization: `Bearer ${localStorage.getItem("user")}`,
       },
       credentials: "include",
     })
@@ -21,8 +28,30 @@ export default function ProfilePage() {
       .then((data) => {
         console.log(data);
         data.CreatedAt = new Date(data.CreatedAt).toLocaleString();
-
         setUserVouchers(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError("Error al obtener los vouchers");
+        setLoading(false);
+      });
+  }
+
+  function getUser() {
+    fetch("http://localhost:8080/user/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application",
+        Authorization: `Bearer ${localStorage.getItem("user")}`,
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setUser(data);
+
         setLoading(false);
       })
       .catch((error) => {
@@ -46,48 +75,16 @@ export default function ProfilePage() {
             </div>
 
             <div class="mt-16">
-              <h1 class="font-bold text-center text-3xl text-gray-900">doas</h1>
+              <h1 class="font-bold text-center text-3xl text-gray-900">
+                {user && (user.user ? user.user.username : "User")}
+              </h1>
+              ;
               <p class="text-center text-sm text-gray-400 font-medium">
-                soicnsioc
+                {user && (user.user ? user.user.email : "Email")}
               </p>
               <p>
                 <span></span>
               </p>
-              {/* <div class="my-5 px-6">
-                <a
-                  href="#"
-                  class="text-gray-200 block rounded-lg text-center font-medium leading-6 px-6 py-3 bg-gray-900 hover:bg-black hover:text-white"
-                >
-                  Connect with <span class="font-bold">@pantazisoft</span>
-                </a>
-              </div> */}
-              {/* <div class="flex justify-between items-center my-5 px-6">
-                <a
-                  href=""
-                  class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
-                >
-                  Facebook
-                </a>
-                <a
-                  href=""
-                  class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
-                >
-                  Twitter
-                </a>
-                <a
-                  href=""
-                  class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
-                >
-                  Instagram
-                </a>
-                <a
-                  href=""
-                  class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
-                >
-                  Email
-                </a>
-              </div> */}
-
               <div class="w-full">
                 <h3 class="font-medium text-gray-900 text-left px-6">
                   Recent activites

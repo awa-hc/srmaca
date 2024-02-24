@@ -16,6 +16,7 @@ import Combo2 from "./pages/buy/Combo2";
 import Combo3 from "./pages/buy/Combo3";
 import Contact from "./pages/ContactPage";
 import About from "./pages/AboutPage";
+import AdminPage from "./pages/AdminPage";
 
 export default function App() {
   const routes = [
@@ -78,6 +79,10 @@ export default function App() {
     {
       path: "/profile",
       element: <ProfilePage />,
+    },
+    {
+      path: "/admin",
+      element: <AdminPage />,
     },
   ];
 

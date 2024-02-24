@@ -11,7 +11,10 @@ const Confirm = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  let productglosa = "";
+
   useEffect(() => {
+    setGlosa("");
     let maca = parseInt(localStorage.getItem("MacaNegraPrice"), 10) || 0;
     let Cartilago = parseInt(localStorage.getItem("CartilagoPrice"), 10) || 0;
     let TestoPlus = parseInt(localStorage.getItem("TestoPlusPrice"), 10) || 0;
@@ -50,13 +53,17 @@ const Confirm = () => {
     const products = initialproducts.filter((product) => product.quantity > 0);
 
     setProducts(products);
+    console.log(products);
+
+    products.map((product) => {
+      console.log(product);
+      productglosa += `${product.quantity} ${product.name} `;
+    });
+    setGlosa(productglosa);
 
     const total = maca + Cartilago + TestoPlus + Psyllium;
     setTotalPrice(total);
-
-    GetUserDirection().then((data) => {
-      setUserDirection(data.user.address);
-    });
+    GetUserDirection();
   }, []);
 
   const handlePaymentMethodChange = (event) => {
@@ -92,7 +99,6 @@ const Confirm = () => {
       .then((response) => response.json())
       .then((data) => {
         setUserDirection(data.user.address);
-        return data;
       })
       .catch((error) => {
         console.error(error);
@@ -111,7 +117,7 @@ const Confirm = () => {
       delivery,
     };
 
-    const response = await fetch("https://srmacaback.fly.dev/voucher/create", {
+    const response = await fetch("http://localhost:8080/voucher/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -134,7 +140,9 @@ const Confirm = () => {
 
   return (
     <section className="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen w-screen flex flex-col pt-20 md:mt-0  items-center justify-center px-5">
-      <h2 className="title-font text-white tracking-widest">Confirmar Compra</h2>
+      <h2 className="title-font text-white tracking-widest">
+        Confirmar Compra
+      </h2>
       {message ? (
         <div className="absolute h-1/2 w-screen flex flex-col items-center justify-center text-white backdrop-blur-xl">
           <div className="bg-green-500/45 w-max px-4 py-2 text-center rounded-lg">
@@ -206,7 +214,10 @@ const Confirm = () => {
                   </div>
                 </div>
 
-                <label htmlFor="receipt" className="text-white text-lg font-semibold">
+                <label
+                  htmlFor="receipt"
+                  className="text-white text-lg font-semibold"
+                >
                   1. Sube tu comprobante de Pago
                 </label>
                 <input
