@@ -36,8 +36,8 @@ function Contact() {
 
   return (
     <div className="bg-black text-white">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col text-center w-full mb-12">
+      <div className="container px-5 py-16 mx-auto">
+        <div className="flex flex-col text-center w-full mb-5">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4">
             Contactanos
           </h1>
@@ -48,6 +48,114 @@ function Contact() {
 
         <form onSubmit={handleSubmit}>
           {/* Form fields */}
+          <div className='flex gap-4 text-center justify-center'>
+          {/* Nombre */}
+          <div className="mb-4" style={{width: '35vw'}}>
+              <label 
+                className="block text-white font-bold mb-2"
+                htmlFor="name"
+              >
+                Nombre
+              </label>
+              <input 
+                className="rounded w-full py-2 px-3 text-white focus:outline-none focus:shadow-outline bg-transparent"
+                id="name"
+                type="text"
+                placeholder="Tu nombre"
+                style={{
+                  border: "0.1em solid white",
+                  padding: "0.3rem 0.3rem",
+                  borderRadius: "0.5rem",
+                }}
+              />
+            </div>
+            {/* Telefono */}
+            <div className="mb-4" style={{width: '25vw'}}>
+              <label
+                className="block text-white font-bold mb-2"  
+                htmlFor="phone"
+              >
+                Teléfono
+              </label>
+              <input
+                className="rounded w-full py-2 px-3 text-white focus:outline-none focus:shadow-outline bg-transparent"
+                id="phone"
+                type="text" 
+                placeholder="Tu teléfono"
+                style={{
+                  border: "0.1em solid white",
+                  padding: "0.3rem 0.3rem",
+                  borderRadius: "0.5rem",
+                }}
+              />
+            </div>
+            </div>
+            {/* Correo Electronico */}
+            <div className="flex text-center justify-center">
+            <div className="mb-4" style={{width: '61.5vw'}}>
+              <label
+                className="block text-white font-bold mb-2"  
+                htmlFor="Correo"
+              >
+                Correo Electrónico
+              </label>
+              <input
+                className="rounded w-full py-2 px-3 text-white focus:outline-none focus:shadow-outline bg-transparent"
+                id="email"
+                type="text" 
+                placeholder="Tu Correo Electrónico"
+                style={{
+                  border: "0.1em solid white",
+                  padding: "0.3rem 0.3rem",
+                  borderRadius: "0.5rem",
+                }}
+              />
+            </div>
+            </div>
+            {/* Asunto */}
+            <div className="flex text-center justify-center">
+            <div className="mb-4" style={{width: '61.5vw'}}>
+              <label
+                className="block text-white font-bold mb-2"  
+                htmlFor="Correo"
+              >
+                Asunto
+              </label>
+              <input
+                className="rounded w-full py-2 px-3 text-white focus:outline-none focus:shadow-outline bg-transparent"
+                id="subject"
+                type="text" 
+                placeholder="El Asunto"
+                style={{
+                  border: "0.1em solid white",
+                  padding: "0.3rem 0.3rem",
+                  borderRadius: "0.5rem",
+                }}
+              />
+            </div>
+            </div>
+            {/* Mensaje */}
+            <div className="flex text-center justify-center">
+            <div className="mb-4" style={{width: '61.5vw'}}>
+              <label
+                className="block text-white font-bold mb-2"  
+                htmlFor="Mensaje"
+              >
+                Mensaje
+              </label>
+              <textarea
+                className="rounded w-full py-2 px-3 text-white focus:outline-none focus:shadow-outline bg-transparent min-h-16 max-h-52"
+                id="message"
+                type="text" 
+                placeholder="Escribe aqui lo que quieres consultar"
+                style={{
+                  border: "0.1em solid white",
+                  padding: "0.3rem 0.3rem",
+                  borderRadius: "0.5rem",
+                }}
+              />
+            </div>
+            </div>
 
           <button 
             type="submit"
@@ -56,43 +164,39 @@ function Contact() {
           </button>
         </form>
 
-        <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-          <a class="text-[#185B69]">info@perfect-systems.net</a>
-          <p class="leading-normal my-5">
-            Edificio Castelo branco sobre el 2 anillo y avenida libertad
-            <br />Santa Cruz de la Sierra, Bolivia
-          </p>
+        <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
+          <a className="text-[#185B69] hover:text-cyan-500" href="mailto:info@srmaca.com">info@srmaca.com</a>
           <a
-            class="text-[#18B69] flex items-center justify-center"
-            href="https://wa.link/g4wyjl"
-            >O escribenos por whatsapp al numero +591 71385328
+            className="text-[#18B69] flex items-center justify-center"
+            >Escribenos por Whatsapp al numero 
+            <a className='text-[#18B69] hover:text-cyan-500' href="https://wa.link/g4wyjl" target="_blank">
+              +59171385328</a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-brand-whatsapp"
+              className="icon icon-tabler icon-tabler-brand-whatsapp"
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               stroke="currentColor"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
                 d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path><path
                 d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"
-              ></path></svg
-            >
+              ></path></svg>
           </a>
 
           <br />
-          <span class="inline-flex">
-            <a class="text-gray-500">
+          <span className="inline-flex">
+            <a className="text-gray-500">
               <svg
                 fill="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-5 h-5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="w-5 h-5"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -100,13 +204,13 @@ function Contact() {
                 ></path>
               </svg>
             </a>
-            <a class="ml-4 text-gray-500">
+            <a className="ml-4 text-gray-500">
               <svg
                 fill="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-5 h-5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="w-5 h-5"
                 viewBox="0 0 24 24"
               >
                 <path
@@ -114,14 +218,14 @@ function Contact() {
                 ></path>
               </svg>
             </a>
-            <a class="ml-4 text-gray-500">
+            <a className="ml-4 text-gray-500">
               <svg
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-5 h-5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="w-5 h-5"
                 viewBox="0 0 24 24"
               >
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
@@ -130,13 +234,13 @@ function Contact() {
                 ></path>
               </svg>
             </a>
-            <a class="ml-4 text-gray-500">
+            <a className="ml-4 text-gray-500">
               <svg
                 fill="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-5 h-5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="w-5 h-5"
                 viewBox="0 0 24 24"
               >
                 <path
