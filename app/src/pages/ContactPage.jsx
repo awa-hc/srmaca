@@ -3,10 +3,11 @@ import Swal from 'sweetalert2';
 
 function Contact() {
 
-  const name = useState('');
-  const email = useState('');
-  const phone = useState('');
-  const message = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,6 +15,7 @@ function Contact() {
       name,
       email,
       phone,
+      subject,
       message
     };
     console.log(datos);
@@ -71,6 +73,8 @@ function Contact() {
                 id="name"
                 type="text"
                 placeholder="Tu nombre"
+                value={name}
+                onChange={(e)=> setName(e.target.value)}
                 style={{
                   border: "0.1em solid white",
                   padding: "0.3rem 0.3rem",
@@ -92,6 +96,8 @@ function Contact() {
                 type="tel"
                 pattern="^\d+$"
                 placeholder="Tu teléfono"
+                value={phone}
+                onChange={(e)=> setPhone(e.target.value)}
                 style={{
                   border: "0.1em solid white",
                   padding: "0.3rem 0.3rem",
@@ -114,6 +120,8 @@ function Contact() {
                 id="email"
                 type="text" 
                 placeholder="Tu Correo Electrónico"
+                value={email}
+                onChange={(e)=> setEmail(e.target.value)}
                 style={{
                   border: "0.1em solid white",
                   padding: "0.3rem 0.3rem",
@@ -136,6 +144,8 @@ function Contact() {
                 id="subject"
                 type="text" 
                 placeholder="El Asunto"
+                value={subject}
+                onChange={(e)=> setSubject(e.target.value)}
                 style={{
                   border: "0.1em solid white",
                   padding: "0.3rem 0.3rem",
@@ -158,6 +168,8 @@ function Contact() {
                 id="message"
                 type="text" 
                 placeholder="Escribe aqui lo que quieres consultar"
+                value={message}
+                onChange={(e)=> setMessage(e.target.value)}
                 style={{
                   border: "0.1em solid white",
                   padding: "0.3rem 0.3rem",
