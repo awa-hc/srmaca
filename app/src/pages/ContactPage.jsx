@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 function Contact() {
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const name = useState('');
+  const email = useState('');
+  const phone = useState('');
+  const message = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    
     const datos = {
       name,
       email,
+      phone,
       message
     };
-
     console.log(datos);
-
     fetch('https://srmacaback.fly.dev/email/contact', {
       method: 'POST',
       headers: {
@@ -27,11 +27,20 @@ function Contact() {
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
+      Swal.fire({
+        title: "Mensaje Enviado!",
+        text: "Se ha enviado el mensaje correctamente",
+        icon: "success"
+      });
     })
     .catch(error => {
       console.error('Error:', error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Algo salio mal al enviar el mensaje, disculpanos y prueba nuevamente por favor!"
+      });
     });
-
   }
 
   return (
@@ -166,11 +175,10 @@ function Contact() {
 
         <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
           <a className="text-[#185B69] hover:text-cyan-500" href="mailto:info@srmaca.com">info@srmaca.com</a>
-          <a
-            className="text-[#18B69] flex items-center justify-center"
-            >Escribenos por Whatsapp al numero 
-            <a className='text-[#18B69] hover:text-cyan-500' href="https://wa.link/g4wyjl" target="_blank">
-              +59171385328</a>
+            <p className="text-[#18B69] flex items-center justify-center">
+              Escribenos por Whatsapp al numero <a className='text-[#18B69] hover:text-cyan-500' href="https://wa.link/g4wyjl" target="_blank" rel="noreferrer">
+              +59171385328
+              </a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon icon-tabler icon-tabler-brand-whatsapp"
@@ -186,11 +194,11 @@ function Contact() {
                 d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path><path
                 d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"
               ></path></svg>
-          </a>
+          </p>
 
           <br />
           <span className="inline-flex">
-            <a className="text-gray-500">
+            <p className="text-gray-500">
               <svg
                 fill="currentColor"
                 strokeLinecap="round"
@@ -203,8 +211,8 @@ function Contact() {
                   d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
                 ></path>
               </svg>
-            </a>
-            <a className="ml-4 text-gray-500">
+            </p>
+            <p className="ml-4 text-gray-500">
               <svg
                 fill="currentColor"
                 strokeLinecap="round"
@@ -217,8 +225,8 @@ function Contact() {
                   d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
                 ></path>
               </svg>
-            </a>
-            <a className="ml-4 text-gray-500">
+            </p>
+            <p className="ml-4 text-gray-500">
               <svg
                 fill="none"
                 stroke="currentColor"
@@ -233,8 +241,8 @@ function Contact() {
                   d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
                 ></path>
               </svg>
-            </a>
-            <a className="ml-4 text-gray-500">
+            </p>
+            <p className="ml-4 text-gray-500">
               <svg
                 fill="currentColor"
                 strokeLinecap="round"
@@ -247,7 +255,7 @@ function Contact() {
                   d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
                 ></path>
               </svg>
-            </a>
+            </p>
           </span>
         </div>
       </div>
