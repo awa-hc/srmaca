@@ -8,7 +8,7 @@ function Contact() {
   const phone = useState('');
   const message = useState('');
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const datos = {
       name,
