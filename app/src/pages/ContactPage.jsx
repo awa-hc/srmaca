@@ -33,7 +33,9 @@ function Contact() {
         title: "Mensaje Enviado!",
         text: "Se ha enviado el mensaje correctamente",
         icon: "success"
-      });
+      }).then(() => {
+        location.reload();
+      });;
     })
     .catch(error => {
       console.error('Error:', error);
