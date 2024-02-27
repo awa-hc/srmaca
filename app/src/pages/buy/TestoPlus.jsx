@@ -46,14 +46,12 @@
 		<div className="container px-5 py-14 mx-auto ">
 			<div className="lg:w-4/5 mx-auto flex flex-wrap">
 			<div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 flex flex-col justify-center  mb-6 lg:mb-0">
-				<h2 className="title-font text-white tracking-widest">Psyllium</h2>
+				<h2 className="title-font text-white tracking-widest">Testo Plus</h2>
 				<h1 className="text-gray-200 text-3xl title-font font-medium mb-4">
-				El soporte ideal para tus articulaciones y ligamentos
+				Potenciador de energía y vitalidad.
 				</h1>
 				<p className="leading-relaxed mb-4">
-				laxantes 100% natural que aporta fibra en gran cantidad y
-				vitaminas al cuerpo, su aporte de fibra es ideal para combatir el
-				estreñimiento
+				Suplemento natural diseñado para respaldar la capacidad del cuerpo para mantener un equilibrio hormonal saludable. Su objetivo principal es promover niveles óptimos de energía y vitalidad masculina de manera natural.
 				</p>
 				<div className="flex border-t border-gray-200 py-2">
 				<span>Cápsulas :</span>
@@ -69,7 +67,7 @@
 					Cantidad :
 				</span>
 				<input
-					className="bg-transparent text-white border border-white rounded-md w-10 h-10 text-center"
+					className="bg-transparent text-white border border-white rounded-md w-1/4 md:w-20 appearance-none text-center mb-2"
 					type="number"
 					value={quantity}
 					onChange={(e) => setQuantity(Number(e.target.value))}

@@ -59,7 +59,7 @@ function Contact() {
           {/* Form fields */}
           <div className='flex gap-4 text-center justify-center'>
           {/* Nombre */}
-          <div className="mb-4" style={{width: '35vw'}}>
+          <div className="mb-4" style={{width: '30vw'}}>
               <label 
                 className="block text-white font-bold mb-2"
                 htmlFor="name"
@@ -79,7 +79,7 @@ function Contact() {
               />
             </div>
             {/* Telefono */}
-            <div className="mb-4" style={{width: '25vw'}}>
+            <div className="mb-4" style={{width: '30vw'}}>
               <label
                 className="block text-white font-bold mb-2"  
                 htmlFor="phone"
@@ -89,7 +89,8 @@ function Contact() {
               <input
                 className="rounded w-full py-2 px-3 text-white focus:outline-none focus:shadow-outline bg-transparent"
                 id="phone"
-                type="text" 
+                type="tel"
+                pattern="^\d+$"
                 placeholder="Tu teléfono"
                 style={{
                   border: "0.1em solid white",
