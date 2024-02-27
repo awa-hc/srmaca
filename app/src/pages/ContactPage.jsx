@@ -34,7 +34,7 @@ function Contact() {
         text: "Se ha enviado el mensaje correctamente",
         icon: "success"
       }).then(() => {
-        location.reload();
+        window.location.reload();
       });;
     })
     .catch(error => {
