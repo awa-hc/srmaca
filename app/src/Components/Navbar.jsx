@@ -199,7 +199,7 @@ export default function Navbar() {
         </a>
       </li>
         <li>
-        <a className="block py-2 px-4 uppercase" href="/nosotros">
+        <a className="block py-2 px-4 uppercase" href="/about">
           Nosotros
         </a>
         </li>
