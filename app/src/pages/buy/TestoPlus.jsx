@@ -1,27 +1,45 @@
 	import React, { useState } from "react";
-	// import "@fancyapps/ui/dist/fancybox.css"; // Asegúrate de instalar este paquete o incluir el CSS de otra manera
+	import { Fancybox } from "@fancyapps/ui";
 
-	// Componente para las miniaturas
-	const Thumbnail = ({ src, onClick }) => (
-	<img
-		className="thumbnail"
-		src={src}
-		alt="thumbnail"
-		onClick={() => onClick(src)}
-		style={{
-		width: "20vh",
-		height: "10vh",
-		objectFit: "contain",
-		objectPosition: "center",
-		marginBottom: "10px",
-		marginLeft: "10px",
-		cursor: "pointer",
-		}}
-	/>
+// Componente para las miniaturas
+/* const Thumbnail = ({ src, onClick }) => (
+	<div onClick={onClick}>
+		<img
+			className="thumbnail"
+			src={src}
+			alt="thumbnail"
+			style={{
+				width: "20vh",
+				height: "10vh",
+				objectFit: "contain",
+				objectPosition: "center",
+				marginBottom: "10px",
+				marginLeft: "10px",
+				cursor: "pointer",
+			}}
+		/>
+	</div>
+); */
+
+const Thumbnail = ({src}) => {
+
+	function clickHandler() {
+	  Fancybox.show([
+		{
+		  src: src,
+		  type: "image"  
+		}
+	  ]);
+	}
+  
+	return (
+	  <img src={src} onClick={clickHandler} />
 	);
+  }
 
 	// Componente principal
 	const TestoPlus = () => {
+	
 	const [mainImage, setMainImage] = useState("/images/testoplus/testo1.png");
 	const [quantity, setQuantity] = useState(1);
 	const pricePerItem = 210;
@@ -87,11 +105,11 @@
 				</a>
 				</div>
 			</div>
-
-			<div className="lg:w-1/2 w-full flex image-container">
+			{/* Imagenes y Fancybox */}
+			<div className="lg:w-1/2 w-full flex">
 				<img
 				alt="testo-plus"
-				className="main-image lg:w-full w-full lg:h-auto h-64 md:h-64 sm:h-48 object-cover lg:object-fill object-center rounded"
+				className="lg:w-full w-full lg:h-auto h-64 md:h-64 sm:h-48 object-cover lg:object-fill object-center rounded"
 				src={mainImage}
 				/>
 				<div className="thumbnails">
@@ -100,7 +118,7 @@
 					"/images/testoplus/testo2.png",
 					"/images/testoplus/testo3.png",
 				].map((src) => (
-					<Thumbnail key={src} src={src} onClick={changeMainImage} />
+					<Thumbnail key={src} src={src} onClick={() => changeMainImage(src)} />
 				))}
 				</div>
 			</div>
