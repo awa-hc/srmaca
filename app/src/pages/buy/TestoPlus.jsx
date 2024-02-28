@@ -1,16 +1,17 @@
 	import React, { useState } from "react";
 	import { Fancybox } from "@fancyapps/ui";
+	import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Componente para las miniaturas
-/* const Thumbnail = ({ src, onClick }) => (
+const Thumbnail = ({ src, onClick }) => (
 	<div onClick={onClick}>
 		<img
 			className="thumbnail"
 			src={src}
 			alt="thumbnail"
 			style={{
-				width: "20vh",
-				height: "10vh",
+				width: "10vw",
+				height: "10vw",
 				objectFit: "contain",
 				objectPosition: "center",
 				marginBottom: "10px",
@@ -19,23 +20,7 @@
 			}}
 		/>
 	</div>
-); */
-
-const Thumbnail = ({src}) => {
-
-	function clickHandler() {
-	  Fancybox.show([
-		{
-		  src: src,
-		  type: "image"  
-		}
-	  ]);
-	}
-  
-	return (
-	  <img src={src} onClick={clickHandler} />
-	);
-  }
+);
 
 	// Componente principal
 	const TestoPlus = () => {
@@ -61,7 +46,7 @@ const Thumbnail = ({src}) => {
 
 	return (
 		<div className="text-white bg-gradient-to-b from-[#294437] to-black flex items-center justify-center min-h-screen overflow-hidden">
-		<div className="container px-5 py-14 mx-auto ">
+		<div className="container px-5 py-16 mx-auto ">
 			<div className="lg:w-4/5 mx-auto flex flex-wrap">
 			<div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 flex flex-col justify-center  mb-6 lg:mb-0">
 				<h2 className="title-font text-white tracking-widest">Testo Plus</h2>
@@ -109,8 +94,17 @@ const Thumbnail = ({src}) => {
 			<div className="lg:w-1/2 w-full flex">
 				<img
 				alt="testo-plus"
-				className="lg:w-full w-full lg:h-auto h-64 md:h-64 sm:h-48 object-cover lg:object-fill object-center rounded"
+				className="h-64 w-64 object-cover object-center rounded"
 				src={mainImage}
+				onClick={() => Fancybox.show([{
+					src: mainImage,
+					type: "image"
+					}],
+					{
+						Toolbar: false,
+						closeButton: true
+					}
+					)}
 				/>
 				<div className="thumbnails">
 				{[
