@@ -1,41 +1,70 @@
-	import React, { useState } from "react";
-	import { Fancybox } from "@fancyapps/ui";
-	import "@fancyapps/ui/dist/fancybox/fancybox.css";
+import React, { useState } from "react";
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Componente para las miniaturas
-const Thumbnail = ({ src, onClick }) => (
+const Thumbnail = ({ image, onClick }) => (
 	<div onClick={onClick}>
 		<img
 			className="thumbnail"
-			src={src}
+			src={image.src}
 			alt="thumbnail"
 			style={{
-				width: "10vw",
-				height: "10vw",
+				width: "7vw",
+				height: "7vw",
 				objectFit: "contain",
 				objectPosition: "center",
-				marginBottom: "10px",
-				marginLeft: "10px",
+				marginBottom: "0.3rem",
+				marginLeft: "0.5rem",
 				cursor: "pointer",
 			}}
 		/>
 	</div>
 );
 
+// Imagenes de producto
+const images = [
+	{
+		src: "/images/testoplus/testo1.png",
+		active: true
+	},
+	{
+		src: "/images/testoplus/testo2.png",
+		active: false
+	},
+	{
+		src: "/images/testoplus/testo3.png",
+		active: false
+	}
+];
+
+// Mapeo de rutas de imagenes
+// const imagesForFancybox = images.map(src => ({
+// 	src
+// }));
+
 	// Componente principal
 	const TestoPlus = () => {
-	
-	const [mainImage, setMainImage] = useState("/images/testoplus/testo1.png");
+	const [mainImage, setMainImage] = useState(images[0].src);
 	const [quantity, setQuantity] = useState(1);
 	const pricePerItem = 210;
 
+	// Estado para guardar el mainImage actual
+	// const [currentImage, setCurrentImage] = useState(images[0]);
+	const currentImage = images.find(x => x.active);
+
+	// Funcion para setear imagen
+	function setActiveImage(image) {
+		// Desactivar todas
+		images.forEach(img => img.active = false); 
+		// Activar la seleccionada
+		image.active = true;
+		// Setear como principal  
+		setMainImage(image.src);
+	}
+
 	// Actualiza el precio total en función de la cantidad
 	const totalPrice = pricePerItem * quantity;
-
-	// Cambia la imagen principal al hacer clic en una miniatura
-	const changeMainImage = (src) => {
-		setMainImage(src);
-	};
 
 	// Función para manejar la compra (simplificada para el ejemplo)
 	const buyTesto = () => {
@@ -93,26 +122,28 @@ const Thumbnail = ({ src, onClick }) => (
 			{/* Imagenes y Fancybox */}
 			<div className="lg:w-1/2 w-full flex">
 				<img
-				alt="testo-plus"
-				className="h-64 w-64 object-cover object-center rounded"
-				src={mainImage}
-				onClick={() => Fancybox.show([{
-					src: mainImage,
-					type: "image"
-					}],
-					{
-						Toolbar: false,
-						closeButton: true
-					}
-					)}
+					alt="testo-plus"
+					className="h-[30vh] w-[30vh] lg:h-[80vh] lg:w-[60vh] object-cover object-center rounded"
+					src={mainImage}
+					onClick={() => {
+						const index = images.indexOf(currentImage);
+						Fancybox.show(images, {
+							Toolbar: {
+								display: {
+									right: ["close"]
+								}
+							},
+							animated: true,
+							backdropClick: "close",
+							Thumbs:{
+								showOnStart: false
+							},
+							startIndex: index
+					})}}
 				/>
 				<div className="thumbnails">
-				{[
-					"/images/testoplus/testo1.png",
-					"/images/testoplus/testo2.png",
-					"/images/testoplus/testo3.png",
-				].map((src) => (
-					<Thumbnail key={src} src={src} onClick={() => changeMainImage(src)} />
+				{images.map((image) => (
+					<Thumbnail image={image} onClick={() => setActiveImage(image)} />
 				))}
 				</div>
 			</div>

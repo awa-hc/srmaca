@@ -11,7 +11,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   function login(event) {
     event.preventDefault();
-    fetch("http://localhost:8080/auth/login", {
+    fetch("https://srmacaback.fly.dev/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
