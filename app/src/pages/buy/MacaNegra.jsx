@@ -1,38 +1,61 @@
-import React, { useState, useEffect } from "react";
-// import "@fancyapps/ui/dist/fancybox.css"; // Asegúrate de instalar este paquete o incluir el CSS de otra manera
+import React, { useState } from "react";
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Componente para las miniaturas
-const Thumbnail = ({ src, onClick }) => (
-  <img
-    className="thumbnail"
-    src={src}
-    alt="thumbnail"
-    onClick={() => onClick(src)}
-    style={{
-      width: "20vh",
-      height: "10vh",
-      objectFit: "contain",
-      objectPosition: "center",
-      marginBottom: "10px",
-      marginLeft: "10px",
-      cursor: "pointer",
-    }}
-  />
+const Thumbnail = ({ image, onClick }) => (
+	<div onClick={onClick}>
+		<img
+			className="thumbnail"
+			src={image.src}
+			alt="thumbnail"
+			style={{
+				width: "7vw",
+				height: "7vw",
+				objectFit: "contain",
+				objectPosition: "center",
+				marginBottom: "0.3rem",
+				marginLeft: "0.5rem",
+				cursor: "pointer",
+			}}
+		/>
+	</div>
 );
+
+// Imagenes de producto
+const images = [
+	{
+		src: "/images/macanegra/maca1.png",
+		active: true
+	},
+	{
+		src: "/images/macanegra/maca2.png",
+		active: false
+	},
+	{
+		src: "/images/macanegra/maca3.png",
+		active: false
+	}
+];
 
 // Componente principal
 const MacaNegra = () => {
-  const [mainImage, setMainImage] = useState("/images/testoplus/testo1.png");
+  const [mainImage, setMainImage] = useState(images[0].src);
   const [quantity, setQuantity] = useState(1);
   const pricePerItem = 210;
 
-  const handleChangeMainImage = (src) => {
-    setMainImage(src);
-  };
+  // Estado para guardar el mainImage actual
+	const currentImage = images.find(x => x.active);
 
-  const handleQuantityChange = (e) => {
-    setQuantity(e.target.value);
-  };
+	// Funcion para setear imagen
+	function setActiveImage(image) {
+		// Desactivar todas
+		images.forEach(img => img.active = false); 
+		// Activar la seleccionada
+		image.active = true;
+		// Setear como principal  
+		setMainImage(image.src);
+	}
 
   const handleBuyProduct = () => {
     const totalPrice = quantity * pricePerItem;
@@ -46,16 +69,14 @@ const MacaNegra = () => {
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-            <h2 className="title-font text-white tracking-widest">
+            <h2 className="title-font text-white tracking-widest text-3xl">
               Maca Negra
             </h2>
-            <h1 className="text-gray-200 text-3xl title-font font-medium mb-4">
+            <h1 className="text-gray-200 title-font font-medium mb-4">
               Regulador hormonal y energizante natural.
             </h1>
             <p className="leading-relaxed mb-4">
-              Suplemento natural y diseñado para estimular al propio cuerpo que
-              genere más testosterona. Su principal uso es aumentar los niveles
-              de testosterona de forma natural en el cuerpo
+              Su formulación única proporciona apoyo para mejorar la vitalidad y el bienestar general. Incorporar Maca Negra en tu rutina diaria puede ayudar a promover un equilibrio hormonal óptimo y mejorar tu calidad de vida.
             </p>
             <div className="flex border-t border-gray-200 py-2">
               <span>Cápsulas :</span>
@@ -70,11 +91,11 @@ const MacaNegra = () => {
                 Cantidad :
               </span>
               <input
+                className="bg-transparent text-white border border-white rounded-md w-1/4 md:w-20 appearance-none text-center mb-2"
                 type="number"
                 value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
                 min="1"
-                className="bg-transparent text-white border border-white rounded-md w-10 h-10 text-center"
-                onChange={handleQuantityChange}
               />
             </div>
             <div className="flex">
@@ -90,26 +111,35 @@ const MacaNegra = () => {
               </a>
             </div>
           </div>
-          <div className="lg:w-1/2 w-full flex flex-col items-center">
+         			{/* Imagenes y Fancybox */}
+          <div className="lg:w-1/2 w-full flex">
             <img
-              alt="ecommerce"
-              className="main-image lg:w-full w-full lg:h-auto h-64 md:h-64 sm:h-48 object-cover lg:object-fill object-center rounded"
+              alt="maca-negra"
+              className="h-[30vh] w-[30vh] lg:h-[80vh] lg:w-[60vh] object-cover object-center rounded mx-auto"
               src={mainImage}
+              onClick={() => {
+                const index = images.indexOf(currentImage);
+                Fancybox.show(images, {
+                  Toolbar: {
+                    display: {
+                      right: ["close"]
+                    }
+                  },
+                  animated: true,
+                  backdropClick: "close",
+                  Thumbs:{
+                    showOnStart: false
+                  },
+                  startIndex: index
+              })}}
             />
-            <div className="flex flex-row mt-4">
-              {[
-                "/images/cartilago/tiburon1.png",
-                "/images/cartilago/tiburon2.png",
-                "/images/cartilago/tiburon3.png",
-              ].map((src) => (
-                <img
-                  key={src}
-                  src={src}
-                  alt="thumbnail"
-                  onClick={() => handleChangeMainImage(src)}
-                  className="thumbnail cursor-pointer w-20 h-10 object-contain mr-2"
-                />
-              ))}
+            <div className="thumbnails lg:block md:block hidden">
+            {images.map((image) => (
+              <Thumbnail 
+                image={image} 
+                onClick={() => setActiveImage(image)}
+              />
+            ))}
             </div>
           </div>
         </div>

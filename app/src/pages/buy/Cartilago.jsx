@@ -3,45 +3,59 @@ import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Componente para las miniaturas
-const Thumbnail = ({ src, onClick }) => (
-    <img
-        className="thumbnail"
-        src={src}
-        alt="thumbnail"
-        onClick={() => onClick(src)}
-        style={{
-        width: "20vh",
-        height: "10vh",
-        objectFit: "contain",
-        objectPosition: "center",
-        marginBottom: "10px",
-        marginLeft: "10px",
-        cursor: "pointer",
-        }}
-    />
+const Thumbnail = ({ image, onClick }) => (
+    <div onClick={onClick}>
+        <img
+            className="thumbnail"
+            src={image.src}
+            alt="thumbnail"
+            style={{
+                width: "7vw",
+                height: "7vw",
+                objectFit: "contain",
+                objectPosition: "center",
+                marginBottom: "0.3rem",
+                marginLeft: "0.5rem",
+                cursor: "pointer",
+            }}
+        />
+    </div>
 );
 
 // Imagenes de producto
 const images = [
-	"/images/cartilago/tiburon1.png",
-    "/images/cartilago/tiburon2.png",
-    "/images/cartilago/tiburon3.png"
+    {
+		src: "/images/cartilago/tiburon1.png",
+		active: true
+	},
+	{
+		src: "/images/cartilago/tiburon2.png",
+		active: false
+	},
+	{
+		src: "/images/cartilago/tiburon3.png",
+		active: false
+	}
 ];
-
-// Mapeo de rutas de imagenes
-const imagesForFancybox = images.map(src => ({
-	src
-}));
 
 // Componente principal
 const Cartilago = () => {
-    const [mainImage, setMainImage] = useState(images[0]);
+    const [mainImage, setMainImage] = useState(images[0].src);
     const [quantity, setQuantity] = useState(1);
     const pricePerItem = 210;
 
-    // const handleQuantityChange = (e) => {
-    //     setQuantity(e.target.value);
-    // };
+    // Estado para guardar el mainImage actual
+    const currentImage = images.find(x => x.active);
+
+    // Funcion para setear imagen activa
+	function setActiveImage(image) {
+		// Desactivar todas
+		images.forEach(img => img.active = false); 
+		// Activar la seleccionada
+		image.active = true;
+		// Setear como principal  
+		setMainImage(image.src);
+	}
 
     const handleBuyProduct = () => {
         const totalPrice = quantity * pricePerItem;
@@ -54,11 +68,11 @@ const Cartilago = () => {
         <div className="text-white bg-gradient-to-b from-[#185B69] to-black flex items-center justify-center min-h-screen overflow-hidden">
         <div className="container px-5 py-16 mx-auto">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
-            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-                <h2 className="title-font text-white tracking-widest">
+            <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 flex flex-col justify-center">
+                <h2 className="title-font text-white tracking-widest text-3xl">
                 Cartilago De Tiburón
                 </h2>
-                <h1 className="text-gray-200 text-3xl title-font font-medium mb-4">
+                <h1 className="text-gray-200 title-font font-medium mb-2">
                 El soporte ideal para tus articulaciones y ligamentos
                 </h1>
                 <p className="leading-relaxed mb-4">
@@ -74,7 +88,7 @@ const Cartilago = () => {
                 <span>Dosis :</span>
                 <span className="ml-auto">2 cápsulas diarias.</span>
                 </div>
-                <div className="flex align-center">
+                <div className="flex">
                 <span className="title-font flex-grow basis-0 font-medium text-2xl">
                     Cantidad :
                 </span>
@@ -103,24 +117,29 @@ const Cartilago = () => {
 			<div className="lg:w-1/2 w-full flex">
 				<img
 					alt="cartilago"
-					className="h-[30vh] w-[30vh] lg:h-[80vh] lg:w-[60vh] object-cover object-center rounded"
+					className="h-[30vh] w-[30vh] lg:h-[80vh] lg:w-[60vh] object-cover object-center rounded mx-auto"
 					src={mainImage}
-					onClick={() => Fancybox.show(imagesForFancybox, {
-					Toolbar: {
-						display: {
-							right: ["close"]
-						}
-					},
-					animated: true,
-					backdropClick: "close",
-					Thumbs:{
-						showOnStart: false
-					}
-					})}
+					onClick={() => {
+                        const index = images.indexOf(currentImage);
+                        Fancybox.show(images, {
+                            Toolbar: {
+                                display: {
+                                    right: ["close"]
+                                }
+                            },
+                            animated: true,
+                            backdropClick: "close",
+                            Thumbs:{
+                                showOnStart: false
+                            },
+                            startIndex: index
+                        })}}
 				/>
-				<div className="thumbnails">
-				{images.map((src) => (
-					<Thumbnail key={src} src={src} onClick={() => setMainImage(src)} />
+				<div className="thumbnails lg:block md:block hidden">
+				{images.map((image) => (
+					<Thumbnail 
+                        image={image}
+                        onClick={() => setActiveImage(image)} />
 				))}
 				</div>
 			</div>

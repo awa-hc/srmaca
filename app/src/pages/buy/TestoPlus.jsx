@@ -38,19 +38,13 @@ const images = [
 	}
 ];
 
-// Mapeo de rutas de imagenes
-// const imagesForFancybox = images.map(src => ({
-// 	src
-// }));
-
-	// Componente principal
-	const TestoPlus = () => {
+// Componente principal
+const TestoPlus = () => {
 	const [mainImage, setMainImage] = useState(images[0].src);
 	const [quantity, setQuantity] = useState(1);
 	const pricePerItem = 210;
 
 	// Estado para guardar el mainImage actual
-	// const [currentImage, setCurrentImage] = useState(images[0]);
 	const currentImage = images.find(x => x.active);
 
 	// Funcion para setear imagen
@@ -74,12 +68,12 @@ const images = [
 	};
 
 	return (
-		<div className="text-white bg-gradient-to-b from-[#294437] to-black flex items-center justify-center min-h-screen overflow-hidden">
+		<div className="text-white bg-gradient-to-b from-[#294437] to-black flex items-center justify-center overflow-hidden min-h-screen">
 		<div className="container px-5 py-16 mx-auto ">
 			<div className="lg:w-4/5 mx-auto flex flex-wrap">
-			<div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 flex flex-col justify-center  mb-6 lg:mb-0">
-				<h2 className="title-font text-white tracking-widest">Testo Plus</h2>
-				<h1 className="text-gray-200 text-3xl title-font font-medium mb-4">
+			<div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 flex flex-col justify-center mb-6 lg:mb-0">
+				<h2 className="title-font text-white tracking-widest text-3xl">Testo Plus</h2>
+				<h1 className="text-gray-200 title-font font-medium">
 				Potenciador de energía y vitalidad.
 				</h1>
 				<p className="leading-relaxed mb-4">
@@ -96,7 +90,7 @@ const images = [
 
 				<div className="flex">
 				<span className="title-font flex-grow basis-0 font-medium text-2xl">
-					Cantidad :
+					Cantidad :	
 				</span>
 				<input
 					className="bg-transparent text-white border border-white rounded-md w-1/4 md:w-20 appearance-none text-center mb-2"
@@ -123,7 +117,7 @@ const images = [
 			<div className="lg:w-1/2 w-full flex">
 				<img
 					alt="testo-plus"
-					className="h-[30vh] w-[30vh] lg:h-[80vh] lg:w-[60vh] object-cover object-center rounded"
+					className="h-[30vh] w-[30vh] lg:h-[80vh] lg:w-[60vh] object-cover object-center rounded mx-auto"
 					src={mainImage}
 					onClick={() => {
 						const index = images.indexOf(currentImage);
@@ -141,9 +135,12 @@ const images = [
 							startIndex: index
 					})}}
 				/>
-				<div className="thumbnails">
+				<div className="thumbnails lg:block md:block hidden">
 				{images.map((image) => (
-					<Thumbnail image={image} onClick={() => setActiveImage(image)} />
+					<Thumbnail 
+						image={image} 
+						onClick={() => setActiveImage(image)}
+					/>
 				))}
 				</div>
 			</div>

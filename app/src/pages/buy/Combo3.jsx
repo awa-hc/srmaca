@@ -1,37 +1,56 @@
 import React, { useState } from "react";
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Componente para las miniaturas
-const Thumbnail = ({ src, onClick }) => (
-    <img
-        className="thumbnail"
-        src={src}
-        alt="thumbnail"
-        onClick={() => onClick(src)}
-        style={{
-        width: "20vh",
-        height: "10vh",
-        objectFit: "contain",
-        objectPosition: "center",
-        marginBottom: "10px",
-        marginLeft: "10px",
-        cursor: "pointer",
-        }}
-    />
+const Thumbnail = ({ image, onClick }) => (
+	<div onClick={onClick}>
+		<img
+			className="thumbnail"
+			src={image.src}
+			alt="thumbnail"
+			style={{
+				width: "7vw",
+				height: "7vw",
+				objectFit: "contain",
+				objectPosition: "center",
+				marginBottom: "0.3rem",
+				marginLeft: "0.5rem",
+				cursor: "pointer",
+			}}
+		/>
+	</div>
 );
+
+// Imagenes de producto
+const images = [
+	{
+		src: "/images/combo3/combo3.png",
+		active: true
+	}
+];
 
 // Componente principal
 const Combo3 = () => {
-    const [mainImage, setMainImage] = useState("/images/combo3/combo3.png");
+    const [mainImage, setMainImage] = useState(images[0].src);
     const [quantity, setQuantity] = useState(1);
-    const pricePerItem = 250;
+    const pricePerItem = 310;
 
     // Actualiza el precio total en función de la cantidad
     const totalPrice = pricePerItem * quantity;
 
-    // Cambia la imagen principal al hacer clic en una miniatura
-    const changeMainImage = (src) => {
-        setMainImage(src);
-    };
+    // Estado para guardar el mainImage actual
+	  const currentImage = images.find(x => x.active);
+
+    // Funcion para setear imagen
+    function setActiveImage(image) {
+      // Desactivar todas
+      images.forEach(img => img.active = false); 
+      // Activar la seleccionada
+      image.active = true;
+      // Setear como principal  
+      setMainImage(image.src);
+    }
 
     // Función para manejar la compra (simplificada para el ejemplo)
     const buyCombo3 = () => {
@@ -44,66 +63,82 @@ const Combo3 = () => {
         <div
         class="text-white bg-gradient-to-b from-[#081742] to-[#7A6121] body-font min-h-screen overflow-hidden"
       >
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 py-16 mx-auto">
           <div class="lg:w-4/5 mx-auto flex flex-wrap">
             <div
               class="lg:w-1/2 w-full lg:pr-10 lg:py-6 flex flex-col justify-center mb-6 lg:mb-0">
-              <h2 class="text-sm title-font text-white tracking-widest">
+              <h2 class="title-font text-white tracking-widest text-3xl">
                 Combo 3!!
               </h2>
-              <h1 class="text-gray-200 text-3xl title-font font-medium mb-4">
+              <h1 class="text-gray-200 title-font font-medium mb-2">
                 Testo Plus, Maca Negra, Cartilago de tiburon
               </h1>
-              <div class="flex mb-4">
-                <a
-                  class="flex-grow text-white/90 border-b-2 border-white py-2 text-lg px-1">
-                    Descripcion
-                </a>
+              <div className="flex mb-4">
+                <p
+                className="flex-grow text-white/90 border-b-2 border-white py-2 text-base px-1"
+                >Descripcion</p>
               </div>
               <p class="leading-relaxed mb-4">
-                Testo Plus: Testo Plus es un suplemento natural que ayuda a aumentar
-                los niveles de testosterona en el cuerpo. <br />Maca Negra: Maca
-                Negra es un suplemento natural que ayuda a aumentar la libido y la
-                energía.
-                <br /> Cartilago de tiburon: Cartilago de tiburon es un suplemento natural
-                que ayuda a mejorar la salud de las articulaciones.
+                <strong>Testo Plus :</strong> Es un suplemento natural que aumenta los niveles de testosterona <br />
+                <strong>Maca Negra :</strong> Es un suplemento natural que mejora la libido y la energía. <br />
+                <strong>Cartílago de tiburón :</strong> Es un suplemento natural que mejora la salud articular.
               </p>
     
-              <div class="flex flex-row align-center" id="div-quantity">
-                <span class="title-font font-medium text-2xl"> Cantidad :</span>
-                <input
-                  class="bg-transparent font-2xl text-white border border-white rounded-md w-10 h-10 text-center"
-                  type="number"
-                  id="quantity"
-                  value="1"
-                  min="1"
-                  onchange="updatePrice()"
-                />
-              </div>
-              <div class="flex">
-                <span class="title-font font-medium text-2xl" id="price">
-                  Precio: 310 Bs.
+              <div className="flex">
+                <span className="title-font flex-grow basis-0 font-medium text-2xl">
+                  Cantidad :	
                 </span>
+                <input
+                  className="bg-transparent text-white border border-white rounded-md w-1/4 md:w-20 appearance-none text-center mb-2"
+                  type="number"
+                  value={quantity}
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  min="1"
+                />
+                </div>
+                <div className="flex">
+                <span className="title-font font-medium text-2xl" id="price">
+                Precio: {totalPrice} Bs.</span>
                 <button
-                  type="button"
-                  id="buycombo3"
-                  onclick="BuyCombo3()"
-                  class="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded">
-                    Comprar
-                  </button>
-              </div>
+                    type="button"
+                    id="buycombo1"
+                    onClick={buyCombo3}
+                    href="/buy/confirm"
+                    className="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded"
+                >Comprar</button>
             </div>
-            <div class="lg:w-1/2 w-full flex image-container">
-              <a href="/images/combo3/combo3.png" data-fancybox="gallery">
-                <img
-                  alt="combo3"
-                  class="main-image lg:w-full w-full lg:h-auto h-64 md:h-64 sm:h-48 object-cover lg:object-fill object-center rounded"
-                  src="/images/combo3/combo3.png"/>
-              </a>
-              <div class="thumbnails">
-                <img class="thumbnail" src="/images/combo3/combo3.png" alt="combo3" onclick="changeMainImage(this)"/>
-              </div>
-          </div>
+            </div>
+                {/* Imagenes y Fancybox */}
+                <div className="lg:w-1/2 w-full flex">
+                        <img
+                            alt="testo-plus"
+                            className="h-[30vh] w-[30vh] lg:h-[80vh] lg:w-[60vh] object-cover object-center rounded mx-auto"
+                            src={mainImage}
+                            onClick={() => {
+                                const index = images.indexOf(currentImage);
+                                Fancybox.show(images, {
+                                    Toolbar: {
+                                        display: {
+                                            right: ["close"]
+                                        }
+                                    },
+                                    animated: true,
+                                    backdropClick: "close",
+                                    Thumbs:{
+                                        showOnStart: false
+                                    },
+                                    startIndex: index
+                            })}}
+                        />
+                        <div className="thumbnails lg:block md:block hidden">
+                        {images.map((image) => (
+                            <Thumbnail 
+                                image={image} 
+                                onClick={() => setActiveImage(image)}
+                            />
+                        ))}
+                        </div>
+                </div>
           </div>
         </div>
       </div>
