@@ -8,11 +8,12 @@ export default function DetailsText({
 }) {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 justify-items-center text-white z-30 w-full">
+      {/* Imagen de Producto en Details */}
       <img
         src={principal}
-        className="w-1/3 md:w-3/5 xl:w-1/3 h-auto mt-12 md:mt-0"
+        className="w-2/3 md:w-1/2 xl:w-1/3 h-auto mt-12 mb-2 md:mt-0"
       />
-      <div className="flex flex-col items-center my-5 w-full bg-white/10 backdrop-blur-sm md:rounded-l-3xl border-t-[0.5px] border-l-[0.5px] border-white drop-shadow-lg p-5 md:p-10 ">
+      <div className="flex flex-col items-stretch text-center md:text-left my-5 w-screen md:w-full bg-white/10 backdrop-blur-sm md:rounded-l-3xl border-t-[0.5px] border-l-[0.5px] border-b-[0.5px] border-r-[0.5px] md:border-r-0 border-white drop-shadow-lg p-5 md:p-10">
         <div className="flex-grow basis-0">
           <h1 className="text-2xl font-bold">{title}</h1>
           <p className="text-md italic">{description}</p>
@@ -21,7 +22,7 @@ export default function DetailsText({
           <h2 className="text-xl font-bold">Como usar</h2>
           <p className="text-md italic">{howuse}</p>
         </div>
-
+        <div className="flex justify-center">
         <a
           href={"/#" + href}
           className="text-white w-max flex px-2 py-1 border border-white rounded-lg  mt-5 hover:bg-red-500"
@@ -43,8 +44,9 @@ export default function DetailsText({
           </svg>
           Atras
         </a>
+        </div>
       </div>
-      <section className="text-center text-white sm:mt-0">
+      <section className="text-center text-white sm:mt-0 mb-4 md:mb-0">
         <a
           href={"/buy/" + href}
           className="text-white px-4 py-2 bg-[#2B9D6D] rounded-lg"
