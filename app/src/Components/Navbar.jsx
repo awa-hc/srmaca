@@ -9,12 +9,16 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
-        // State para controlar si está abierto
+    // State para controlar si está abierto
     const [menuOpen, setMenuOpen] = useState(false);
 
     // Función para cambiar el state
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    }
+
+    const toggleList = () => {
+        setIsOpen(!isOpen);
     }
 
     useEffect(() => {
@@ -26,18 +30,11 @@ export default function Navbar() {
     }, []);
 
     function Logout() {
+        setUserLogged(false);
         document.cookie = "Auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         window.location.href = "/";
     }
-
-/*     function login() {
-        setUserLogged(true);
-    } */
     
-    function logout() {
-        setUserLogged(false); 
-    }
-
     function handleMouseEnter() {
         setIsOpen(true);
     }
@@ -115,9 +112,9 @@ export default function Navbar() {
                         data-collapse-toggle="product-default"
                         type="button"
                         className="block py-2 pl-3 pr-4 text-white rounded bg-transparent"
-                        // onClick={() => setIsOpen(!isOpen)}
-                        onClick={handleMouseEnter}
+                        onClick={toggleList}
                         onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
                     >
                         PRODUCTOS
                     </button>
@@ -126,6 +123,7 @@ export default function Navbar() {
                     <ul
                         className="w-full md:w-auto absolute [&>li]:py-4 bg-black bg-opacity-90 backdrop-blur-2xl border borderwhite shadow-lg border-white rounded-lg text-white [&>li]:p-4 origin-top duration-500"
                         id="products-default"
+                        onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                     >
                         <li className="menu-item transition duration-300 hover:bg-[#4e8666] hover:text-[#ffffff]">
@@ -278,7 +276,7 @@ export default function Navbar() {
                             <Cart /> 
                             </li>
                             <li className="block py-2 pl-3 pr-4 text-white rounded bg-transparent">
-                            <button onClick={logout}>
+                            <button onClick={Logout}>
                                 Cerrar Sesión  
                             </button>
                             </li>
