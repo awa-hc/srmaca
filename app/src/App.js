@@ -103,12 +103,11 @@ export default function App() {
                 <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
                 </svg>
             </a>
-            {/* <div className="absolute -left-2/3 transform -translate-x-1/2 bottom-full mb-2 text-sm bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition ease-in-out duration-200 h-auto w-40 p-1"> */}
-            <div className="absolute -left-2/3 transform -translate-x-1/2 bottom-full mb-2 text-base bg-white border border-green-500 rounded-lg shadow-lg px-3 py-1 opacity-0 group-hover:opacity-100 transition ease-in-out duration-200 h-auto w-auto">
-                <h3 className="font-bold mb-1">¡Habla con nosotros!</h3>
+            <div className="absolute -left-2/3 transform -translate-x-1/2 bottom-full mb-2 text-base bg-white border-[0.2rem] border-green-500 rounded-lg shadow-lg px-3 py-1 opacity-0 group-hover:opacity-100 transition ease-in-out duration-200 h-auto w-auto">
+                <h3 className="font-bold mb-1 text-black">¡Habla con nosotros!</h3>
                 <p className="text-gray-800">
                     Contáctanos vía 
-                    <strong className="text-green-500"> WhatsApp </strong> 
+                    <strong className="text-green-600"> WhatsApp </strong> 
                     para asesoría y compra
                 </p>
             </div>
