@@ -46,7 +46,7 @@ export default function Navbar() {
   return (
     <section className="flex md:m-0 md:gap-0 items-center justify-center top-0 fixed max-w-screen w-screen max-h-14 min-h-14 h-14 z-40 text-white px-4 py-5 md:px-24 md:py-4 uppercase font-bold font-sans rounded-2xl">
       <nav className="bg-transparent backdrop-blur-md w-[99vw]">
-        <div className="w-[98vw] flex flex-wrap items-center px-2 py-2 shadow-xl">
+        <div className="w-[90vw] md:w-[95vw] flex flex-wrap items-center px-2 py-2 shadow-xl">
           <a
             href="/"
             className="flex items-center w-max mr-auto md:w-1/3 md:mr-0 z-10"
