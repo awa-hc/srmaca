@@ -139,8 +139,8 @@ const Confirm = () => {
   };
 
   return (
-    <section className="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen w-screen flex flex-col pt-20 md:mt-0  items-center justify-center px-5">
-      <h2 className="title-font text-white tracking-widest">
+    <section className="text-white bg-gradient-to-br from-[#526C63] to-black min-h-screen w-screen flex flex-col pt-16 pb-4 md:mt-0  items-center justify-center px-5">
+      <h2 className="title-font text-white tracking-widest text-3xl">
         Confirmar Compra
       </h2>
       {message ? (
@@ -184,7 +184,7 @@ const Confirm = () => {
               <option value="cash">Efectivo</option>
               <option value="transfer">Transferencia</option>
             </select>
-            {paymentMethod === "cash" && (
+            {paymentMethod === "cash" &&(
               <div className="flex flex-col w-full">
                 <h2>Rellena este formulario</h2>
                 <span>Describe tu compra</span>
@@ -204,13 +204,13 @@ const Confirm = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 ">
                   <section className="flex flex-col items-left justify-center">
                     <h2>Realiza tu pago a la siguiente cuenta</h2>
-                    <h2>Nombre: Nico</h2>
+                    <h2>Nombre: Nicolás Hernández </h2>
                     <h2>Banco: BCP</h2>
-                    <h2>Cuenta: 123456789</h2>
-                    <h2>CI: E-123456789</h2>
+                    <h2>Cuenta: 1001358547</h2>
+                    <h2>CI: E-10271474</h2>
                   </section>
                   <div>
-                    <img src="/images/qr/qr.png" className="w-full h-full" />
+                    <img alt="PAGO QR" src="/images/qr/qr.png" className="w-full h-full" />
                   </div>
                 </div>
 
@@ -227,6 +227,7 @@ const Confirm = () => {
                   className="bg-transparent text-white w-full  rounded-md"
                   onChange={handleFileChange}
                 />
+                <span className="text-xl text-center">Describe tu compra aqui por favor!</span>
                 <input
                   type="text"
                   placeholder="ejemplo: 4 testoplus "
@@ -263,6 +264,7 @@ const Confirm = () => {
               <div className="flex px-2 py-1 border-t border-white justify-center items-center">
                 <div className="w-20 h-20 flex justify-center items-center border-r border-white ">
                   <img
+                    alt="testoplus"
                     src="/images/testoplus/testo_principal.png"
                     className="h-20 w-auto object-fill"
                   />
@@ -283,6 +285,7 @@ const Confirm = () => {
               <div className="flex px-2 py-1 border-t border-white justify-center items-center">
                 <div className="w-20 h-20 flex justify-center items-center border-white border-r w">
                   <img
+                    alt="psyllium"
                     src="/images/psyllium/psy_principal.png"
                     className="h-20 w-auto object-fill"
                   />
@@ -303,6 +306,7 @@ const Confirm = () => {
               <div className="flex px-2 py-1 border-t border-white justify-center items-center">
                 <div className="w-20 h-20 flex justify-center items-center border-white border-r w">
                   <img
+                    alt="maca negra"
                     src="/images/macanegra/maca_principal.png"
                     className="h-20 w-auto object-fill"
                   />
@@ -323,6 +327,7 @@ const Confirm = () => {
               <div className="flex px-2 py-1 border-t border-white justify-center items-center">
                 <div className="w-20 h-20 flex justify-center items-center border-white border-r w">
                   <img
+                    alt="tiburon"
                     src="/images/cartilago/tiburon_principal.png"
                     className="h-20 w-auto object-fill"
                   />
