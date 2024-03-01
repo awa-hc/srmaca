@@ -16,7 +16,7 @@ export default function ProfilePage() {
   }, []);
 
   function getuserVouchers() {
-    fetch("https://srmacaback.fly.dev/voucher/user/", {
+    fetch("http://localhost:8080/voucher/user/", {
       method: "GET",
       headers: {
         "Content-Type": "application",
@@ -51,7 +51,6 @@ export default function ProfilePage() {
       .then((data) => {
         console.log(data);
         setUser(data);
-
         setLoading(false);
       })
       .catch((error) => {
@@ -61,6 +60,18 @@ export default function ProfilePage() {
       });
   }
 
+  const formatDate = (dateString) => {
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZone: "America/Argentina/Buenos_Aires",
+    };
+    return new Date(dateString).toLocaleDateString("es-AR", options);
+  };
   return (
     <div className="pt-20 h-screen bg-gradient-to-br from-[#185B69] to-black w-screen flex flex-col items-center justify-center text-white">
       <div class="container mx-auto my-60">
@@ -94,6 +105,7 @@ export default function ProfilePage() {
                     console.log(voucher);
                     return (
                       <a
+                        key={voucher.ID}
                         href="#"
                         class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3  block hover:bg-gray-100 transition duration-150"
                       >
@@ -107,7 +119,14 @@ export default function ProfilePage() {
                           {voucher.glosa}{" "}
                         </span>
                         <span class="text-gray-500 text-xs ml-4">
-                          {voucher.CreatedAt}
+                          {formatDate(voucher.CreatedAt)}
+                        </span>
+                        <span
+                          className={`text-white px-2 py-1 rounded-lg text-sm ml-4 ${
+                            voucher.status ? "bg-green-500" : "bg-orange-400"
+                          }`}
+                        >
+                          {voucher.status ? "Confirmado" : "Pendiente"}
                         </span>
                       </a>
                     );

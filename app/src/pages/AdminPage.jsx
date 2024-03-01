@@ -45,7 +45,7 @@ export default function AdminPage() {
         setVouchers(data);
       })
       .catch((error) => {
-        setError("Error obteniendo los vouchers");
+        setError("Esrror obteniendo los vouchers");
       });
   }
 
@@ -122,15 +122,15 @@ export default function AdminPage() {
       <aside className="bg-transparent [&>ul>li]:my-4 ">
         <h1 className="text-2xl underline ">Menu.</h1>
         <ul>
-          <li className="hover:scale-105 hover:bg-blue-500 hover:text-white hover:border hover:border-white transition-colors ease-in-out duration-150 delay-75 rounded-lg px-2 py-1">
+          <li className="hover:scale-105 select-none    hover:bg-blue-500 hover:text-white hover:border hover:border-white transition-colors ease-in-out duration-150 delay-75 rounded-lg px-2 py-1">
             Todos los Vouchers
           </li>
-          <li className="hover:scale-105 hover:bg-blue-500 hover:text-white hover:border hover:border-white transition-colors ease-in-out duration-150 delay-75 rounded-lg px-2 py-1">
+          {/* <li className="hover:scale-105 select-none hover:bg-blue-500 hover:text-white hover:border hover:border-white transition-colors ease-in-out duration-150 delay-75 rounded-lg px-2 py-1">
             Pendientes
           </li>
-          <li className="hover:scale-105 hover:bg-blue-500 hover:text-white hover:border hover:border-white transition-colors ease-in-out duration-150 delay-75 rounded-lg px-2 py-1">
+          <li className="hover:scale-105 selec hover:bg-blue-500 hover:text-white hover:border hover:border-white transition-colors ease-in-out duration-150 delay-75 rounded-lg px-2 py-1">
             Aceptados
-          </li>
+          </li> */}
         </ul>
       </aside>
       <section>

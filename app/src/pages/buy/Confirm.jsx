@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { GetCookie } from "../../utils/Cookie";
 
 const Confirm = () => {
   const [paymentMethod, setPaymentMethod] = useState("cash");
   const [totalPrice, setTotalPrice] = useState(0);
   const [glosa, setGlosa] = useState("");
   const [receipt, setReceipt] = useState(null);
-  const [userDirection, setUserDirection] = useState("sad");
+  const [userDirection, setUserDirection] = useState("");
   const [delivery, setDelivery] = useState(false);
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState("");
@@ -14,7 +15,11 @@ const Confirm = () => {
   let productglosa = "";
 
   useEffect(() => {
-    setGlosa("");
+    setGlosa("empty");
+    if (localStorage.getItem("user") === null || GetCookie("Auth") === null) {
+      window.location.href = "/login";
+    }
+
     let maca = parseInt(localStorage.getItem("MacaNegraPrice"), 10) || 0;
     let Cartilago = parseInt(localStorage.getItem("CartilagoPrice"), 10) || 0;
     let TestoPlus = parseInt(localStorage.getItem("TestoPlusPrice"), 10) || 0;
@@ -64,7 +69,7 @@ const Confirm = () => {
     const total = maca + Cartilago + TestoPlus + Psyllium;
     setTotalPrice(total);
     GetUserDirection();
-  }, []);
+  }, [glosa]);
 
   const handlePaymentMethodChange = (event) => {
     setPaymentMethod(event.target.value);
@@ -89,7 +94,7 @@ const Confirm = () => {
     }
   };
   function GetUserDirection() {
-    const response = fetch("https://srmacaback.fly.dev/user/", {
+    const response = fetch("http://localhost:8080/user/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -184,7 +189,7 @@ const Confirm = () => {
               <option value="cash">Efectivo</option>
               <option value="transfer">Transferencia</option>
             </select>
-            {paymentMethod === "cash" &&(
+            {paymentMethod === "cash" && (
               <div className="flex flex-col w-full">
                 <h2>Rellena este formulario</h2>
                 <span>Describe tu compra</span>
@@ -210,7 +215,11 @@ const Confirm = () => {
                     <h2>CI: E-10271474</h2>
                   </section>
                   <div>
-                    <img alt="PAGO QR" src="/images/qr/qr.png" className="w-full h-full" />
+                    <img
+                      alt="PAGO QR"
+                      src="/images/qr/qr.png"
+                      className="w-full h-full"
+                    />
                   </div>
                 </div>
 
@@ -227,7 +236,9 @@ const Confirm = () => {
                   className="bg-transparent text-white w-full  rounded-md"
                   onChange={handleFileChange}
                 />
-                <span className="text-xl text-center">Describe tu compra aqui por favor!</span>
+                <span className="text-xl text-center">
+                  Describe tu compra aqui por favor!
+                </span>
                 <input
                   type="text"
                   placeholder="ejemplo: 4 testoplus "

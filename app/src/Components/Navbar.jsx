@@ -8,6 +8,7 @@ export default function Navbar() {
   const [userLogged, setUserLogged] = useState(false);
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [userAdmin, setUserAdmin] = useState(false);
 
   // State para controlar si está abierto
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,13 +25,14 @@ export default function Navbar() {
   useEffect(() => {
     const user = GetCookie("Auth");
     if (user) {
-      console.log("Logueado c: ");
       setUserLogged(true);
     }
   }, []);
 
   function Logout() {
     setUserLogged(false);
+    localStorage.removeItem("admin");
+    localStorage.removeItem("user");
     document.cookie = "Auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.href = "/";
   }
@@ -180,6 +182,22 @@ export default function Navbar() {
               >
                 {userLogged ? (
                   <>
+                    {localStorage.getItem("admin") === "true" ? (
+                      <a
+                        href="/admin"
+                        className="text-white bg-transparent px-4 py-2 rounded-lg"
+                        style={{
+                          border: "0.1em solid white",
+                          padding: "0.2rem 0.2rem",
+                          borderRadius: "0.5rem",
+                        }}
+                      >
+                        Admin
+                      </a>
+                    ) : (
+                      <></>
+                    )}
+
                     <Cart />
                     <button
                       onClick={() => setOpen(!open)}
