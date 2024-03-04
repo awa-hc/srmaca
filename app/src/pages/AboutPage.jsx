@@ -2,7 +2,7 @@ import React from 'react';
 
 function About() {
 return (
-    <section className="bg-gradient-to-br from-[#526C63] via-[#185B69] to-[#7A6121] flex justify-center items-center min-h-screen overflow-hidden">
+    <section className="bg-gradient-to-br from-[#526C63] via-[#185B69] to-[#7A6121] flex justify-center items-center min-h-screen overflow-hidden mb-5">
     	<div className="flex flex-col md:flex-row text-center items-center justify-center h-full [&>h1]:py-3 px-5 py-16 mx-auto" style={{width: '100vw'}}>
         <div className="md:w-1/2 md:mr-4">
         	<h1 className="text-4xl font-bold text-white">Sobre Nosotros</h1>

@@ -47,7 +47,7 @@ function Contact() {
   };
 
   return (
-    <div className="bg-black text-white h-full w-full flex flex-col items-center justify-center z-10">
+    <div className="bg-black text-white min-h-screen w-full flex flex-col items-center justify-center z-10">
       <div className="container px-5 pt-16 mx-auto">
         <div className="flex flex-col text-center w-full mb-5">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4">

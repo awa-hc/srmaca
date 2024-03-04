@@ -41,9 +41,7 @@ export default function LoginPage() {
 
   return (
     <div
-      className="w-screen h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6c7134] to-black"
-      style={{ paddingTop: "5.5rem" }}
-    >
+      className="w-screen min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6c7134] to-black pt-[5.5rem]">
       <form
         className="flex flex-col items-center justify-center"
         onSubmit={login}

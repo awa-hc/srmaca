@@ -66,7 +66,7 @@ const MacaNegra = () => {
 
   return (
     <div className="text-white bg-gradient-to-b from-[#7d6321] to-black flex items-center justify-center min-h-screen overflow-hidden">
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container px-5 py-16 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
             <h2 className="title-font text-white tracking-widest text-3xl">
