@@ -4,20 +4,11 @@ import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Componente para las miniaturas
 const Thumbnail = ({ image, onClick }) => (
-	<div onClick={onClick}>
+	<div onClick={onClick} className="mb-2 mr-0 cursor-pointer">
 		<img
-			className="thumbnail"
+			className="thumbnail w-80 h-32 object-cover object-center rounded ml-[0.5rem] mb-[0.3rem]"
 			src={image.src}
 			alt="thumbnail"
-			style={{
-				width: "7vw",
-				height: "7vw",
-				objectFit: "contain",
-				objectPosition: "center",
-				marginBottom: "0.3rem",
-				marginLeft: "0.5rem",
-				cursor: "pointer",
-			}}
 		/>
 	</div>
 );
@@ -109,27 +100,30 @@ const Combo3 = () => {
             </div>
             </div>
                 {/* Imagenes y Fancybox */}
-                <div className="lg:w-1/2 w-full flex">
-                        <img
-                            alt="testo-plus"
-                            className="h-[30vh] w-[30vh] lg:h-[80vh] lg:w-[45vh] object-cover object-center rounded mx-auto"
-                            src={mainImage}
-                            onClick={() => {
-                                const index = images.indexOf(currentImage);
-                                Fancybox.show(images, {
-                                    Toolbar: {
-                                        display: {
-                                            right: ["close"]
-                                        }
-                                    },
-                                    animated: true,
-                                    backdropClick: "close",
-                                    Thumbs:{
-                                        showOnStart: false
-                                    },
-                                    startIndex: index
-                            })}}
-                        />
+                <div className="lg:w-1/2 w-full flex flex-col lg:flex-row">
+                <div className="relative flex justify-center">
+                <img
+                alt="combo3"
+                className="h-auto w-auto object-fill object-center rounded"
+                src={mainImage}
+                onClick={() => {
+                    const index = images.indexOf(currentImage);
+                    Fancybox.show(images, {
+                    Toolbar: {
+                        display: {
+                        right: ["close"],
+                        },
+                    },
+                    animated: true,
+                    backdropClick: "close",
+                    Thumbs: {
+                        showOnStart: false,
+                    },
+                    startIndex: index,
+                    });
+                }}
+                />
+                </div>
                         <div className="thumbnails lg:block md:block hidden">
                         {images.map((image) => (
                             <Thumbnail 
