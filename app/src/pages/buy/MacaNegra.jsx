@@ -115,7 +115,7 @@ const MacaNegra = () => {
           <div className="lg:w-1/2 w-full flex">
             <img
               alt="maca-negra"
-              className="h-[30vh] w-[30vh] lg:h-[80vh] lg:w-[60vh] object-cover object-center rounded mx-auto"
+              className="h-[30vh] w-[30vh] lg:h-[80vh] lg:w-[45vh] object-cover object-center rounded mx-auto"
               src={mainImage}
               onClick={() => {
                 const index = images.indexOf(currentImage);
