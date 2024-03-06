@@ -99,7 +99,7 @@ export default function App() {
       <div className="fixed bottom-5 right-5 z-">
         <div className="relative">
           <div className="h-10 w-10 rounded-full bg-green-500 text-white flex items-center justify-center">
-            <a href="https://wa.link/g4wyjl" target="_blank" onMouseEnter={() => setShowText(true)} onMouseLeave={() => setShowText(false)}>
+            <a rel="noreferrer" href="https://wa.link/g4wyjl" target="_blank" onMouseEnter={() => setShowText(true)} onMouseLeave={() => setShowText(false)}>
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
