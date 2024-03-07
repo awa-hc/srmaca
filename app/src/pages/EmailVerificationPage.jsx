@@ -1,75 +1,63 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Swal from 'sweetalert2';
 
 const EmailVerificationPage = () => {
-  const [didClickButton, setDidClickButton] = useState(false);
-
   useEffect(() => {
-    // Obtener el token de verificación de la URL
-    const params = new URLSearchParams(window.location.search);
-    const verificationToken = params.get('token');
+    const urlParams = new URLSearchParams(window.location.search);
+    const verificationToken = urlParams.get('token');
 
-    // Enviar solicitud al backend para verificar el token de verificación
-fetch('https://srmacaback.fly.dev/verify', {
-  method: 'POST', // Establecer el método como POST
-  headers: {
-    'Content-Type': 'application/json', // Establecer el tipo de contenido como JSON
-  },
-  body: JSON.stringify({ token: verificationToken }), // Enviar el token como JSON en el cuerpo de la solicitud
-})
-  .then((response) => {
-    if (response.ok) {
-      // Obtener el mensaje del cuerpo de la respuesta
-      return response.json().then((data) => {
-        // Mostrar mensaje de éxito con el mensaje del backend
+    if (!verificationToken) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se encontró un token de verificación',
+      }).then(() => {
+        window.location.href = '/';
+      });
+      return;
+    }
+
+    async function verifyToken() {
+      try {
+        const response = await fetch('https://srmacaback.fly.dev/verify', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token: verificationToken }),
+        });
+        if (!response.ok) {
+          const data = await response.json();
+          throw new Error(data.error);
+        }
+        const data = await response.json();
+        const verificationStatus = data.message;
+        await new Promise(resolve => setTimeout(resolve, 500));
         Swal.fire({
           icon: 'success',
           title: '¡Correo electrónico verificado!',
-          text: data.message, // Utilizar el mensaje del backend
+          text: verificationStatus,
           showConfirmButton: true,
           allowOutsideClick: false,
         }).then(() => {
-          setDidClickButton(true);
+          window.location.href = '/';
         });
-      });
-    } else {
-      // Obtener el mensaje del cuerpo de la respuesta de error
-      return response.json().then((data) => {
-        // Mostrar mensaje de error con el mensaje del backend
+      } catch (error) {
+        console.error(error);
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: data.error,
+          title: 'Error',
+          text: error.message,
           showConfirmButton: true,
           allowOutsideClick: false,
         }).then(() => {
-          setDidClickButton(true);
+          window.location.href = '/';
         });
-      });
+      }
     }
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-    // Mostrar mensaje de error genérico
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Hubo un error al verificar tu correo electrónico. Por favor, inténtalo de nuevo más tarde.',
-      showConfirmButton: true,
-      allowOutsideClick: false,
-    }).then(() => {
-      setDidClickButton(true);
-    });
-  })}, []);
 
-  useEffect(() => {
-    if (didClickButton) {
-      // Redirigir al usuario a la página de inicio de sesión
-      setTimeout(() => {
-        window.location.href = '/login';
-      }, 2000); // Redirigir después de 2 segundos
-    }
-  }, [didClickButton]);
+    verifyToken();
+  }, []);
 
   return (
     <div className="w-screen min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#22623e] to-black">
