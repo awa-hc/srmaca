@@ -19,7 +19,7 @@ const EmailVerificationPage = () => {
 
     async function verifyToken() {
       try {
-        const response = await fetch('https://srmacaback.fly.dev/auth/verify/${verificationToken}', {
+        const response = await fetch(`https://srmacaback.fly.dev/auth/verify/${verificationToken}`, {
           method: 'POST'
         });
         if (!response.ok) {
