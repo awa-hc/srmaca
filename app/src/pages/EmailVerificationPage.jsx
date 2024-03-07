@@ -19,12 +19,8 @@ const EmailVerificationPage = () => {
 
     async function verifyToken() {
       try {
-        const response = await fetch('https://srmacaback.fly.dev/auth/verify', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ token: verificationToken }),
+        const response = await fetch('https://srmacaback.fly.dev/auth/verify/${verificationToken}', {
+          method: 'POST'
         });
         if (!response.ok) {
           const data = await response.json();
