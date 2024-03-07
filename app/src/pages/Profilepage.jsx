@@ -16,7 +16,7 @@ export default function ProfilePage() {
   }, []);
 
   function getuserVouchers() {
-    fetch("http://localhost:8080/voucher/user/", {
+    fetch("https://srmacaback.fly.dev/voucher/user/", {
       method: "GET",
       headers: {
         "Content-Type": "application",

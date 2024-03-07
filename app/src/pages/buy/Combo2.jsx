@@ -87,13 +87,12 @@ const Combo2 = () => {
             <div className="flex">
                 <span className="title-font font-medium text-2xl" id="price">
                 Precio: {totalPrice} Bs.</span>
-                <button
-                    type="button"
-                    id="buycombo2"
-                    onClick={buyCombo2}
-                    href="/buy/confirm"
-                    className="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded"
-                >Comprar</button>
+                <a
+                className="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded"
+                onClick={buyCombo2}
+                href="/buy/confirm">
+                    Comprar
+                </a>
             </div>
             </div>
                 {/* Imagenes y Fancybox */}

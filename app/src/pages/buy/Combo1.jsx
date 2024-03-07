@@ -54,7 +54,7 @@ const Combo1 = () => {
     return (
         <div className="text-white bg-gradient-to-b from-[#081742] to-[#7A6121] body-font min-h-screen overflow-hidden">
             <div className="container px-5 py-16 mx-auto">
-        <div className="lg:w-4/5 mx-auto flex flex-wrap">
+            <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <div
             className="lg:w-1/2 w-full lg:pr-10 lg:py-6 flex flex-col justify-center mb-6 lg:mb-0"
             >
@@ -90,13 +90,12 @@ const Combo1 = () => {
             <div className="flex">
                 <span className="title-font font-medium text-2xl" id="price">
                 Precio: {totalPrice} Bs.</span>
-                <button
-                    type="button"
-                    id="buycombo1"
-                    onClick={buyCombo1}
-                    href="/buy/confirm"
-                    className="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded"
-                >Comprar</button>
+                <a
+                className="flex ml-auto text-white bg-[#294437] border-0 py-2 px-6 focus:outline-none hover:bg-white hover:text-[#294437] transition-colors ease-in-out duration-300 delay-100 rounded"
+                onClick={buyCombo1}
+                href="/buy/confirm">
+                    Comprar
+                </a>
             </div>
             </div>
                 {/* Imagenes y Fancybox */}

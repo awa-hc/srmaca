@@ -94,7 +94,7 @@ const Confirm = () => {
     }
   };
   function GetUserDirection() {
-    const response = fetch("http://localhost:8080/user/", {
+    const response = fetch("https://srmacaback.fly.dev/user/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -122,7 +122,7 @@ const Confirm = () => {
       delivery,
     };
 
-    const response = await fetch("http://localhost:8080/voucher/create", {
+    const response = await fetch("https://srmacaback.fly.dev/voucher/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

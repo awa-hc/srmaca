@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { GetCookie } from "../utils/Cookie";
+import Swal from "sweetalert2";
+
 export default function LoginPage() {
+
   useEffect(() => {
     if (GetCookie("Auth")) {
       window.location.href = "/";
@@ -9,9 +12,10 @@ export default function LoginPage() {
 
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
   function login(event) {
     event.preventDefault();
-    fetch("http://localhost:8080/auth/login", {
+    fetch("https://srmacaback.fly.dev/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +25,7 @@ export default function LoginPage() {
       .then((response) => response.json())
       .then((data) => {
         if (data.token) {
-          if (email == "srmaca@srmaca.com") {
+          if (email === "srmaca@srmaca.com") {
             localStorage.setItem("admin", "true");
             document.cookie = `Admin=${data.token}; max-age=3600; path=/`;
           }
@@ -39,9 +43,75 @@ export default function LoginPage() {
       });
   }
 
+  async function forgotPassword() {
+	const { value: email } = await Swal.fire({
+	  title: "Restablecer contraseña",
+	  input: "email",
+	  inputPlaceholder: "Ingresa tu correo electrónico",
+	  showCancelButton: true,
+	  confirmButtonText: 'Confirmar',
+	  cancelButtonText: 'Cancelar',
+	  customClass: {
+		title: 'text-white',
+		confirmButton: 'swal2-confirm',
+		cancelButton: 'swal2-cancel'
+	  },
+	  backdrop: 'rgba(80, 80, 80, 0.73)',
+	  iconColor: 'white',
+	  background: 'rgb(69, 114, 121)',
+	  confirmButtonColor: '#4caf50',
+	  cancelButtonColor: '#f44336'
+	});
+  
+	if (email) {
+	  // Aquí puedes realizar alguna acción con el correo electrónico ingresado
+	  // Por ejemplo, enviar una solicitud al backend para restablecer la contraseña
+	  fetch("URL_BACKEND", {
+		method: "POST",
+		headers: {
+		  "Content-Type": "application/json",
+		},
+		body: JSON.stringify({ email }),
+	  })
+	  .then((response) => response.json())
+	  .then((data) => {
+		if (data.message) {
+		  Swal.fire({
+			icon: "success",
+			title: "¡Correo enviado!",
+			text: "Se ha enviado un correo electrónico para restablecer tu contraseña.",
+		  }).then(() => {
+			window.location.reload();
+		  });
+		} else if (data.error) {
+		  Swal.fire({
+			icon: "error",
+			title: "Error",
+			text: data.error,
+		  });
+		} else {
+		  Swal.fire({
+			icon: "error",
+			title: "Error",
+			text: "Ha ocurrido un error.",
+		  });
+		}
+	  })
+	  .catch((error) => {
+		console.error(error);
+		Swal.fire({
+		  icon: "error",
+		  title: "Error",
+		  text: "Ha ocurrido un error.",
+		});
+	  });
+	}
+  }
+  
+
   return (
     <div
-      className="w-screen min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6c7134] to-black pt-[5.5rem]">
+      className="w-screen min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#6c7134] to-black">
       <form
         className="flex flex-col items-center justify-center"
         onSubmit={login}
@@ -85,28 +155,28 @@ export default function LoginPage() {
           Iniciar sesión
         </button>
       </form>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          paddingTop: "0.5rem",
-          gap: "0.2rem",
-          alignItems: "center",
-        }}
-      >
-        <p style={{ color: "white" }}>¿No tienes una cuenta?</p>
-        <a
-          className="text-white"
-          href="/register"
-          style={{
-            border: "0.1em solid white",
-            padding: "0.2rem 0.2rem",
-            borderRadius: "0.5rem",
-          }}
-        >
-          Registrate
-        </a>
-      </div>
+    <div className="flex flex-col items-center">
+		<div className="flex justify-between pt-2 gap-2 items-center">
+			<p className="text-white">¿No tienes una cuenta?</p>
+			<a
+			href="/register"
+			className="text-white border-white border-solid border-[0.1rem] p-1 rounded"
+			>
+			Regístrate
+			</a>
+		</div>
+		<div className="mt-1">
+			<p className="text-white">
+			¿Olvidaste tu contraseña?
+			<span
+				className="underline cursor-pointer ml-1"
+				onClick={forgotPassword}
+			>
+				Haz clic aquí
+			</span>
+			</p>
+		</div>
+		</div>
     </div>
-  );
+	);
 }
