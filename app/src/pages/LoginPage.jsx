@@ -54,7 +54,8 @@ export default function LoginPage() {
 	  customClass: {
 		title: 'text-white',
 		confirmButton: 'swal2-confirm',
-		cancelButton: 'swal2-cancel'
+		cancelButton: 'swal2-cancel',
+    input: 'text-white'
 	  },
 	  backdrop: 'rgba(80, 80, 80, 0.73)',
 	  iconColor: 'white',
@@ -66,7 +67,7 @@ export default function LoginPage() {
 	if (email) {
 	  // Aquí puedes realizar alguna acción con el correo electrónico ingresado
 	  // Por ejemplo, enviar una solicitud al backend para restablecer la contraseña
-	  fetch("URL_BACKEND", {
+	  fetch("https://srmacaback.fly.dev/auth/forgotPassword", {
 		method: "POST",
 		headers: {
 		  "Content-Type": "application/json",

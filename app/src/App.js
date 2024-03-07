@@ -17,6 +17,7 @@ import Combo3 from "./pages/buy/Combo3";
 import Contact from "./pages/ContactPage";
 import About from "./pages/AboutPage";
 import AdminPage from "./pages/AdminPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 export default function App() {
   const routes = [
@@ -31,6 +32,10 @@ export default function App() {
     {
       path: "/login",
       element: <LoginPage />,
+    },
+    {
+      path: "/reset-password",
+      element: <ResetPasswordPage />
     },
     {
       path: "/products/:title",
@@ -96,7 +101,7 @@ export default function App() {
           <Route key={index} path={route.path} element={route.element} />
         ))}
       </Routes>
-      <div className="fixed bottom-5 right-5 z-">
+      <div className="fixed bottom-5 right-5 z-50">
         <div className="relative">
           <div className="h-10 w-10 rounded-full bg-green-500 text-white flex items-center justify-center">
             <a rel="noreferrer" href="https://wa.link/g4wyjl" target="_blank" onMouseEnter={() => setShowText(true)} onMouseLeave={() => setShowText(false)}>
