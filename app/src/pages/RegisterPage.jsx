@@ -9,52 +9,63 @@ export default function RegisterPage() {
 	const [error, setError] = useState(false);
 	const [message, setMessage] = useState("");
 
-function register(event) {
-    event.preventDefault(); // Prevenir la recarga de la página
-    if (password !== confirmpassword) {
-		setError("Las contraseñas no coinciden");
-		return;
-    }
-    if (password.length < 8) {
-		setError("La contraseña debe tener al menos 8 caracteres");
-		return;
-    }
-    if (address.length < 1) {
-		setError("La dirección no puede estar vacía");
-		return;
-    }
-
-    fetch("https://srmacaback.fly.dev/auth/signup", {
-		method: "POST",
-		headers: {
-        "Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			fullname: fullname,
-			email: email,
-			password: password,
-			confirmpassword: confirmpassword,
-			phone: phone,
-			address: address,
-    	}),
-    })
-    	.then((response) => response.json())
-    	.then((data) => {
-        if (data.message) {
-			setMessage(data.message);
-			setTimeout(() => {
-				window.location.href = "/";
-			}, 4000);
-			}
-			if (data.error) {
-			setError(data.error);
-			}
-			console.log(data);
+	function register(event) {
+		event.preventDefault(); // Prevenir la recarga de la página
+		if (password !== confirmpassword) {
+			setError("Las contraseñas no coinciden");
+			return;
+		}
+		if (password.length < 8) {
+			setError("La contraseña debe tener al menos 8 caracteres");
+			return;
+		}
+		if (address.length < 1) {
+			setError("La dirección no puede estar vacía");
+			return;
+		}
+	
+		fetch("https://srmacaback.fly.dev/auth/signup", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				fullname: fullname,
+				email: email,
+				password: password,
+				confirmpassword: confirmpassword,
+				phone: phone,
+				address: address,
+			}),
 		})
-		.catch((error) => {
-			console.error(error);
-		});
-}
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.message) {
+					Swal.fire({
+						icon: 'success',
+						title: 'Exito!',
+						text: 'Por favor, revise su bandeja de entrada en su correo.',
+						showConfirmButton: false,
+						timer: 7000,
+						onClose: () => {
+							window.location.href = "/";
+						}
+					});
+				}
+				if (data.error) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Disculpanos',
+						text: 'Hubo error con el servicio.'
+					});
+				}
+				console.log(data);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	}
+	
 
 	return (
 		<div className="pt-20 md:pt-0 min-h-screen bg-gradient-to-br from-[#185B69] to-black flex flex-col justify-center items-center text-white" style={{paddingTop: '5.5rem'}}>
