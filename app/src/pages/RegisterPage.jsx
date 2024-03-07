@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
+
 export default function RegisterPage() {
 	const [fullname, setFullname] = useState("");
 	const [email, setEmail] = useState("");
@@ -6,8 +8,7 @@ export default function RegisterPage() {
 	const [confirmpassword, setConfirmpassword] = useState("");
 	const [phone, setPhone] = useState("");
 	const [address, setAddress] = useState("");
-	const [error, setError] = useState(false);
-	const [message, setMessage] = useState("");
+	const [setError] = useState(false);
 
 	function register(event) {
 		event.preventDefault(); // Prevenir la recarga de la página
@@ -73,27 +74,6 @@ export default function RegisterPage() {
 			Unete a la fuerza de SrMaca!
 		</section>
 		<h1 className="text-xls">Registro de usuario</h1>
-		{message ? (
-			<div className="backdrop-blur-md px-4 text-white italic absolute h-screen w-screen flex flex-col justify-center items-center text-lg py-2 rounded-lg text-center">
-			<div className="bg-green-500/45 w-max px-4 py-2 text-center rounded-lg">
-				<h1>Exito!</h1>
-				<h2>{message}</h2>
-				<h3>Redireccionando...</h3>
-			</div>
-			</div>
-		) : (
-			<div className=""></div>
-		)}
-
-		{error ? (
-			<div className="bg-red-500 px-4 py-2 text-center text-white rounded-lg">
-			<h1>Error:</h1>
-			<h3>{error}</h3>
-			</div>
-		) : (
-			<div className=""></div>
-		)}
-
 		<form
 			className="flex flex-col items-center justify-center [&>div>input]:bg-transparent"
 			onSubmit={register}
