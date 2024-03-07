@@ -8,11 +8,13 @@ export default function DetailsText({
 }) {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 justify-items-center text-white z-30 w-full">
+      <div className="flex justify-center object-contain"> {/* Contenedor para centrar horizontalmente */}
       {/* Imagen de Producto en Details */}
       <img
         src={principal}
-        className="w-2/3 md:w-1/2 xl:w-1/3 h-auto mt-12 mb-2 md:mt-0"
+        className="w-2/3 md:w-[60%] xl:w-1/3 h-auto mb-2"
       />
+    </div>
       <div className="flex flex-col items-stretch text-center md:text-left my-5 w-screen md:w-full bg-white/10 backdrop-blur-sm md:rounded-l-3xl border-t-[0.5px] border-l-[0.5px] border-b-[0.5px] border-r-[0.5px] md:border-r-0 border-white drop-shadow-lg p-5 md:p-10">
         <div className="flex-grow basis-0">
           <h1 className="text-2xl font-bold">{title}</h1>
