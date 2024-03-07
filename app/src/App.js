@@ -18,6 +18,7 @@ import Contact from "./pages/ContactPage";
 import About from "./pages/AboutPage";
 import AdminPage from "./pages/AdminPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
+import EmailVerificationPage from "./pages/EmailVerificationPage";
 
 export default function App() {
   const routes = [
@@ -36,6 +37,10 @@ export default function App() {
     {
       path: "/reset-password",
       element: <ResetPasswordPage />
+    },
+    {
+      path: "/verify",
+      element: <EmailVerificationPage />
     },
     {
       path: "/products/:title",
