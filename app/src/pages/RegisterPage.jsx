@@ -47,11 +47,12 @@ export default function RegisterPage() {
 						title: 'Exito!',
 						text: 'Por favor, revise su bandeja de entrada en su correo.',
 						showConfirmButton: false,
-						timer: 7000,
-						onClose: () => {
-							window.location.href = "/";
-						}
+						timer: 5000,
 					});
+					// Redirigir al usuario a la página de inicio después de 5 segundos
+					setTimeout(() => {
+						window.location.href = "/";
+					}, 5000);
 				}
 				if (data.error) {
 					Swal.fire({
