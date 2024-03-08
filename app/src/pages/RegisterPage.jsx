@@ -38,7 +38,7 @@ export default function RegisterPage() {
 				phone: phone,
 				address: address,
 			}),
-		})
+		})	
 			.then((response) => response.json())
 			.then((data) => {
 				if (data.message) {
